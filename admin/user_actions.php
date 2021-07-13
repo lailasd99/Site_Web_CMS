@@ -84,13 +84,8 @@ if(isset($_POST['login_btn'])){
                 $run_role=mysqli_query($connection, $query_role);
                 if($run_role){
                     $role_user = mysqli_fetch_row($run_role);
-                    if($role_user[1] = 1){
-                        header("location: index.php");
-                    }else if($role_user[1] = 2){
-                        header("location: index-admin-sec.php");
-                    }else if($role_user[1] = 3){
-                        header("location: index-redac.php");
-                    }
+                    $_SESSION["role"]= $role_user[1];
+                    header("location: index.php");
                 }
                 
                 
@@ -109,43 +104,78 @@ if(isset($_POST['login_btn'])){
 
 
 
-//var_dump($_FILES);exit();
-if(isset($_POST["submit-article"])){
-    $art_title = mysqli_real_escape_string($connection, $_POST['title']);
-    $art_id =$_POST['art_id'];
-    $content = mysqli_real_escape_string($connection, $_POST['text_editor_article']);
-    $photo = time().'-'.$_FILES['art_photo']['name'];
-    $photo_path = $_FILES["art_photo"];
-    $photoTmpName =$_FILES["art_photo"]["tmp_name"];
-        
-        $query = "UPDATE articles SET title='$art_title', content='$content', media='$photo' WHERE idArticle=$art_id";
-        $query_run=mysqli_query($connection, $query);
+
+if(isset($_POST['edituserbtn']))
+{
+    $user_id = $_POST['user-id'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $id_role = $_POST['role'];
+    $today_date = date('d-m-y h:i:s');
+
+
+
+    $email_query = "SELECT * FROM users WHERE email='$email' AND idUser!=$user_id";
+    $email_query_run = mysqli_query($connection, $email_query);
+    if(mysqli_num_rows($email_query_run) > 0)
+    {
+        $_SESSION['status'] = "Email déja utilisé. Réessayez avec une autre adresse éléctronique.";
+        $_SESSION['status_code'] = "erreur";
+        header('Location: register.php');  
+    }
+    else
+    {
     
-        if($query_run){
-           /* copy($fileTmpName, "C:/xampp/htdocs/RADEEMAA/images/radeema.png");*/
-           $target_file = "../images/".$photo;
-           //var_dump($photoTmpName, $target_file);exit();
-           if (move_uploaded_file($_FILES["art_photo"]["tmp_name"], $target_file)) {
-               //var_dump('success');exit();
-            echo "<center><i><h4>The file ". basename( $photo). " has been uploaded.</h4></i></center>";
-        } else {
-            echo "<center>désolé, il y avait un erreur de téléchargement de fichier.</font></center>";
+            $query = "UPDATE users SET username='$username', email='$email', createdAt='$today_date' WHERE idUser=$user_id";
+
+            $query_run = mysqli_query($connection, $query);
+            
+            if($query_run)
+            {
+                $_SESSION['success'] = "Profile d'admin modifié successivement";
+                $_SESSION['success_code'] = "success";
+                header('Location: register.php');
+            }
+            else 
+            {
+                $_SESSION['status'] = "Prodile d'admin n'est pas modifié";
+                $_SESSION['status_code'] = "error";
+                header('Location: register.php');  
+            }
+
+            //insert role of created user
+            $query2 = "UPDATE roles_of_users SET idUser=$user_id, idRole=$id_role WHERE idUser=$user_id";
+            $query_run2 = mysqli_query($connection, $query2);
+
         }
-            $_SESSION["success"]="article modifiée successivement";
-            $_SESSION["success-code"]="success";
-            header("location: articles.php");
-        }else{
-            $_SESSION["status"]="article n'est pas modifiée";
-            $_SESSION["status-code"]="success";
-            header("location: articles.php");
-        }
+    }
 
 
 
-}else{
-    echo "button not set";
+
+
+    if(isset($_POST["deleteuserbtn"]))
+{
+    $user_id = $_POST['user-id'];
+
+
+
+    $query = "DELETE FROM users WHERE idUser=$user_id";
+    $query_run = mysqli_query($connection, $query);
+    if($query_run)
+    {
+        $_SESSION['success'] = "utilisateur supprimé successivement";
+        $_SESSION['success_code'] = "success";
+        header('Location: register.php');  
+    }
+    else
+    {
+        $_SESSION['status'] = "utilisateur n'est pas supprimé";
+        $_SESSION['status_code'] = "error";
+        header('Location: register.php');
+        
+    }
+
 }
-
-
 
 ?>

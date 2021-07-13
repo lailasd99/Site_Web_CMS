@@ -14,7 +14,7 @@ include('includes/scripts.php');
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="add_page.php" method="POST">
+      <form action="page_actions.php" method="POST">
 
         <div class="modal-body">
 
@@ -107,7 +107,7 @@ include('includes/scripts.php');
       <div class="modal-body">
       <div class="alert alert-danger" role="alert">
       Voulez vous vraiment supprimer cette page?
-      <form id="form-to-submit" action="deletepage.php" method="post">
+      <form id="form-to-submit" action="page_actions.php" method="post">
             <input id="id-page" name="page-id" type="hidden" value=""> 
             
       </form>

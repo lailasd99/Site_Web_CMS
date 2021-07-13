@@ -8,12 +8,12 @@ include('includes/navbar.php');
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Admin Data</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter un admin</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="code.php" method="POST">
+      <form action="user_actions.php" method="POST">
 
         <div class="modal-body">
 
@@ -131,7 +131,7 @@ include('includes/navbar.php');
       <div class="modal-body">
       <div class="alert alert-danger" role="alert">
       Voulez vous vraiment supprimer cet utilisateur?
-      <form id="form-to-submit" action="deleteuser.php" method="post">
+      <form id="form-to-submit" action="user_actions.php" method="post">
             <input id="id-user" name="user-id" type="hidden" value=""> 
             
       </form>
@@ -156,7 +156,7 @@ include('includes/navbar.php');
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form id="form-update" action="edituser.php" method="POST">
+      <form id="form-update" action="user_actions.php" method="POST">
 
         <div class="modal-body">
             <div class="form-group">

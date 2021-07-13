@@ -35,7 +35,7 @@
                                     }
                                 ?>
                             </div>
-                            <form class="user" action="code.php" method="POST">
+                            <form class="user" action="user_actions.php" method="POST">
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user"
                                         name="email" placeholder="Entrez votre adresse email...">

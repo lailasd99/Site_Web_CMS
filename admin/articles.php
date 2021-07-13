@@ -13,7 +13,7 @@ include('includes/navbar.php');
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="add_article.php" method="POST">
+      <form action="article_actions.php" method="POST">
 
         <div class="modal-body">
 
@@ -59,7 +59,7 @@ include('includes/navbar.php');
     </tr>
   </thead>
   <tbody>
-      <?php $query = "SELECT * FROM articles";
+      <?php $query = "SELECT *, SUBSTRING(title, 1, 60) FROM articles";
             $query_run= mysqli_query($connection, $query);
             $i=1;
             if(mysqli_num_rows($query_run))
@@ -70,6 +70,11 @@ include('includes/navbar.php');
                   }else{
                     $admis="non";
                   }
+                  /*if($article[7] < $article[1]){
+                    $dots = "...";
+                  }else {
+                    $dots = "";
+                  }*/
                    echo" <tr>";
                    echo "<th scope='row'>".$i++."</th>";
                    echo "<td>".$article[1]."</td>";
@@ -98,7 +103,7 @@ include('includes/navbar.php');
       <div class="modal-body">
       <div class="alert alert-danger" role="alert">
       Voulez vous vraiment supprimer cette article?
-      <form id="form-to-submit" action="delete_article.php" method="post">
+      <form id="form-to-submit" action="article_actions.php" method="post">
             <input id="id-article" name="article-id" type="hidden" value=""> 
             
       </form>

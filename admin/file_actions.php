@@ -18,7 +18,7 @@ if(isset($_POST['addbtn']))
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array("jpeg", "jpg", "png", "pdf");
+    $allowed = array("jpeg", "jpg", "png", "pdf", "docx");
 
     if(in_array($fileActualExt, $allowed)){
                 if($fileError === 0){

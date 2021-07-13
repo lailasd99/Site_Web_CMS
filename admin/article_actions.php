@@ -1,0 +1,103 @@
+<?php
+include('security.php');
+if(isset($_POST['addbtn']))
+{
+    $title = mysqli_real_escape_string($connection, $_POST['title']);
+    $submitted = 0;
+
+
+    $query = "SELECT * FROM articles WHERE title='$title'";
+    $run = mysqli_query($connection, $query);
+    if(mysqli_num_rows($run))
+    {
+        $_SESSION['status'] = "titre d'article existe déja";
+        $_SESSION['status_code'] = "erreur";
+        header('Location: articles.php');  
+    }
+    else
+    {
+            
+            //insert new page
+            $query = "INSERT INTO articles (title, accept) VALUES ('$title', $submitted)";
+
+            $query_run = mysqli_query($connection, $query);
+
+            if($query_run)
+            {
+                $_SESSION['success'] = "article ajouté successivement";
+                $_SESSION['success_code'] = "success";
+                header('Location: articles.php');
+            }
+            else 
+            {
+                $_SESSION['status'] = "article n'est pas ajouté";
+                $_SESSION['status_code'] = "error";
+                header('Location: articles.php');  
+            }
+
+    }
+
+}
+
+
+
+if(isset($_POST["delete-article-btn"]))
+{
+    $art_id = $_POST['article-id'];
+
+    
+    $query = "DELETE FROM articles WHERE idArticle=$art_id";
+    $query_run = mysqli_query($connection, $query);
+    
+    if($query_run)
+    {
+        $_SESSION['success'] = "Article supprimée successivement";
+        $_SESSION['success_code'] = "success";
+        header('Location: articles.php');  
+    }
+    else
+    {
+        $_SESSION['status'] = "Article n'est pas supprimé";
+        $_SESSION['status_code'] = "error";
+        header('Location: articles.php');
+    }
+}
+
+
+
+if(isset($_POST["submit-article"])){
+    $art_title = mysqli_real_escape_string($connection, $_POST['title']);
+    $art_id =$_POST['art_id'];
+    $content = mysqli_real_escape_string($connection, $_POST['text_editor_article']);
+    $photo = time().'-'.$_FILES['art_photo']['name'];
+    $photo_path = $_FILES["art_photo"];
+    $photoTmpName =$_FILES["art_photo"]["tmp_name"];
+        
+        $query = "UPDATE articles SET title='$art_title', content='$content', media='$photo' WHERE idArticle=$art_id";
+        $query_run=mysqli_query($connection, $query);
+    
+        if($query_run){
+           /* copy($fileTmpName, "C:/xampp/htdocs/RADEEMAA/images/radeema.png");*/
+           $target_file = "../images/".$photo;
+           //var_dump($photoTmpName, $target_file);exit();
+           if (move_uploaded_file($_FILES["art_photo"]["tmp_name"], $target_file)) {
+               //var_dump('success');exit();
+            echo "<center><i><h4>The file ". basename( $photo). " has been uploaded.</h4></i></center>";
+        } else {
+            echo "<center>désolé, il y avait un erreur de téléchargement de fichier.</font></center>";
+        }
+            $_SESSION["success"]="article modifiée successivement";
+            $_SESSION["success-code"]="success";
+            header("location: articles.php");
+        }else{
+            $_SESSION["status"]="article n'est pas modifiée";
+            $_SESSION["status-code"]="success";
+            header("location: articles.php");
+        }
+
+
+
+}else{
+    echo "button not set";
+}
+?>
