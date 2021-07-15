@@ -28,7 +28,7 @@
                                         echo '<a href="single-blog.php?id='.$row[0].'" class="list-widget">
                                         <div class="w-100 last-item justify-content-between">
                                             <img src="images/'.$row[6].'" alt="" class="img-fluid float-left" style="height: 50px; object-fit: cover">
-                                            <h5 class="mb-1" alt="'.$row[1].'">'.$row[7].'...</h5>
+                                            <h5 class="mb-1" alt="'.$row[1].'">'.$row[8].'...</h5>
                                             <small>07 Jan, 2016</small>
                                         </div><hr>
                                     </a>';
@@ -44,7 +44,7 @@
                             
                             <hr class="invis1">
                             <div class="widget">
-                                <h2 class="widget-title">Suivez nous</h2>
+                                <h2 class="widget-title">Suivez-nous</h2>
 
                                 <div class="row text-center">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
@@ -80,13 +80,13 @@
 
                                 <!--<span class="color-orange"><a href="tech-category-01.html" title="">Technology</a></span>-->
                                
-
+<!--
                                 <div class="blog-meta big-meta">
-                                    <!--<small><a href="tech-single.html" title="">21 July, 2017</a></small>
-                                    <small><a href="tech-author.html" title="">by Jessica</a></small>-->
+                                    <small><a href="tech-single.html" title="">21 July, 2017</a></small>
+                                    <small><a href="tech-author.html" title="">by Jessica</a></small>
                                     <small><a href="#" title=""><i class="fa fa-eye"></i> 2344</a></small>
                                 </div>
-
+                                -->
                                
                             </div><!-- end title -->
 
@@ -108,11 +108,6 @@
                                         
                                     }
 
-                                    /*$query_media = "SELECT * FROM media where idArticle=$row[0]";
-                                    $run_media = mysqli_query($connection, $query_media);
-                                    if($run_media){
-                                        $row_media = mysqli_fetch_row($run_media);
-                                    }*/
                                 ?> 
                                 <h1 align="center" style="margin-bottom: 40px"><?php echo $row[1];?></h1>
                                 <div class="single-post-media">

@@ -3,6 +3,9 @@ include('security.php');
 include('includes/header.php');
 include('includes/navbar.php');
 ?>
+<label style="margin-bottom: 20px" class="btnadd-action">
+  <h1 class="h3 mb-0 text-gray-800">Menus</h1>
+</label>
 <!----
 <div class="modal fade" id="addmenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

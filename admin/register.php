@@ -54,9 +54,13 @@ include('includes/navbar.php');
   </div>
 </div>
 
-<button type="button" class="btn btn-primary btnadd-action" data-toggle="modal" data-target="#addadminprofile">
+
+<div class="btnadd-action" style="margin-bottom: 20px">
+<label><h1 class="h3 mb-0 text-gray-800">Utilisateurs</h1></label>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addadminprofile" style="margin-left: 20px">
        Ajouter un admin 
-</button>
+    </button>
+</div>
 
 <div class="card-body">
     <?php
@@ -131,7 +135,7 @@ include('includes/navbar.php');
       <div class="modal-body">
       <div class="alert alert-danger" role="alert">
       Voulez vous vraiment supprimer cet utilisateur?
-      <form id="form-to-submit" action="user_actions.php" method="post">
+      <form id="form-to-submit" action="user_actions.php" method="POST">
             <input id="id-user" name="user-id" type="hidden" value=""> 
             
       </form>
@@ -157,7 +161,6 @@ include('includes/navbar.php');
         </button>
       </div>
       <form id="form-update" action="user_actions.php" method="POST">
-
         <div class="modal-body">
             <div class="form-group">
                 <label> Nom d'utilisateur </label>
@@ -171,14 +174,11 @@ include('includes/navbar.php');
             </div>
             <div class="form-group">
                 <label>Type</label>
-                        <div class="custom-select">
-                        <select name="role" id="id_role">
-                            <option value=1>admin général</option>
-                            <option value =2>admin secondaire</option>
-                            <option vallue = 3>rédacteur</option>
-                        </select>
-                        <span class="custom-arrow"></span>
-                        </div>
+                <select name="role" id="id_role" class="form-control" value="">
+                    <option value=1>admin général</option>
+                    <option value =2>admin secondaire</option>
+                    <option value =3>rédacteur</option>
+                </select>
             </div>
 
         </div>

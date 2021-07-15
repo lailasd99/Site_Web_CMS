@@ -44,9 +44,12 @@ include('includes/navbar.php');
   </div>
 </div>
 
-<button type="button" class="btn btn-primary btnadd-action" data-toggle="modal" data-target="#addevent">
+<div class="btnadd-action" style="margin-bottom: 20px">
+    <label><h1 class="h3 mb-0 text-gray-800">Agenda</h1></label>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addevent" style="margin-left: 20px">
        Ajouter un évènement 
-</button>
+    </button>
+</div>
 
 <div class="card-body">
     <?php

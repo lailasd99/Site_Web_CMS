@@ -3,6 +3,9 @@ include('security.php');
 include('includes/header.php');
 include('includes/navbar.php');
 ?>
+<label style="margin-bottom: 20px" class="btnadd-action">
+  <h1 class="h3 mb-0 text-gray-800">Catégories</h1>
+</label>
 <div class="card-body">
     <?php
         if(isset($_GET['success']) && $_GET['success']!=''){

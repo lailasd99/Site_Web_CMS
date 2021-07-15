@@ -104,7 +104,7 @@ if(isset($_POST['login_btn'])){
 
 
 
-
+//var_dump($_POST); exit();
 if(isset($_POST['edituserbtn']))
 {
     $user_id = $_POST['user-id'];
@@ -126,9 +126,9 @@ if(isset($_POST['edituserbtn']))
     else
     {
     
-            $query = "UPDATE users SET username='$username', email='$email', createdAt='$today_date' WHERE idUser=$user_id";
+            $query = "UPDATE users SET username='$username', email='$email' WHERE idUser=$user_id; UPDATE roles_of_users SET idRole=$id_role WHERE idUser=$user_id";
 
-            $query_run = mysqli_query($connection, $query);
+            $query_run = mysqli_multi_query($connection, $query);
             
             if($query_run)
             {
@@ -143,9 +143,6 @@ if(isset($_POST['edituserbtn']))
                 header('Location: register.php');  
             }
 
-            //insert role of created user
-            $query2 = "UPDATE roles_of_users SET idUser=$user_id, idRole=$id_role WHERE idUser=$user_id";
-            $query_run2 = mysqli_query($connection, $query2);
 
         }
     }
@@ -154,14 +151,14 @@ if(isset($_POST['edituserbtn']))
 
 
 
-    if(isset($_POST["deleteuserbtn"]))
+if(isset($_POST["deleteuserbtn"]))
 {
     $user_id = $_POST['user-id'];
+   
 
 
-
-    $query = "DELETE FROM users WHERE idUser=$user_id";
-    $query_run = mysqli_query($connection, $query);
+    $query = "DELETE FROM roles_of_users WHERE idUser=$user_id ; DELETE FROM users WHERE idUser=$user_id ;";
+    $query_run = mysqli_multi_query($connection, $query);
     if($query_run)
     {
         $_SESSION['success'] = "utilisateur supprimé successivement";

@@ -1,49 +1,17 @@
 <?php
-include('security.php');
-include('includes/header.php');
-include('includes/navbar.php');
-include('includes/scripts.php');
+  include('security.php');
+  include('includes/header.php');
+  include('includes/navbar.php');
+  include('includes/scripts.php');
 ?>
+    
+<form action="add_page.php" method="POST" class="btnadd-action" style="margin-bottom: 20px">
+<label><h1 class="h3 mb-0 text-gray-800">Pages</h1></label>
+    <button type="submit" name="addbtn" class="btn btn-primary" style="margin-left: 20px">
+          Ajouter une page
+    </button>
+</form>
 
-<div class="modal fade" id="addpage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajouter une nouvelle page</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="page_actions.php" method="POST">
-
-        <div class="modal-body">
-
-            <div class="form-group">
-                <label>Titre</label>
-                <input type="text" name="title" class="form-control" placeholder="Entrez un titre">
-            </div>
-            <div class="form-group">
-                <label>Archivé</label>
-                    <select name="archive" class="form-control">
-                        <option value="1">oui</option>
-                         <option value ="0">non</option>
-                    </select>
-            </div>
-
-
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            <button type="submit" name="addbtn" class="btn btn-primary">Ajouter</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<button type="button" class="btn btn-primary btnadd-action" data-toggle="modal" data-target="#addpage">
-       Ajouter une page 
-</button>
 
 <div class="card-body">
     <?php
@@ -58,7 +26,7 @@ include('includes/scripts.php');
         }
     ?>
 
-<table class="table table-hover tablesorter" id="myTable">
+<table class="table table-hover" id="myTable">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -133,7 +101,11 @@ include('includes/scripts.php');
 
 <script>
   $(document).ready(function () {
-    $('#myTable').DataTable();
+    $('#myTable').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+        }
+    });
 });
 </script>
 

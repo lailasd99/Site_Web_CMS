@@ -1,3 +1,4 @@
+
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -82,8 +83,13 @@
     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
            <!-- <h6 class="collapse-header">Login Screens:</h6>-->
-            <a class="collapse-item" href="files.php">Fichiers</a>
-            <a class="collapse-item" href="media_files.php">Media</a>
+            <a class="collapse-item" href="files.php"><i class="fas fa-fw fa-file-pdf"></i> Fichiers</a>
+            <a class="collapse-item" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"><i class="fas fa-fw fa-image"></i> Media</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink1">
+                        <a class="dropdown-item" href="articles_media.php">Images des articles</a>
+                        <a class="dropdown-item" href="pages_media.php">images des pages</a>
+                    </div>
             <!--<a class="collapse-item" href="forgot-password.html">Forgot Password</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
@@ -145,7 +151,7 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
                     <a class="btn btn-primary" href="logout.php">Déconnexion</a>
                 </div>
             </div>
@@ -216,17 +222,17 @@
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell fa-fw"></i>
             <!-- Counter - notifications -->
-            <span class="badge badge-danger badge-counter">3+</span>
+            <span class="badge badge-danger badge-counter" count></span>
         </a>
         <!-- Dropdown - notifications -->
-        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in drp1"
             aria-labelledby="alertsDropdown">
             <h6 class="dropdown-header">
                 Notifications
             </h6>
             <?php
-                include("security.php");
-                $query = "SELECT * from articles WHERE accept = 0 order by createdAt Desc";
+                
+                $query = "SELECT * from articles order by createdAt LIMIT 4";
                 $query_run = mysqli_query($connection, $query);
                 if($query_run){
                     while($row = mysqli_fetch_row($query_run)){
@@ -244,7 +250,7 @@
                         </a>
             <?php   }
                 }
-            ?>                
+            ?>              
            
             <a class="dropdown-item text-center small text-gray-500" href="#">Voir tous</a>
         </div>
@@ -354,6 +360,29 @@
     </li>
 
 </ul>
+<!--
+<script>
+   $(document).ready(function(){
+    console.log('data')
+      function load_unseen_notifications(view = ''){
+         $.ajax({
+            url: "fetch.php",
+            method: "POST",
+            data:{view: view},
+            dataType: "json",
+            success:function(data){
+                console.log('data',data)
+               $('.drp1').html(data.notification);
+               if(data.unseen_notifications >0){
+                   $('.count').html(data.unseen_notifications);
+               }
+            }
+         })
+      }
+   });
 
+   load_unseen_notifications();
+</script>
+-->
 </nav>
 <!-- End of Topbar -->

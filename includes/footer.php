@@ -24,9 +24,10 @@
                                
                             </div><!-- end footer-text -->
                         </div><!-- end widget -->
-                        <div class="centre-rel">
-                            <h2 id="num-centre">080 2000 123</h2> 
-                            <h2 id="centre">Centre de Relation Client</h2>
+                        <div class="centre-rel" style="margin-top: 50px">
+                            <img src="upload/icon_contact.png" class="img-fluid" style="height: 130px">
+                            <!--<h2 id="num-centre">080 2000 123</h2> 
+                            <h2 id="centre">Centre de Relation Client</h2>-->
                         </div>    
                     </div><!-- end col -->
 

@@ -30,9 +30,7 @@
    <!-- Latest compiled and minified JavaScript -->
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-   <!-- tiny mce -->
-   <!--<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>-->
-   <!--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>-->
+   <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js" ></script>
   
 
    

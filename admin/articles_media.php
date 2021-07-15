@@ -8,49 +8,46 @@ include('includes/navbar.php');
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajouter un fichier téléchargeable</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter une image</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="file_actions.php" method="POST" enctype="multipart/form-data">
+      <form action="media_actions.php" method="POST" enctype="multipart/form-data">
 
         <div class="modal-body">
-
             <div class="form-group">
-                <label>Désignation</label>
-                <input type="text" name="title" class="form-control" placeholder="Entrez un titre">
-            </div>
-            <div class="form-group">
-                <label>Archivé</label>
-                    <select name="archive" class="form-control">
-                        <option value="1">oui</option>
-                         <option value ="0">non</option>
+                <label>Article</label>
+                    <select name="art" class="form-control">
+                    <?php 
+                      $query = "SELECT * from articles";
+                      $query_run = mysqli_query($connection, $query);
+                      if($query_run){
+                        while($row = mysqli_fetch_row($query_run)){
+                    ?>
+                        <option value="<?php echo $row[0]?>"><?php echo $row[1]?></option>
+                      <?php }
+                      } ?>  
                     </select>
             </div>
             <div class="form-group">
-                    <label>Date de Communiqué</label>
-                   <input type="date" name="datecom" class="form-control">
-            </div>    
-            <div class="form-group">
-                <input id="fichier" name="fichier" type="file">
+                <input id="default-btn" type="file" name="art_photo">
             </div>
 
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            <button type="submit" name="addbtn" class="btn btn-primary">Ajouter</button>
+            <button type="submit" name="addbtn_art" class="btn btn-primary">Ajouter</button>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-
 <div class="btnadd-action" style="margin-bottom: 20px">
-    <label><h1 class="h3 mb-0 text-gray-800">Fichiers</h1></label>
+    <label><h1 class="h3 mb-0 text-gray-800">Images d'articles</h1></label>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addfile" style="margin-left: 20px">
-       Ajouter un fichier 
+       Ajouter une image
     </button>
 </div>
 
@@ -71,33 +68,28 @@ include('includes/navbar.php');
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">titre</th>
-      <th scope="col">Archivé</th>
-      <th scope="col">Date de communiqué</th>
+      <th scope="col">image</th>
+      <th scope="col">Article</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
-      <?php $query = "SELECT * FROM files";
+      <?php $query = "SELECT * FROM articles";
             $query_run= mysqli_query($connection, $query);
             $i=1;
             if(mysqli_num_rows($query_run))
             {
-                while($file= mysqli_fetch_row($query_run)){
-                  if($file[3]==1){
-                    $draft="oui";
-                  }else{
-                    $draft="non";
+                while($art= mysqli_fetch_row($query_run)){
+                   if($art[6]){
+                        echo" <tr>";
+                        echo "<th scope='row'>".$i++."</th>";
+                        echo "<td><img id='miniature' src='../images/".$art[6]."' alt='image'></td>";
+                        echo "<td>".$art[1]."</td>";
+                        echo "<td><button class='btn btn-danger delete' data-toggle='modal' data-id='". $art[0] ."' data-target='#deleteimage'>supprimer</button>
+                        <button class='btn btn-success update' data-toggle='modal' data-id='". $art[6] ."' data-target='#editfile'>Modifier</button></td>
+                        </tr>";
                   }
-                   echo" <tr>";
-                   echo "<th scope='row'>".$i++."</th>";
-                   echo "<td>".$file[4]."</td>";
-                    echo "<td>".$draft."</td>";
-                    echo "<td>".$file[5]."</td>";
-                    echo "<td><button class='btn btn-danger delete' data-toggle='modal' data-id='". $file[0] ."' data-target='#deletefile'>supprimer</button>
-                    <button class='btn btn-success update' data-toggle='modal' data-id='". $file[0] ."' data-target='#editfile'>Modifier</button></td>
-                    </tr>";
-                    };
+                }
             }
       ?>
     
@@ -106,7 +98,7 @@ include('includes/navbar.php');
 
 </div>
 
-<div class="modal modal-danger fade" id="deletefile" tabindex="-1">
+<div class="modal modal-danger fade" id="deleteimage" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -115,21 +107,19 @@ include('includes/navbar.php');
       </div>
       <div class="modal-body">
       <div class="alert alert-danger" role="alert">
-      Voulez vous vraiment supprimer ce fichier?
-      <form id="form-to-submit" action="file_actions.php" method="post">
-            <input id="id-file" name="file-id" type="hidden" value=""> 
-            
+      cette image appartient à l'article ! Voulez vous vraiment la supprimé?
+      <form id="form-to-submit" action="media_actions.php" method="post">
+            <input id="id-image" name="image-id" value="">
       </form>
      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-        <button type="submit" form="form-to-submit" name ="deletefilebtn"class="btn btn-primary" onclick="submit_form()">Confirmer</button>
+        <button type="submit" form="form-to-submit" name ="deleteimg_art"class="btn btn-primary" onclick="submit_form()">Confirmer</button>
       </div>
     </div>
   </div>
 </div>
-
 
 
 <div class="modal fade" id="editfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -141,28 +131,27 @@ include('includes/navbar.php');
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form id="form-update" action="file_actions.php" method="POST">
+      <form id="form-update" action="media_actions.php" method="POST">
         <div class="modal-body">
-        <input id="id-of-file" name="file-id"  type="hidden" value="">
+        <input id="id-of-file" name="file-id" type="hidden" value="">
             <div class="form-group">
-                <label>Désignation</label>
-                <input type="text" name="title" id="title" class="form-control" placeholder="Désignation du fichier">
-            </div>
-            <div class="form-group">
-                <label>Archivé</label>
-                    <select name="archive" id="archive" class="form-control" value="">
-                        <option value="1">oui</option>
-                         <option value ="0">non</option>
+                <label>Article</label>
+                    <select name="art" class="form-control" id="art">
+                    <?php 
+                      $query = "SELECT * from articles";
+                      $query_run = mysqli_query($connection, $query);
+                      if($query_run){
+                        while($row = mysqli_fetch_row($query_run)){
+                    ?>
+                        <option value="<?php echo $row[0]?>"><?php echo $row[1]?></option>
+                      <?php }
+                      } ?>  
                     </select>
-            </div>
-            <div class="form-group">
-                <label>Date de Communiqué</label>
-                <input type="date" name="date" id="date" class="form-control">
             </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            <button type="submit" form="form-update" name="editfile" class="btn btn-primary" >Enregistrer</button>
+            <button type="submit" form="form-update" name="editimage" class="btn btn-primary" >Enregistrer</button>
         </div>
       </form>
     </div>
@@ -170,6 +159,15 @@ include('includes/navbar.php');
 </div>
 
 
+
+<script>
+  $(document).ready(function(){
+    $('.updatebtn').on('click', function(){
+      $('#updateuser').modal('show');
+    });
+
+  });
+</script>
 
 
 <?php
@@ -180,7 +178,7 @@ include('includes/footer.php');
 <script>
   $('.delete').click(function(e){
     console.log( $(this).data('id'))
-    $('#id-file').val($(this).data('id'))  
+    $('#id-image').val($(this).data('id'));
   })
 
   $('.update').click(function(e){
@@ -192,14 +190,16 @@ include('includes/footer.php');
     }).get();
     console.log(data);
 
-    $('#title').val(data[0]);
-    $('#archive').val(data[1]);
-    $('#date').val(data[2]);
+    $('#art').val(data[3]);
   })
 
   function submit_form(e) {
     $('#form-to-submit').submit()
   }
-  
+/*
+  function modify_page(e) {
+    location.href = "http://localhost/RADEEMA/admin/editpage.php";
+  }
+*/
 </script>
 

@@ -307,7 +307,7 @@
 
                                     <div class="blog-meta big-meta col-md-8">
                                         <h4 style="padding-top: 0px; margin-top: 0px"><a href="single-blog.php?id=<?php echo $row[0]?>" title="<?php $row[1]?>"><?php echo $row[1]?></a></h4>
-                                        <p><?php echo strip_tags($row[7])?>...</p>
+                                        <p><?php echo strip_tags($row[8])?>...</p>
                                         <!--<small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Gadgets</a></small>-->
                                         <small><a href="single-blog.php?id=<?php echo $row[0]?>" title=""><?php ?></a></small>
                                         <!--<small><a href="single-blog.php?id=<?php echo $row[0]?>" title="">by Matilda</a></small>

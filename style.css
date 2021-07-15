@@ -341,7 +341,7 @@ div.tab button {
     width: 100%;
     border: 0;
     outline: none;
-    text-align: right;
+    text-align: left;
     cursor: pointer;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
@@ -685,8 +685,8 @@ div.tab button.active {
     background-position: 50% 50%;
     background-repeat: no-repeat;
     z-index: 9999;
-    width: 40px;
-    height: 40px;
+    width: 2.75rem;
+    height: 2.75rem;
     text-indent: -99999px;
     position: fixed;
     bottom: -100px;
@@ -697,7 +697,8 @@ div.tab button.active {
     -o-transition: all .7s ease-in-out;
     -ms-transition: all .7s ease-in-out;
     transition: all .7s ease-in-out;
-    overflow: auto;
+    border-radius: .25rem;
+    /*overflow: auto;*/
 }
 
 
@@ -1871,3 +1872,6 @@ hr.invis3 {
     color: #0091e5
 }
 
+#pdf-icon{
+    
+}

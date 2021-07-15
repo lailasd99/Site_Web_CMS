@@ -3,7 +3,7 @@ include('security.php');
 include('includes/header.php');
 include('includes/navbar.php');
 ?>
-
+<!--
 <div class="modal fade" id="addarticle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -31,10 +31,13 @@ include('includes/navbar.php');
     </div>
   </div>
 </div>
-
-<button type="button" class="btn btn-primary btnadd-action" data-toggle="modal" data-target="#addarticle">
-       Ajouter une article 
-</button>
+-->
+<form action="add_article.php" method="POST" class="btnadd-action" style="margin-bottom: 20px">
+<label><h1 class="h3 mb-0 text-gray-800">Articles</h1></label>
+    <button type="submit" name="addbtn" class="btn btn-primary" style="margin-left: 20px">
+          Ajouter une article
+    </button>
+</form>
 
 <div class="card-body">
     <?php

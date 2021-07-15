@@ -1,7 +1,7 @@
 
 
 .btnadd-action {
-    margin-left: 50px !important;
+    margin-left: 15px !important;
 }
 
 #form-of-buttons{
@@ -269,7 +269,7 @@
  }
 
 #page-bg{
-  background: rgba(255, 127, 0, 0.5);
+  background: #b2b5dc;
 }
 #page-text{
   float: right;
@@ -282,4 +282,9 @@
   font-style: italic;
 }
 
-
+#miniature{
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 150px; /* Set a small width */
+}

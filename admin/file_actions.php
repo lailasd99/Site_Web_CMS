@@ -5,6 +5,7 @@ if(isset($_POST['addbtn']))
 {
     $title = mysqli_real_escape_string($connection, $_POST['title']);
     $draft = $_POST['archive'];
+    $datecom = $_POST['datecom'];
     //$file = $_FILES['fl'];
     $fileName = $_FILES['fichier']['name'];
     //$fileTmpName = $_FILES['fl']['tmp_name'];
@@ -18,11 +19,11 @@ if(isset($_POST['addbtn']))
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array("jpeg", "jpg", "png", "pdf", "docx");
+    $allowed = array("pdf", "docx", "doc", "odt");
 
     if(in_array($fileActualExt, $allowed)){
                 if($fileError === 0){
-                        $query = "INSERT into files(link, draft, title) values('$file', $draft, '$title')";
+                        $query = "INSERT into files(link, draft, title, datecom) values('$file', $draft, '$title', '$datecom')";
                         $query_run=mysqli_query($connection, $query);
 
                         if($query_run){
@@ -97,4 +98,33 @@ if(isset($_POST["deletefilebtn"]))
     }
 
 }
+
+//var_dump($_POST);exit();
+if(isset($_POST["editfile"])){
+
+    $file_id = $_POST['file-id'];
+    $title = mysqli_real_escape_string($connection, $_POST['title']);
+    $draft = $_POST['archive'];
+    $datecom = $_POST['date'];
+
+
+    
+    $query = "UPDATE files SET draft=$draft, title='$title', datecom='$datecom' WHERE idFile=$file_id";
+    $query_run = mysqli_query($connection, $query);
+    if($query_run)
+    {
+        $_SESSION['success'] = "fichier modifié successivement";
+        $_SESSION['success_code'] = "success";
+        header('Location: files.php');  
+    }
+    else
+    {
+        $_SESSION['status'] = "fichier n'est pas modifié";
+        $_SESSION['status_code'] = "error";
+        header('Location: files.php');
+        
+    }
+
+}
+
 ?>

@@ -1,12 +1,47 @@
 tinymce.init({
     selector: "textarea",
-    plugins: "code",
-    toolbar: "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link code image_upload",
+    plugins: "image code",
+    toolbar: "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link code image_upload | image",
     menubar:false,
     statusbar: false,
     content_style: ".mce-content-body {font-size:15px;font-family:Arial,sans-serif;}",
     height: 400,
-    
+
+    images_upload_url : 'js/tinymce/tinymce_upload.php',
+    automatic_uploads : false,
+
+    images_upload_handler : function(blobInfo, success, failure) {
+    var xhr, formData;
+
+    xhr = new XMLHttpRequest();
+    xhr.withCredentials = false;
+    xhr.open('POST', 'js/tinymce/tinymce_upload.php');
+
+    xhr.onload = function() {
+            var json;
+
+            if (xhr.status != 200) {
+                failure('HTTP Error: ' + xhr.status);
+                return;
+            }
+            console.log(xhr.responseText);
+            json = JSON.parse(xhr.responseText);
+
+            if (!json || typeof json.file_path != 'string') {
+                failure('Invalid JSON: ' + xhr.responseText);
+                return;
+            }
+
+            success(json.file_path);
+        };
+
+        formData = new FormData();
+        formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+        xhr.send(formData);
+    },
+
+    /*
     setup: function(ed) {
          
         var fileInput = $('<input id="tinymce-uploader" type="file" name="pic" accept="image/*" style="display:none">');
@@ -42,7 +77,7 @@ tinymce.init({
                 fileInput.trigger('click');
             }
         });
-    }
+    }*/
 /*
   images_upload_url: 'tinymce_upload.php',
 

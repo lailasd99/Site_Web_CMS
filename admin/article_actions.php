@@ -1,9 +1,12 @@
 <?php
 include('security.php');
-if(isset($_POST['addbtn']))
+if(isset($_POST['add_article']))
 {
     $title = mysqli_real_escape_string($connection, $_POST['title']);
-    $submitted = 0;
+    $content = mysqli_real_escape_string($connection, $_POST['text_editor_article']);
+    $photo = time().'-'.$_FILES['art_photo']['name'];
+    $photo_path = $_FILES["art_photo"];
+    $photoTmpName =$_FILES["art_photo"]["tmp_name"];
 
 
     $query = "SELECT * FROM articles WHERE title='$title'";
@@ -16,24 +19,25 @@ if(isset($_POST['addbtn']))
     }
     else
     {
-            
-            //insert new page
-            $query = "INSERT INTO articles (title, accept) VALUES ('$title', $submitted)";
-
-            $query_run = mysqli_query($connection, $query);
-
-            if($query_run)
-            {
-                $_SESSION['success'] = "article ajouté successivement";
-                $_SESSION['success_code'] = "success";
-                header('Location: articles.php');
-            }
-            else 
-            {
-                $_SESSION['status'] = "article n'est pas ajouté";
-                $_SESSION['status_code'] = "error";
-                header('Location: articles.php');  
-            }
+        $query = "INSERT INTO articles(title, content, media) values('$title', '$content', '$photo')";
+        $query_run=mysqli_query($connection, $query);
+    
+        if($query_run){
+           $target_file = "../images/".$photo;
+           if (move_uploaded_file($_FILES["art_photo"]["tmp_name"], $target_file)) {
+            echo "<center><i><h4>The file ". basename( $photo). " has been uploaded.</h4></i></center>";
+        } else {
+            echo "<center>désolé, il y avait un erreur de téléchargement de fichier.</font></center>";
+        }
+            $_SESSION["success"]="article ajoutée successivement";
+            $_SESSION["success-code"]="success";
+            header("location: articles.php");
+        }else{
+            $_SESSION["status"]="article n'est pas ajoutée";
+            $_SESSION["status-code"]="success";
+            header("location: articles.php");
+        }
+          
 
     }
 
@@ -95,9 +99,5 @@ if(isset($_POST["submit-article"])){
             header("location: articles.php");
         }
 
-
-
-}else{
-    echo "button not set";
 }
 ?>

@@ -91,7 +91,6 @@
                                             $query2 = "SELECT * from pages where section=".$row[1];
                                             $query_run2 = mysqli_query($connection, $query2);
                                             if($query_run2){
-                                                $row2 = mysqli_fetch_row($query_run2);
                                                 echo '<li class="nav-item dropdown">
                                                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$name.'</a>';
                                                         echo '<ul class="dropdown-menu megamenu" aria-labelledby="dropdown01">

@@ -211,9 +211,13 @@
                                 </div>
                             </div><!-- end content -->
 
-                            <div class="blog-title-area">
-                               
 
+                            <?php if($row[1] =="Espace Presse"){
+                                include("files_list.php");
+                            }
+                            ?>
+
+                            <div class="blog-title-area">
                                 <div class="post-sharing" align="center">
                                     <ul class="list-inline">
                                         <li><a href="#" class="fb-button btn btn-primary facebook-btn"><i class="fa fa-facebook"></i> <span class="down-mobile">Partager sur Facebook</span></a></li>

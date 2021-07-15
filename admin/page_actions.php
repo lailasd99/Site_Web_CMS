@@ -5,25 +5,30 @@ if(isset($_POST["submit-page"])){
     $title =mysqli_real_escape_string($connection, $_POST['title']);
     $cat = $_POST['id_categorie'];
     $draft = $_POST['id_draft'];
-    //$pic =$_POST['pic'];
     $page_id =$_POST['page_id'];
     $parent_id = $_POST['parent_page_id'];
-    //$menu =$_POST['menu_id'];
     $content = mysqli_real_escape_string($connection, $_POST['text_editor_page']);
+    $photo = time().'-'.$_FILES['page_photo']['name'];
+    $photo_path = $_FILES["page_photo"];
+    $photoTmpName =$_FILES["page_photo"]["tmp_name"];
+
+    $target_file = "../images/".$photo;
+    move_uploaded_file($_FILES["page_photo"]["tmp_name"], $target_file);
+
         if(!empty($parent_id)){
             if(!empty($cat)){
-            $query = "UPDATE pages SET title = '$title', parent_id=$parent_id, draft=$draft, content='$content', section=$cat WHERE idPage=$page_id";
+            $query = "UPDATE pages SET title = '$title', parent_id=$parent_id, draft=$draft, content='$content', section=$cat, media='$photo' WHERE idPage=$page_id";
             $query_run = mysqli_query($connection, $query);
-            //var_dump($query_run); exit();
+            
             if($query_run){
                 $_SESSION["success"]="page modifié successivement";
                 $_SESSION["success-code"]="success";
                 header("location: pages.php");
             }
         }else{
-            $query = "UPDATE pages SET title = '$title', parent_id=$parent_id, draft=$draft, content='$content' WHERE idPage=$page_id";
+            $query = "UPDATE pages SET title = '$title', parent_id=$parent_id, draft=$draft, content='$content', media='$photo' WHERE idPage=$page_id";
             $query_run = mysqli_query($connection, $query);
-            //var_dump($query_run); exit();
+            
             if($query_run){
                 $_SESSION["success"]="page modifié successivement";
                 $_SESSION["success-code"]="success";
@@ -33,7 +38,7 @@ if(isset($_POST["submit-page"])){
         }else{
             //parent not identified
                 if(!empty($cat)){
-                    $query = "UPDATE pages SET title = '$title', draft=$draft, content='$content', section=$cat WHERE idPage=$page_id";
+                    $query = "UPDATE pages SET title = '$title', draft=$draft, content='$content', section=$cat, media='$photo' WHERE idPage=$page_id";
                     $query_run=mysqli_query($connection, $query);
         
                     if($query_run){
@@ -42,7 +47,7 @@ if(isset($_POST["submit-page"])){
                         header("location: pages.php");
                     }
                 }else{
-                    $query = "UPDATE pages SET title = '$title', draft=$draft, content='$content' WHERE idPage=$page_id";
+                    $query = "UPDATE pages SET title = '$title', draft=$draft, content='$content', media='$photo' WHERE idPage=$page_id";
                     $query_run=mysqli_query($connection, $query);
         
                     if($query_run){
@@ -54,8 +59,6 @@ if(isset($_POST["submit-page"])){
         }
 
 
-}else{
-    echo "button not set";
 }
 
 
@@ -86,12 +89,16 @@ if(isset($_POST["deletepagebtn"]))
 
 
 
-if(isset($_POST['addbtn']))
-{
-    $title = mysqli_real_escape_string($connection, $_POST['title']);;
-    //$menu = $_POST['visible'];
-    $draft = $_POST['archive'];
-    $today_date = date('d-m-y h:i:s');
+if(isset($_POST['add-page'])){
+
+    $title =mysqli_real_escape_string($connection, $_POST['title']);
+    $cat = $_POST['id_categorie'];
+    $draft = $_POST['id_draft'];
+    $parent_id = $_POST['parent_page_id'];
+    $content = mysqli_real_escape_string($connection, $_POST['text_editor_page']);
+    $photo = time().'-'.$_FILES['page_photo']['name'];
+    $photo_path = $_FILES["page_photo"];
+    $photoTmpName =$_FILES["page_photo"]["tmp_name"];
 
 
     $query = "SELECT * FROM pages WHERE title='$title'";
@@ -104,27 +111,53 @@ if(isset($_POST['addbtn']))
     }
     else
     {
-            
-            //insert new page
-            $query = "INSERT INTO pages (title, draft, createdAt, updatedAt) VALUES ('$title',$draft, '$today_date', '$today_date')";
 
+        $target_file = "../images/".$photo;
+        move_uploaded_file($_FILES["page_photo"]["tmp_name"], $target_file);
+
+        if(!empty($parent_id)){
+            if(!empty($cat)){
+            $query = "INSERT INTO pages(title, parent_id, draft, content, section, media) values('$title', $parent_id, $draft,'$content', $cat, '$photo')";
             $query_run = mysqli_query($connection, $query);
-
-            if($query_run)
-            {
-                $_SESSION['success'] = "page ajouté successivement";
-                $_SESSION['success_code'] = "success";
-                header('Location: pages.php');
+            
+                if($query_run){
+                    $_SESSION["success"]="page ajoutée successivement";
+                    $_SESSION["success-code"]="success";
+                    header("location: pages.php");
+                }
+            }else{
+                $query = "INSERT into pages(title, parent_id, draft, content, media)  values('$title', $parent_id, $draft, '$content', '$photo')";
+                $query_run = mysqli_query($connection, $query);
+                
+                if($query_run){
+                    $_SESSION["success"]="page ajoutée successivement";
+                    $_SESSION["success-code"]="success";
+                    header("location: pages.php");
+                }
             }
-            else 
-            {
-                $_SESSION['status'] = "page n'est pas ajouté";
-                $_SESSION['status_code'] = "error";
-                header('Location: pages.php');  
-            }
-
+        }else{
+            //parent not identified
+                if(!empty($cat)){
+                    $query = "INSERT INTO pages(title, draft, content, section, media) values('$title', $draft, '$content', $cat, '$photo')";
+                    $query_run=mysqli_query($connection, $query);
+        
+                    if($query_run){
+                        $_SESSION["success"]="page ajoutée successivement";
+                        $_SESSION["success-code"]="success";
+                        header("location: pages.php");
+                    }
+                }else{
+                    $query = "INSERT INTO pages(title, draft, content, media) values('$title', $draft, '$content', '$photo')";
+                    $query_run=mysqli_query($connection, $query);
+        
+                    if($query_run){
+                        $_SESSION["success"]="page ajoutée successivement";
+                        $_SESSION["success-code"]="success";
+                        header("location: pages.php");
+                    }
+                }   
+        }
     }
-
 }
 
 ?>

@@ -23,6 +23,8 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style_admin.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
 </head>
 
 <body id="page-top">

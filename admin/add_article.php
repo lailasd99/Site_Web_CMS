@@ -1,44 +1,23 @@
 <?php
 
-include('security.php');
-
-
-if(isset($_GET['modify_article']))
-{
-    $article_id=$_GET['article_id'];
-   
-    $query = "SELECT * from articles where idArticle=$article_id";
-
-    $query_run = mysqli_query($connection, $query);
-    if($query_run)
-    {
-        $article= mysqli_fetch_row($query_run);
-    }
-}else{
-   header("location: articles.php");
-}
-
-
-include('includes/header.php');
-include('includes/navbar.php');
-include('includes/scripts.php');
+    include('security.php');
+    include('includes/header.php');
+    include('includes/navbar.php');
+    include('includes/scripts.php');
 
 ?>
 
 <div class="container">
 <div class="row">
-    <div class="col-8"><h3>Modifier l'article <?php echo $article[1]?></h3>
+    <div class="col-8"><h3>Ajouter une article</h3>
 
 <form action="article_actions.php" method="post" enctype="multipart/form-data" name="submitForm" onsubmit="return handleSubmit()">
-    <input type="text" name="title" class="form-control" value="<?php echo $article[1]?>" style="margin: 25px 0"></input>
+    <input type="text" name="title" class="form-control" value="" style="margin: 25px 0"></input>
     <textarea name="text_editor_article">
-        <?php
-            echo $article[2];
-        ?>
+       
     </textarea>
-    <input type="hidden" name="art_id" value="<?php echo $article[0];?>"></input>
     <input type="file" id="art_photo" name="art_photo" value="" style="display:none"></input>
-    <div class="col-4"><button   type="submit" name ="submit-article" class="btn btn-primary">Publier</button></div>
+    <div class="col-4"><button   type="submit" name ="add_article" class="btn btn-primary">Publier</button></div>
 </form>
 </div>
 
@@ -51,7 +30,7 @@ include('includes/scripts.php');
 <h6>Insérer une image d'article</h6>
          <div class="wrapper2">
             <div class="image2">
-               <img id ="preview" src="<?php echo '../images/'.$article[6];?>" alt="">
+               <img id ="preview" src="" alt="">
             </div>
             <div class="content2">
                <div class="icon2">
@@ -112,16 +91,10 @@ include('includes/scripts.php');
 </div>
 
 
-<!--
-<script src="ckeditor/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace("text_editor_article");
-</script>-->
-
 <script>
 function handleSubmit(e) {
    
-    document.forms.submitForm.art_photo.files = document.getElementById("default-btn").files;
+    //document.forms.submitForm.art_photo.files = document.getElementById("default-btn").files;
     document.getElementById("art_photo").files = document.getElementById("default-btn").files;
     //document.forms.submitForm.submit();
     //console.log(document.forms.submitForm.art_photo)
@@ -130,6 +103,7 @@ function handleSubmit(e) {
 }
 
 </script>
+
 <?php
 include('includes/footer.php');
 ?>
