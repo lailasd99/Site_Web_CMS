@@ -29,7 +29,7 @@
                                         <div class="w-100 last-item justify-content-between">
                                             <img src="images/'.$row[6].'" alt="" class="img-fluid float-left" style="height: 50px; object-fit: cover">
                                             <h5 class="mb-1" alt="'.$row[1].'">'.$row[8].'...</h5>
-                                            <small>07 Jan, 2016</small>
+                                            <small>'.date("m/d/Y", strtotime($row[4])).'</small>
                                         </div><hr>
                                     </a>';
                                         
@@ -41,7 +41,7 @@
 
 
                         
-                            
+                       
                             <hr class="invis1">
                             <div class="widget">
                                 <h2 class="widget-title">Suivez-nous</h2>
@@ -121,7 +121,11 @@
                                     ?>
                                     </p>
                                 </div>
+                                <div class="pp" style="margin-top: 50px">
+                                    <b>Publié le :</b><?php echo date("m/d/Y , h:i a", strtotime($row[5]))?>
+                                </div>
                             </div><!-- end content -->
+                            <hr style="margin: 50px 0">
 
                             <div class="blog-title-area">
                             
@@ -174,10 +178,10 @@
 
                                             <div class="media">
                                                 <a class="media-left" href="#">
-                                                    <img src="upload/author.jpg" alt="" class="rounded-circle">
+                                                    <img src="images/version/LETTERS/<?php echo substr($row[1], 0, 1)?>.png" alt="" class="rounded-circle">
                                                 </a>
                                                 <div class="media-body">
-                                                    <h4 class="media-heading user_name"><?php echo $row[1]?><small><?php echo $row[4]?></small></h4>
+                                                    <h4 class="media-heading user_name"><?php echo $row[1]?><small><?php echo date("m/d/Y , h:i a", strtotime($row[4]))?></small></h4>
                                                     <p><?php echo $row[3]?></p>
                                                     <!--<a href="#" class="btn btn-primary btn-sm">Repondre</a>-->
                                                 </div>

@@ -288,3 +288,7 @@
   padding: 5px; /* Some padding */
   width: 150px; /* Set a small width */
 }
+
+.rounded{
+  z-index: 9999;
+}

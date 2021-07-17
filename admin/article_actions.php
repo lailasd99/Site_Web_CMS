@@ -76,28 +76,42 @@ if(isset($_POST["submit-article"])){
     $photo = time().'-'.$_FILES['art_photo']['name'];
     $photo_path = $_FILES["art_photo"];
     $photoTmpName =$_FILES["art_photo"]["tmp_name"];
+        if(!empty($_FILES['art_photo']['name'])){
+            $query = "UPDATE articles SET title='$art_title', content='$content', media='$photo' WHERE idArticle=$art_id";
+            $query_run=mysqli_query($connection, $query);
         
-        $query = "UPDATE articles SET title='$art_title', content='$content', media='$photo' WHERE idArticle=$art_id";
-        $query_run=mysqli_query($connection, $query);
-    
-        if($query_run){
-           /* copy($fileTmpName, "C:/xampp/htdocs/RADEEMAA/images/radeema.png");*/
-           $target_file = "../images/".$photo;
-           //var_dump($photoTmpName, $target_file);exit();
-           if (move_uploaded_file($_FILES["art_photo"]["tmp_name"], $target_file)) {
-               //var_dump('success');exit();
-            echo "<center><i><h4>The file ". basename( $photo). " has been uploaded.</h4></i></center>";
-        } else {
-            echo "<center>désolé, il y avait un erreur de téléchargement de fichier.</font></center>";
-        }
-            $_SESSION["success"]="article modifiée successivement";
-            $_SESSION["success-code"]="success";
-            header("location: articles.php");
+            if($query_run){
+            /* copy($fileTmpName, "C:/xampp/htdocs/RADEEMAA/images/radeema.png");*/
+            $target_file = "../images/".$photo;
+            //var_dump($photoTmpName, $target_file);exit();
+            if (move_uploaded_file($_FILES["art_photo"]["tmp_name"], $target_file)) {
+                //var_dump('success');exit();
+                echo "<center><i><h4>The file ". basename( $photo). " has been uploaded.</h4></i></center>";
+                } else {
+                    echo "<center>désolé, il y avait un erreur de téléchargement de fichier.</font></center>";
+                }
+                $_SESSION["success"]="article modifiée successivement";
+                $_SESSION["success-code"]="success";
+                header("location: articles.php");
+            }else{
+                $_SESSION["status"]="article n'est pas modifiée";
+                $_SESSION["status-code"]="success";
+                header("location: articles.php");
+            }
         }else{
-            $_SESSION["status"]="article n'est pas modifiée";
-            $_SESSION["status-code"]="success";
-            header("location: articles.php");
-        }
+            $query = "UPDATE articles SET title='$art_title', content='$content' WHERE idArticle=$art_id";
+            $query_run=mysqli_query($connection, $query);
+
+            if($query_run){
+                $_SESSION["success"]="article modifiée successivement";
+                $_SESSION["success-code"]="success";
+                header("location: articles.php");
+            }else{
+                $_SESSION["status"]="article n'est pas modifiée";
+                $_SESSION["status-code"]="success";
+                header("location: articles.php");
+            }
+    }
 
 }
 ?>

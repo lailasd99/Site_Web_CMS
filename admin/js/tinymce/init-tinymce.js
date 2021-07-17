@@ -1,8 +1,9 @@
 tinymce.init({
     selector: "textarea",
-    plugins: "image code",
-    toolbar: "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link code image_upload | image",
-    menubar:false,
+    oninit: "setPlainText",
+    plugins: "image code textcolor table paste",
+    toolbar: "undo redo | bold italic | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link code image_upload | image | table ",
+    menubar: false,
     statusbar: false,
     content_style: ".mce-content-body {font-size:15px;font-family:Arial,sans-serif;}",
     height: 400,
@@ -24,15 +25,16 @@ tinymce.init({
                 failure('HTTP Error: ' + xhr.status);
                 return;
             }
-            console.log(xhr.responseText);
+            
             json = JSON.parse(xhr.responseText);
 
             if (!json || typeof json.file_path != 'string') {
                 failure('Invalid JSON: ' + xhr.responseText);
                 return;
             }
-
+            
             success(json.file_path);
+            
         };
 
         formData = new FormData();
@@ -40,6 +42,8 @@ tinymce.init({
 
         xhr.send(formData);
     },
+
+    
 
     /*
     setup: function(ed) {
@@ -115,3 +119,21 @@ tinymce.init({
 
 
 });
+
+function setPlainText() {
+    var ed = tinyMCE.get('elm1');
+
+    ed.pasteAsPlainText = true;  
+
+    //adding handlers crossbrowser
+    if (tinymce.isOpera || /Firefox\/2/.test(navigator.userAgent)) {
+        ed.onKeyDown.add(function (ed, e) {
+            if (((tinymce.isMac ? e.metaKey : e.ctrlKey) && e.keyCode == 86) || (e.shiftKey && e.keyCode == 45))
+                ed.pasteAsPlainText = true;
+        });
+    } else {            
+        ed.onPaste.addToTop(function (ed, e) {
+            ed.pasteAsPlainText = true;
+        });
+    }
+}

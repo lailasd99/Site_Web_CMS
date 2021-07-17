@@ -51,6 +51,9 @@ if(isset($_GET['modify_page']))
         <input type="hidden" id="id_categorie" name="id_categorie" value=""></input>
         <input type="hidden" id="id_draft" name="id_draft" value=""></input>
         <input type="file" id="page_photo" name="page_photo" value="" style="display:none"></input>
+        <input  id="pdf_table" name="pdf" value=""></input>
+        <input  id="contact_form" name="c_form" value=""></input>
+        <input  id="login_form" name="l_form" value=""></input>
         <button type="submit" name ="submit-page" class="btn btn-primary" style="margin-top: 20px">Publier</button>
       </form>
     </div>
@@ -113,8 +116,8 @@ if(isset($_GET['modify_page']))
       
           ?>
     </div>
-    <h5 align="center" style="margin-top: 50px">Choisir une catégorie</h5>
     <div class="container">
+    <h5 align="center" style="margin-top: 50px">Choisir une catégorie</h5>
       <?php 
           $query = "select * from category where idCat =".$page[9];
           $query_run = mysqli_query($connection, $query);
@@ -159,6 +162,22 @@ if(isset($_GET['modify_page']))
               <option value="<?php echo $page[5]?>" selected><?php echo $accept?></option>
               <option value="<?php echo $other_val?>"><?php echo $other?></option>
           </select>
+  </div>
+
+  <div class="container">
+    <h5 align="center" style="margin-top: 50px">Insérer des "plugins"</h5>
+    <div class="form-check form-switch">
+      <input name="pdf_table" class="form-check-input" value="oui" type="checkbox" id="flexSwitchCheckDefault" />
+      <label class="form-check-label" for="flexSwitchCheckDefault">Table de pdf téléchargeable</label>
+    </div>
+    <div class="form-check form-switch">
+      <input name="contact_form" class="form-check-input" value="oui" type="checkbox" id="flexSwitchCheckDefault"/>
+      <label class="form-check-label" for="flexSwitchCheckDefault">Formulaire de contact</label>
+    </div>
+    <div class="form-check form-switch">
+      <input name="login_form"class="form-check-input" value="oui" type="checkbox" id="flexSwitchCheckDefault" />
+      <label class="form-check-label" for="flexSwitchCheckDefault">Formulaire de d'inscription</label>
+    </div>
   </div>
 </div>
 </div>
@@ -207,11 +226,17 @@ function handleSubmit(e) {
     document.getElementById("id_categorie").value= document.getElementById("cat_id").value;
     document.getElementById("id_draft").value= document.getElementById("archive").value;
     document.getElementById("page_photo").files= document.getElementById("default-btn").files;
+
+    document.getElementById("pdf_table").value= document.getElementByName("pdf_table").value;
+    document.getElementById("contact_form").value= document.getElementByName("contact_form").value;
+    document.getElementById("login_form").value= document.getElementByName("login_form").value;
     //document.forms.submitForm.submit();
     //console.log(document.forms.submitForm.art_photo)
     console.log(document.getElementById("parent_page_id").files)
     //return false
 }
+
+//$('#flexSwitchCheckDefault').bootstrapSwitch();
 
 </script>
 

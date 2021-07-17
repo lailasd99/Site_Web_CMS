@@ -237,7 +237,7 @@
                 if($query_run){
                     while($row = mysqli_fetch_row($query_run)){
             ?>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
+                        <a class="dropdown-item d-flex align-items-center" href="edit_article.php?id=<?php echo $row[0]?>">
                             <div class="mr-3">
                                 <div class="icon-circle bg-primary">
                                     <i class="fas fa-file-alt text-white"></i>
@@ -252,7 +252,7 @@
                 }
             ?>              
            
-            <a class="dropdown-item text-center small text-gray-500" href="#">Voir tous</a>
+            <a class="dropdown-item text-center small text-gray-500" href="articles.php">Voir tous</a>
         </div>
     </li>
 
@@ -333,8 +333,22 @@
                     echo $_SESSION["user_name"];
                 ?>
             </span>
-            <img class="img-profile rounded-circle"
-                src="img/undraw_profile.svg">
+            <?php 
+            $id = $_SESSION["user_id"];
+            $query = "SELECT * from users where idUser=$id";
+            $result = mysqli_query($connection, $query);
+            if($result){
+                $row = mysqli_fetch_row($result);
+                if($row[7] == NULL){
+                    echo '<img class="img-profile rounded-circle"
+                            src="../images/version/LETTERS/'.substr($row[1], 0, 1).'.png">';
+                }else{
+                    echo '<img class="img-profile rounded-circle"
+                            src="../images/version/LETTERS/'.$row[7].'">';
+                }
+            }
+            ?>
+            
         </a>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

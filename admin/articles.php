@@ -52,7 +52,7 @@ include('includes/navbar.php');
         }
     ?>
 
-<table class="table table-hover">
+<table class="table table-hover" id="myTable">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -145,10 +145,15 @@ include('includes/footer.php');
   function submit_form(e) {
     $('#form-to-submit').submit()
   }
-/*
-  function modify_page(e) {
-    location.href = "http://localhost/RADEEMA/admin/editpage.php";
-  }
-*/
+</script>
+
+<script>
+  $(document).ready(function () {
+    $('#myTable').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+        }
+    });
+});
 </script>
 

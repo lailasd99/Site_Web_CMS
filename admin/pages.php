@@ -89,16 +89,6 @@
   </div>
 </div>
 
-<!--
-<script>
-  $(document).ready(function(){
-    $('.updatebtn').on('click', function(){
-      $('#updateuser').modal('show');
-    });
-
-  });
-</script>-->
-
 <script>
   $(document).ready(function () {
     $('#myTable').DataTable({

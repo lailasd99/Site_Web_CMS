@@ -215,6 +215,9 @@
                             <?php if($row[1] =="Espace Presse"){
                                 include("files_list.php");
                             }
+                            else if($row[1] =="Contactez-nous"){
+                                include("contact_form.php");
+                            }
                             ?>
 
                             <div class="blog-title-area">

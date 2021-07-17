@@ -14,6 +14,17 @@ if(isset($_GET['modify_article']))
     {
         $article= mysqli_fetch_row($query_run);
     }
+}else if($_GET['id']){
+   $article_id=$_GET['id'];
+   
+    $query = "SELECT * from articles where idArticle=$article_id";
+
+    $query_run = mysqli_query($connection, $query);
+    if($query_run)
+    {
+        $article= mysqli_fetch_row($query_run);
+    }
+
 }else{
    header("location: articles.php");
 }
@@ -107,8 +118,8 @@ include('includes/scripts.php');
       </script>
     
 
-</div> 
-</div>
+      </div> 
+   </div>
 </div>
 
 

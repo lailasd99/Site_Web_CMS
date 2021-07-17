@@ -23,7 +23,13 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style_admin.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css" integrity="sha512-fjy4e481VEA/OTVR4+WHMlZ4wcX/+ohNWKpVfb7q+YNnOCS++4ZDn3Vi6EaA2HJ89VXARJt7VvuAKaQ/gs1CbQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="bootstrap-switch/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+    <link href="bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet">
 
 </head>
 

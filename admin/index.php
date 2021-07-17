@@ -3,6 +3,7 @@
     include('security.php');
     include('includes/header.php');
     include('includes/navbar.php');
+    include('includes/scripts.php');
 
     //select sessions
     $query_sessions = "SELECT * FROM visitors";
@@ -111,6 +112,21 @@
                             </div>
                         </div>-->
                     </div>
+                    
+                    <div class="row">
+                        <?php
+                            $query = "SELECT * from stats order by id DESC LIMIT 6";
+                            $result = mysqli_query($connection, $query);
+                            $chart_data = "";
+                            while($row = mysqli_fetch_row($result)){
+                                $chart_data .="{ day:'".$row[3]."', session:".$row[1].", visitor:".$row[2]."}, ";
+                            }
+                            $chart_data = substr($chart_data, 0, -2);
+                        ?>
+
+                        <div id="chart">
+                        </div>
+                    </div>
 
 
                 </div>
@@ -120,7 +136,19 @@
             <!-- End of Main Content -->
 
 
+<script>
+    Morris.Line({
+        element: 'chart',
+        data: [<?php echo $chart_data; ?>],
+        xkeys: 'day',
+        ykeys: ['session', 'visitor'],
+        labels: ['sessions', 'visiteurs'],
+        hideHover: 'auto',
+    });
+
+</script>
+
+
 <?php 
-    include('includes/scripts.php');
     include('includes/footer.php');
 ?>  
