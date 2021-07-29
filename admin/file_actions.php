@@ -1,11 +1,21 @@
 <?php
 include('security.php');
-
+//var_dump($_POST);exit();
 if(isset($_POST['addbtn']))
 {
+    if($_POST['num']){
+        $num= mysqli_real_escape_string($connection, $_POST['num']);
+    }else{
+        $num="";
+    }
+    if($_POST['datecom']){
+        $datecom = $_POST['datecom'];
+    }else{
+        $datecom = "";
+    }
     $title = mysqli_real_escape_string($connection, $_POST['title']);
     $draft = $_POST['archive'];
-    $datecom = $_POST['datecom'];
+    $plugin = $_POST['plugin'];
     //$file = $_FILES['fl'];
     $fileName = $_FILES['fichier']['name'];
     //$fileTmpName = $_FILES['fl']['tmp_name'];
@@ -23,7 +33,7 @@ if(isset($_POST['addbtn']))
 
     if(in_array($fileActualExt, $allowed)){
                 if($fileError === 0){
-                        $query = "INSERT into files(link, draft, title, datecom) values('$file', $draft, '$title', '$datecom')";
+                        $query = "INSERT into files(link, draft, title, datecom, Plugin, num) values('$file', $draft, '$title', '$datecom', $plugin, '$num')";
                         $query_run=mysqli_query($connection, $query);
 
                         if($query_run){
@@ -52,21 +62,7 @@ if(isset($_POST['addbtn']))
         $_SESSION['status_code'] = "error";
         header('Location: files.php');
     }
-/*
-
-                        $fileNameNew = uniqid('',true).".".$fileActualExt;
-                        $fileDestination = "files/".$fileNameNew;
-                        move_uploaded_file($fileTmpName, $fileDestination);
-
-
-                        //insert new file
-                        $query = "INSERT INTO files (link, createdAt, draft, title) VALUES ('$fileNameNew', '$today_date', $draft, '$title')";
-
-                        $query_run = mysqli_query($connection, $query);
-*/
             
-            
-
 }
 
 
@@ -105,11 +101,20 @@ if(isset($_POST["editfile"])){
     $file_id = $_POST['file-id'];
     $title = mysqli_real_escape_string($connection, $_POST['title']);
     $draft = $_POST['archive'];
-    $datecom = $_POST['date'];
-
+    $plugin = $_POST['plugin'];
+    if($_POST['num']){
+        $num= $_POST['num'];
+    }else{
+        $num="";
+    }
+    if($_POST['datecom']){
+        $datecom = $_POST['datecom'];
+    }else{
+        $datecom = "";
+    }
 
     
-    $query = "UPDATE files SET draft=$draft, title='$title', datecom='$datecom' WHERE idFile=$file_id";
+    $query = "UPDATE files SET draft=$draft, title='$title', Plugin=$plugin, datecom='$datecom', num='$num' WHERE idFile=$file_id";
     $query_run = mysqli_query($connection, $query);
     if($query_run)
     {

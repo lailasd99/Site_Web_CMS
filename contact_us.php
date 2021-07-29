@@ -12,20 +12,47 @@
                              </div>
 
                             <div class="widget">
-                                <h2 class="widget-title">Espace client</h2>
+                                <h2 class="widget-title espace-title">Espace client</h2>
                                 <div class="blog-list-widget">
                                     <div class="list-group">
                                         <?php 
                                             include("includes/security.php");
-                                            $query = "select * from pages where section = 1";
+                                            $query = "SELECT * from category_pages where idCat = 1";
                                             $query_run = mysqli_query($connection, $query);
                                                 if($query_run){
                                                     while($row = mysqli_fetch_row($query_run)){
-                                                        echo '<a href="single-page.php?id='.$row[0].'" class="list-group-item list-group-item-action flex-column align-items-start">
-                                                        <div class="w-100 justify-content-between">';
-                                                        echo '<h5 class="mb-1">'.$row[1].'</h5>';
-                                                        echo '</div>';
-                                                        echo '</a>';
+                                                        $req = "SELECT * from pages where idPage=".$row[0];
+                                                        $run = mysqli_query($connection, $req);
+                                                        if($run){
+                                                            while($line = mysqli_fetch_row($run)){
+                                                               
+                                                                $requete = "SELECT * from pages where parent_id = ".$line[0];
+                                                                $run = mysqli_query($connection, $requete);
+                                                                if(mysqli_num_rows($run) > 0){
+                                                                    echo '<a class="list-widget collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                                                                    aria-expanded="true" aria-controls="collapsePages">
+                                                                        <div class="w-100 last-item justify-content-between">
+                                                                            <h5 class="mb-1">'.$line[1].'</h5>
+                                                                        </div><hr>
+                                                                    </a>';
+                                                                    echo '<div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                                                                        <div class="bg-white py-2 collapse-inner rounded">';
+                                                                    while($rw= mysqli_fetch_row($run)){
+                                                                        echo '<a class="collapse-item" href="single-page.php?id='.$rw[0].'&catid=1">'.$rw[1].'</a><br>';
+                                                                            
+                                                                    }
+                                                                    echo    '</div>
+                                                                            </div>';
+                                                                }
+                                                                    else{
+                                                                        echo '<a href="single-page.php?id='.$line[0].'&catid=1" class="list-widget">
+                                                                                <div class="w-100 last-item justify-content-between">
+                                                                                    <h5 class="mb-1">'.$line[1].'</h5>
+                                                                                </div><hr>
+                                                                            </a>';
+                                                                    }
+                                                            }
+                                                        }
                                                     }
                                                 }        
                                         ?>

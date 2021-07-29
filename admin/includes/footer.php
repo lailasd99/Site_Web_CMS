@@ -14,6 +14,7 @@
         
 <script src="js/tinymce/tinymce.min.js"></script>
 <script src="js/tinymce/init-tinymce.js"></script>
+<script src="js/tinymce/init-tinymce2.js"></script>
 </body>
 
 </html>

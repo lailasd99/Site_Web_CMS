@@ -31,6 +31,8 @@
     <link href="bootstrap-switch/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
     <link href="bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">

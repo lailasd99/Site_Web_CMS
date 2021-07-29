@@ -1,5 +1,21 @@
+<?php
+//phpinfo(); exit();
+$locale = "ar";
+
+    putenv("LC_ALL={$locale}");
+    setlocale(LC_ALL, $locale);
+
+    // Spécifie la localisation des tables de traduction
+    bindtextdomain("messages", "../locales");
+    bind_textdomain_codeset("messages", "UTF-8");
+
+    // Choisit le domaine
+    textdomain("messages");
+
+?>
+
 <!DOCTYPE html>
-<html lang="fr">
+<html lang=<?=$locale?>>
 
     <!-- Basic -->
     <meta charset="utf-8">
@@ -43,6 +59,9 @@
     <!-- Version Tech CSS for this template -->
     <link href="css/version/tech.css" rel="stylesheet">
 
+    <link href="jquery-flipster-master/dist/jquery.flipster.min.css" rel="stylesheet">
+
+
     
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -63,7 +82,7 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php">Accueil</a>
+                                <a class="nav-link" href="index.php"><?= _('Accueil'); ?></a>
                             </li>
                             <?php
                                 include("security.php");
@@ -87,10 +106,9 @@
                                             $row1 = mysqli_fetch_row($query_run1);
                                             $name = $row1[1];
                                         }
-                                        
-                                            $query2 = "SELECT * from pages where section=".$row[1];
-                                            $query_run2 = mysqli_query($connection, $query2);
-                                            if($query_run2){
+                                        $query2 = "SELECT * from category_pages where idCat=".$row1[0];
+                                        $query_run2 = mysqli_query($connection, $query2);
+                                        if($query_run2){
                                                 echo '<li class="nav-item dropdown">
                                                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$name.'</a>';
                                                         echo '<ul class="dropdown-menu megamenu" aria-labelledby="dropdown01">
@@ -100,7 +118,12 @@
                                                         <div class="tab">';
                                             
                                                     while($row2 = mysqli_fetch_row($query_run2)){
-                                                                echo '<a href="single-page.php?id='.$row2[0].'"><button class="tablinks">'.$row2[1].'</button></a>';
+                                                        $req = "SELECT * from pages where idPage=".$row2[0];
+                                                        $res = mysqli_query($connection, $req);
+                                                        if($res){
+                                                            $line = mysqli_fetch_row($res);
+                                                                echo '<a href="single-page.php?id='.$line[0].'&catid='.$row[1].'"><button class="tablinks">'.$line[1].'</button></a>';
+                                                        }
                                                                     
                                                     }
                                             }
@@ -144,7 +167,7 @@
 
 <script>
     var a_parent =  document.querySelectorAll(".a_parent");
-var dd_menu_a = document.querySelectorAll(".dd_menu_a");
+    var dd_menu_a = document.querySelectorAll(".dd_menu_a");
 
 a_parent.forEach(function(aitem){
 

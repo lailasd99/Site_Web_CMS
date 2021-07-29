@@ -1,6 +1,9 @@
+
 <?php
     include('includes/header.php');
     include('includes/security.php');
+
+
 
     //calcul des sessions
     $ip=$_SERVER['REMOTE_ADDR'];
@@ -154,7 +157,7 @@
             <div class="shadow-desc">
                 <div class="blog-meta">
                     <!--<span class="bg-orange"><a href="tech-category-01.html" title="">Gadgets</a></span>-->
-                    <h4><a href="single-page.php?id=<?php echo $id?>" title="">Nos Valeurs</a></h4>
+                    <h4><a href="single-page.php?id=<?php echo $id?>" title=""><?= _('Nos Valeurs'); ?></a></h4>
                     <!--<small><a href="tech-single.html" title="">03 July, 2017</a></small>
                     <small><a href="tech-author.html" title="">by Jessica</a></small>-->
                 </div>
@@ -194,7 +197,7 @@
                     <div class="form-group">
                                     
                     </div>
-                    <button type="submit" name="login_btn" class="btn btn-primary btn-user btn-block"> Connexion </button>
+                    <button type="submit" name="login_btn" class="btn btn-primary btn-user btn-block"><?= _('Connexion'); ?> </button>
                                             
                                             
                 </form>
@@ -210,8 +213,47 @@
                 <div class="row side">
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                         <div class="sidebar">
+                            <div class="widget espaces">
+                                <div class="blog-list-widget">
+                                    <div class="list-group">
+                                        <a href="espace.php?id=1" class="list-group-item list-group-item-action flex-column align-items-start espace-item">
+                                            <div class="w-100 justify-content-between">
+                                                <img src="images/version/clients.png" alt="" class="img-fluid float-left" style="width: 20px: height:auto">
+                                                <h5 class="mb-1"><?= _('Espace Clients Particuliers'); ?></h5>
+                                            </div>
+                                        </a>
+                                        <a href="espace.php?id=7" class="list-group-item list-group-item-action flex-column align-items-start espace-item">
+                                            <div class="w-100 justify-content-between">
+                                                <img src="images/version/grand-c.png" alt="" class="img-fluid float-left" style="width: 20px: height:auto">
+                                                <h5 class="mb-1"><?= _('Espace Grands Comptes') ?></h5>
+                                            </div>
+                                        </a>
+                                        <a href="espace.php?id=8" class="list-group-item list-group-item-action flex-column align-items-start espace-item">
+                                            <div class="w-100 justify-content-between">
+                                                <img src="images/version/rh.png" alt="" class="img-fluid float-left" style="width: 20px: height:auto">
+                                                <h5 class="mb-1"><?= _('Espace RH'); ?></h5>
+                                            </div>
+                                        </a>
+                                        <a href="espace.php?id=2" class="list-group-item list-group-item-action flex-column align-items-start espace-item">
+                                            <div class="w-100 justify-content-between">
+                                                <img src="images/version/fournisseurs.png" alt="" class="img-fluid float-left" style="width: 20px: height:auto">
+                                                <h5 class="mb-1"><?= _('Espace Fournisseurs'); ?></h5>
+                                            </div>
+                                        </a>
+                                        <a href="espace.php?id=9" class="list-group-item list-group-item-action flex-column align-items-start espace-item">
+                                            <div class="w-100 justify-content-between">
+                                                <img src="images/version/DD.png" alt="" class="img-fluid float-left" style="width: 20px: height:auto">
+                                                <h5 class="mb-1"><?= _('Développement Durable') ?></h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div> 
+                            </div>
+
+
+
                             <div class="widget">
-                                <h2 class="widget-title">Agenda</h2>
+                                <h2 class="widget-title espace-title"><?= _('Agenda'); ?></h2>
                                 <div class="blog-list-widget">
                                     <div class="list-group">
                                     <?php 
@@ -236,7 +278,7 @@
                             </div><!-- end widget -->
 
                             <div class="widget">
-                                <h2 class="widget-title">Avis & Alertes</h2>
+                                <h2 class="widget-title espace-title"><?= _('Avis & Alertes'); ?></h2>
                                 <div class="blog-list-widget">
                                     <div class="list-group">
                                         <?php 
@@ -261,7 +303,7 @@
                             </div><!-- end widget -->
 
                             <div class="widget">
-                                <h2 class="widget-title">Suivez-nous</h2>
+                                <h2 class="widget-title "><?= _('Suivez-nous'); ?></h2>
 
                                 <div class="row text-center">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
@@ -286,7 +328,7 @@
                     <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                         <div class="page-wrapper">
                             <div class="blog-top clearfix">
-                                <h4 class="pull-left">Actualités<a href="#"><i class="fa fa-rss"></i></a></h4>
+                                <h4 class="pull-left"><?= _('Actualités'); ?><a href="#"><i class="fa fa-rss"></i></a></h4>
                             </div><!-- end blog-top -->
 
                             <?php $query = "SELECT *, SUBSTRING(content, 1,450) AS ct FROM articles where accept=1 order by AdmittedAt limit $offset, $limit";

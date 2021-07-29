@@ -1,5 +1,6 @@
 <?php
     include("includes/header.php");
+    //include("admin/includes/scripts.php");
 ?>
 
         <section class="section single-wrapper">
@@ -16,36 +17,46 @@
                                     echo "Failed to connect to MySQL: " . $connection -> connect_error;
                                     exit();
                                     }
-
+                                    //var_dump($_GET); exit();
                                     $id=$_GET['id'];
-                                    
-                                    $req = "SELECT * from pages where idPage=$id";
-                                    $req_run = mysqli_query($connection, $req);
-                                    if($req_run){
-                                        $line = mysqli_fetch_row($req_run);
-                                        $name = $line[1];
-                                        $query = "SELECT * from category where idCat=".$line[9];
-                                        $query_run = mysqli_query($connection, $query);
-                                        if($query_run){
-                                            $row = mysqli_fetch_row($query_run);
-                                            echo '<h2 class="widget-title">'.$row[1].'</h2>';
-                                        }
-                                    }
-                                    $query2= "SELECT * from pages where section=".$line[9]." AND idPage<>$id";
-                                    $query_run2 = mysqli_query($connection, $query2);
-                                    if($query_run2){
-                                        echo "<div class='blog-list-widget'>
-                                        <div class='list-group'>";
-                                        while($row = mysqli_fetch_row($query_run2)){
-                                            echo '<a href="single-page.php?id='.$row[0].'" class="list-widget">
-                                            <div class="w-100 last-item justify-content-between">
-                                                <h5 class="mb-1">'.$row[1].'</h5>
-                                            </div><hr>
-                                        </a>';
+                                    if(!empty($_GET['catid'])){
+                                        $cat_id=$_GET['catid'];
                                         
+                                        $req = "SELECT * from pages where idPage=$id";
+                                        $req_run = mysqli_query($connection, $req);
+                                        if($req_run){
+                                            $line = mysqli_fetch_row($req_run);
+                                            $name = $line[1];
+                                            $query = "SELECT * from category where idCat=".$cat_id;
+                                            $query_run = mysqli_query($connection, $query);
+                                            if($query_run){
+                                                $row = mysqli_fetch_row($query_run);
+                                                echo '<h2 class="widget-title espace-title">'.$row[1].'</h2>';
+                                            }
                                         }
-                                        echo "</div></div>";
-                                        }
+
+                                        $query2= "SELECT * from category_pages where idCat=".$cat_id;
+                                        $query_run2 = mysqli_query($connection, $query2);
+                                        if($query_run2){
+                                            echo "<div class='blog-list-widget'>
+                                            <div class='list-group'>";
+                                            while($row = mysqli_fetch_row($query_run2)){
+                                                $requete = "SELECT * FROM pages where idPage=".$row[0];
+                                                $run_query = mysqli_query($connection, $requete);
+                                                if($run_query){
+                                                    while($l = mysqli_fetch_row($run_query)){
+                                                        echo '<a href="single-page.php?id='.$l[0].'&catid='.$cat_id.'" class="list-widget">
+                                                        <div class="w-100 last-item justify-content-between">
+                                                            <h5 class="mb-1">'.$l[1].'</h5>
+                                                        </div><hr>
+                                                        </a>';
+                                                    }
+                                                }
+                                            
+                                            }
+                                            echo "</div></div>";
+                                            }
+                                    }
                                 ?>
 
                              </div>
@@ -211,14 +222,41 @@
                                 </div>
                             </div><!-- end content -->
 
-
-                            <?php if($row[1] =="Espace Presse"){
-                                include("files_list.php");
-                            }
-                            else if($row[1] =="Contactez-nous"){
-                                include("contact_form.php");
-                            }
-                            ?>
+                            
+                                <?php 
+                                
+                                $query_plugin = "SELECT * from plugins where idPage=$id";
+                                $query_run_p = mysqli_query($connection, $query_plugin);
+                                if($query_run_p){
+                                    while($row_p = mysqli_fetch_row($query_run_p)){
+                                        if($row_p[0]== 1){
+                                            include("radeema_presse.php");
+                                        }else if($row_p[0]== 2){
+                                            include("contact_form.php");
+                                        }else if($row_p[0]== 3){
+                                            include("login_form.php");
+                                        }else if($row_p[0]== 4){
+                                            include("les_formulaires_pdf.php");
+                                        }else if($row_p[0]== 5){
+                                            include("localisation_radeema.php");
+                                        }else if($row_p[0]== 6){
+                                            include("rapports.php");
+                                        }else if($row_p[0]== 7){
+                                            include("flash_info.php");
+                                        }else if($row_p[0]== 8){
+                                            include("galery.php");
+                                        }
+                                        echo "<hr style='margin: 50px 0'>";
+                                    }
+                                }
+                                /*if($row[1] =="Espace Presse"){
+                                    include("files_list.php");
+                                }
+                                else if($row[1] =="Contactez-nous"){
+                                    include("contact_form.php");
+                                }*/
+                                ?>
+                            
 
                             <div class="blog-title-area">
                                 <div class="post-sharing" align="center">

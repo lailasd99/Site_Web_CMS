@@ -5,6 +5,7 @@
     include('includes/scripts.php');
 ?>
 
+
 <?php
         if(isset($_SESSION['success']) && $_SESSION['success']!=''){
             echo '<div class="alert alert-success" role="alert">'.$_SESSION['success'].'</div>';
@@ -12,7 +13,7 @@
         }
 
         if(isset($_SESSION['status']) && $_SESSION['status']!=''){
-            echo '<div class="alert alert-danger" role="alert">'.$_SESSION['status'].'<div>';
+            echo '<div class="alert alert-danger" role="alert">'.$_SESSION['status'].'</div>';
             unset($_SESSION['status']);
         }
     ?>
@@ -30,6 +31,11 @@
         <input type="hidden" id="id_categorie" name="id_categorie" value=""></input>
         <input type="hidden" id="id_draft" name="id_draft" value=""></input>
         <input type="file" id="page_photo" name="page_photo" value="" style="display:none"></input>
+        <input  type="hidden" id="pdf_table" name="pdf" ></input>
+        <input  type="hidden" id="contact_form" name="c_form" ></input>
+        <input  type="hidden" id="login_form" name="l_form" ></input>
+        <input  type="hidden" id="id_forms" name="forms" ></input>
+        <input  type="hidden" id="local" name="local" ></input>
         <button type="submit" name ="add-page" class="btn btn-primary" style="margin-top: 20px">Publier</button>
       </form>
     </div>
@@ -66,7 +72,7 @@
         <div class="container" style="margin-top: 50px">
         <h5 align="center">Choisir la page mère</h5>
         <select id="par_id" class="form-select form-select-sm form-control" aria-label=".form-select-sm example" style="width: 100%; margin-top: 30px">
-        <!--<option value="" selected ><?php echo $prt[1]?></option>-->
+        <option value=NULL selected >Choisir une page mère</option>
           <?php
             $query  = "select * from pages";
             $query_run = mysqli_query($connection, $query);
@@ -84,7 +90,7 @@
     </div>
     <h5 align="center" style="margin-top: 50px">Choisir une catégorie</h5>
     <div class="container">
-    <select id="cat_id" class="form-select form-select-sm form-control" aria-label=".form-select-sm example" style="width: 100%; margin-top: 30px">
+    <select id="cat_id" class="form-select form-select-sm form-control mul-select" aria-label=".form-select-sm example" style="width: 100%; margin-top: 30px" multiple="true">
        <!-- <option value="<?php echo $cat[0]?>" selected ><?php echo $cat[1]?></option>-->
         <?php
           $query  = "select * from category";
@@ -104,10 +110,35 @@
   <div class="container">
           <h5 align="center" style="margin-top: 50px">Page Archivé</h5>
           <select id="archive" class="form-control" style="width: 100%; margin-top: 30px">
-              <option value="1" selected>oui</option>
-              <option value="0">non</option>
+              <option value="1">oui</option>
+              <option value="0" selected>non</option>
           </select>
   </div>
+
+  <div class="container">
+    <h5 align="center" style="margin-top: 50px">Insérer des "plugins"</h5>
+    <div class="toggle">
+      <input id="table" name="pdf_table" value="oui" type="checkbox" />
+      <label class="form-check-label" for="">Table de PDF téléchargeable</label>
+    </div>
+    <div class="toggle">
+      <input id="contact" name="contact_form" value="oui" type="checkbox" />
+      <label class="form-check-label" for="">Formulaire de contact</label>
+    </div>
+    <div class="toggle">
+      <input id="login" name="login_form" value="oui" type="checkbox" />
+      <label class="form-check-label" for="">Formulaire d'authentification</label>
+    </div>
+      <input id="forms" name="forms" value="oui" type="checkbox"/>
+      <label class="form-check-label" for="">les formulaires</label>
+    </div>
+    <div class="toggle">
+      <input id="locali" name="locali" value="oui" type="checkbox" />
+      <label class="form-check-label" for="">localisation des agences</label>
+    </div>
+    
+  </div>
+
 </div>
 </div>
 </div>
@@ -152,9 +183,15 @@
 <script>
 function handleSubmit(e) {
     document.getElementById("parent_page_id").value= document.getElementById("par_id").value;
-    document.getElementById("id_categorie").value= document.getElementById("cat_id").value;
+    document.getElementById("id_categorie").value= $('#cat_id').val();
     document.getElementById("id_draft").value= document.getElementById("archive").value;
     document.getElementById("page_photo").files= document.getElementById("default-btn").files;
+
+    document.getElementById("pdf_table").value = document.getElementById("table").checked;
+    document.getElementById("contact_form").value = document.getElementById("contact").checked;
+    document.getElementById("login_form").value = document.getElementById("login").checked;
+    document.getElementById("id_forms").value = document.getElementById("forms").checked;
+    document.getElementById("local").value = document.getElementById("locali").checked;
     //document.forms.submitForm.submit();
     //console.log(document.forms.submitForm.art_photo)
     console.log(document.getElementById("parent_page_id").files)
@@ -163,6 +200,16 @@ function handleSubmit(e) {
 
 </script>
 
+<script>
+  $(document).ready(function(){
+    $(".mul-select").select2({
+        placeholder: "choisir une catégorie",
+        tags: true,
+        tokenSeparators: ['/', ',', ',', " "],
+        
+    })
+  })
+</script>
 
 
 <?php 

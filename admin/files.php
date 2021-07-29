@@ -27,11 +27,25 @@ include('includes/navbar.php');
                         <option value="1">oui</option>
                          <option value ="0">non</option>
                     </select>
-            </div>
+            </div>  
             <div class="form-group">
+                <label>Section</label>
+                <select name="plugin" class="form-control" onchange="show_input(this);">
+                        <option value="" selected>Choisir une section</option>
+                        <option value="1">Radeema Presse</option>
+                        <option value ="4">Les formulaires</option>
+                        <option value ="6">Rapports et Publications</option>
+                        <option value ="7">Flash info et Communiqués</option>
+                </select>
+            </div>  
+            <div class="form-group" id="formulaire" style="display: none;">
+                <label for="form">Numero de formulaire</label> 
+                <input class="form-control" type="text" id="num" name="num" />
+            </div>
+            <div class="form-group" id="datecom" style="display: none;">
                     <label>Date de Communiqué</label>
                    <input type="date" name="datecom" class="form-control">
-            </div>    
+            </div>
             <div class="form-group">
                 <input id="fichier" name="fichier" type="file">
             </div>
@@ -74,6 +88,7 @@ include('includes/navbar.php');
       <th scope="col">titre</th>
       <th scope="col">Archivé</th>
       <th scope="col">Date de communiqué</th>
+      <th scope="col">Section</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -84,6 +99,13 @@ include('includes/navbar.php');
             if(mysqli_num_rows($query_run))
             {
                 while($file= mysqli_fetch_row($query_run)){
+                  if($file[6] == 1){
+                    $nom = "Radeema Presse";
+                  }else if($file[6] == 4){
+                    $nom = "Les formulaires";
+                  }else{
+                    $nom = "-aucune section-";
+                  }
                   if($file[3]==1){
                     $draft="oui";
                   }else{
@@ -94,6 +116,9 @@ include('includes/navbar.php');
                    echo "<td>".$file[4]."</td>";
                     echo "<td>".$draft."</td>";
                     echo "<td>".$file[5]."</td>";
+                    echo "<td>".$nom."</td>";
+                    echo "<td style='display:none;'>".$file[3]."</td>";
+                    echo "<td style='display:none;'>".$file[6]."</td>";
                     echo "<td><button class='btn btn-danger delete' data-toggle='modal' data-id='". $file[0] ."' data-target='#deletefile'>supprimer</button>
                     <button class='btn btn-success update' data-toggle='modal' data-id='". $file[0] ."' data-target='#editfile'>Modifier</button></td>
                     </tr>";
@@ -156,8 +181,22 @@ include('includes/navbar.php');
                     </select>
             </div>
             <div class="form-group">
-                <label>Date de Communiqué</label>
-                <input type="date" name="date" id="date" class="form-control">
+                <label>Section</label>
+                <select id ="plg" name="plugin" class="form-control" onchange="show_input_modify(this);">
+                        <option value="1">Radeema Presse</option>
+                        <option value ="4">Les formulaires</option>
+                        <option value ="6">Rapports et Publications</option>
+                        <option value ="7">Flash info et Communiqués</option>
+                        <option value ="">-aucune section-</option>
+                </select>
+            </div> 
+            <div class="form-group" id="formulaire_2" style="display: none;">
+                <label for="form">Numero de formulaire</label> 
+                <input class="form-control" type="text" id="num" name="num" />
+            </div>
+            <div class="form-group" id="datecom_2" style="display: none;">
+                    <label>Date de Communiqué</label>
+                   <input id="date" type="date" name="datecom" class="form-control">
             </div>
         </div>
         <div class="modal-footer">
@@ -193,8 +232,9 @@ include('includes/footer.php');
     console.log(data);
 
     $('#title').val(data[0]);
-    $('#archive').val(data[1]);
+    $('#archive').val(data[4]);
     $('#date').val(data[2]);
+    $('#plg').val(data[5]);
   })
 
   function submit_form(e) {
@@ -212,5 +252,32 @@ include('includes/footer.php');
         }
     });
 });
+
+
+function show_input(that) {
+    if (that.value == "1") {
+        document.getElementById("datecom").style.display = "block";
+        document.getElementById("formulaire").style.display = "none";
+    }else if (that.value == "4") {
+      document.getElementById("datecom").style.display = "none";
+        document.getElementById("formulaire").style.display = "block";
+    } else {
+        document.getElementById("datecom").style.display = "none";
+        document.getElementById("formulaire").style.display = "none";
+    }
+}
+
+function show_input_modify(that) {
+    if (that.value == "1") {
+        document.getElementById("datecom_2").style.display = "block";
+        document.getElementById("formulaire_2").style.display = "none";
+    }else if (that.value == "4") {
+      document.getElementById("datecom_2").style.display = "none";
+        document.getElementById("formulaire_2").style.display = "block";
+    } else {
+        document.getElementById("datecom_2").style.display = "none";
+        document.getElementById("formulaire_2").style.display = "none";
+    }
+}
 </script>
 

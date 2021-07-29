@@ -113,6 +113,7 @@ include('includes/navbar.php');
                    echo "<td id='name'>".$user[1]."</td>";
                     echo "<td id='email'>".$user[2]."</td>";
                     echo "<td id='role'>".$roleuser."</td>";
+                    echo "<td style='display:none;'>".$row[1]."</td>";
                     echo "<td><button  class='btn btn-danger delete' data-toggle='modal' data-id='". $user[0] ."' data-target='#deleteuser'>supprimer</button>
                     <button class='btn btn-success update' data-toggle='modal' data-id='". $user[0] ."' data-target='#edituser'>Modifier</button></td>";
                     echo "</tr>";
@@ -174,7 +175,7 @@ include('includes/navbar.php');
             </div>
             <div class="form-group">
                 <label>Type</label>
-                <select name="role" id="id_role" class="form-control" value="">
+                <select name="rolemodif" id="id_role" class="form-control" value="">
                     <option value=1>admin général</option>
                     <option value =2>admin secondaire</option>
                     <option value =3>rédacteur</option>
@@ -215,7 +216,8 @@ include('includes/footer.php');
 
     $('#id_name').val(data[0]);
     $('#id_email').val(data[1]);
-    $('#id_role').val(data[2]);
+    $('#id_role').val(data[3]);
+
   })
 
   function submit_form(e) {

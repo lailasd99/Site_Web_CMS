@@ -38,11 +38,11 @@ include('includes/scripts.php');
 
 <div class="container">
 <div class="row">
-    <div class="col-8"><h3>Modifier l'article <?php echo $article[1]?></h3>
+    <div class="col-8"><h3>Modifier l'article "<?php echo $article[1]?>"</h3>
 
 <form action="article_actions.php" method="post" enctype="multipart/form-data" name="submitForm" onsubmit="return handleSubmit()">
     <input type="text" name="title" class="form-control" value="<?php echo $article[1]?>" style="margin: 25px 0"></input>
-    <textarea name="text_editor_article">
+    <textarea name="text_editor_page" id="text_editor_page">
         <?php
             echo $article[2];
         ?>
@@ -121,13 +121,6 @@ include('includes/scripts.php');
       </div> 
    </div>
 </div>
-
-
-<!--
-<script src="ckeditor/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace("text_editor_article");
-</script>-->
 
 <script>
 function handleSubmit(e) {

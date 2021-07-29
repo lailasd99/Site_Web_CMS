@@ -82,7 +82,7 @@ if(isset($_POST["editphoto"])){
     $page_id =$_POST['page'];
     $photo = $_POST['file-id'];
         
-        $query = "UPDATE pages SET media='' WHERE media='$photo'; UPDATE pages set media='$photo' where idPage=$apage_id";
+        $query = "UPDATE pages SET media='' WHERE media='$photo'; UPDATE pages set media='$photo' where idPage=$page_id";
         $query_run=mysqli_multi_query($connection, $query);
     
         if($query_run){
@@ -113,5 +113,53 @@ if(isset($_POST["deleteimg_page"])){
         header("location: pages_media.php");
     }
 }
+
+
+if(isset($_POST["addbtn_image"])){
+    $photo = time().'-'.$_FILES['photo']['name'];
+    $photo_path = $_FILES["photo"];
+    $photoTmpName =$_FILES["photo"]["tmp_name"];
+        
+
+        $query = "INSERT INTO galery(link) values('$photo')";
+        $query_run=mysqli_query($connection, $query);
+    
+        if($query_run){
+           $target_file = "../images/galery/".$photo;
+           if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
+                $_SESSION["success"]="image ajoutée successivement";
+                $_SESSION["success-code"]="success";
+                header("location: galery_media.php");
+        } else {
+                $_SESSION["status"]="image n'est pas ajoutée";
+                $_SESSION["status-code"]="success";
+                header("location: galery_media.php");
+        }
+        }else{
+            $_SESSION["status"]="image n'est pas ajoutée";
+            $_SESSION["status-code"]="success";
+            header("location: galery_media.php");
+        }
+}
+
+
+if(isset($_POST["deleteimg"])){
+    $media_id = $_POST['image-id'];
+
+    $query = "DELETE FROM galery where id=$media_id";
+    $query_run = mysqli_query($connection, $query);
+
+    if($query_run){
+        $_SESSION["success"]="image supprimée successivement";
+        $_SESSION["success-code"]="success";
+        header("location: galery_media.php");
+    }else{
+        $_SESSION["status"]="image n'est pas supprimée";
+        $_SESSION["status-code"]="error";
+        header("location: galery_media.php");
+    }
+}
+
+
 
 ?>

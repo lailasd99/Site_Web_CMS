@@ -29,22 +29,28 @@ include('includes/navbar.php');
   <tbody>
       <?php $query = "SELECT * FROM category";
             $query_run= mysqli_query($connection, $query);
-            $i=1;
+            $i=1; 
             if(mysqli_num_rows($query_run))
             {
                 while($cat= mysqli_fetch_row($query_run)){
-                    $query1 = "SELECT count(*) FROM pages where section=$cat[0]";
+                    $num=0;
+                    $query1 = "SELECT * FROM category_pages, pages where category_pages.idCat=$cat[0] and category_pages.idPage = Pages.idPage";
                     $query_run1= mysqli_query($connection, $query1);
                     if($query_run1){
-                        $num = mysqli_fetch_row($query_run1);
+                        while($line = mysqli_fetch_row($query_run1)){
+                          if($line[4] == NULL){
+                            $num++;
+                          }
+                        }
+                        //$num = mysqli_fetch_row($query_run1);
                     }
                    echo" <tr>";
                    echo "<th scope='row'>".$i++."</th>";
                    echo "<td>".$cat[1]."</td>";
-                   echo "<td>".$num[0]."</td>";
-                    echo "<td><form action='category_pages.php' method='get' id='form-of-buttons'>
+                   echo "<td>".$num."</td>";
+                    echo "<td><form action='category_pages.php' method='get'>
                     <input type='hidden' name='cat_id' value='".$cat[0]."'/>
-                    <button class='btn btn-success updatebtn' data-toggle='modal' name='modify_cat'>Modifier</button></form></td>";
+                    <button type='submit' class='btn btn-success updatebtn' name='modify_cat'>Modifier</button></form></td>";
                     echo "</tr>";
                     };
             }
@@ -60,15 +66,12 @@ include('includes/navbar.php');
 include('includes/scripts.php');
 include('includes/footer.php');
 ?>
-
+<!--
 <script>
- /* $('.delete').click(function(e){
-    console.log( $(this).data('id'))
-    $('#id-article').val($(this).data('id'))  
-  })*/
+
 
   function submit_form(e) {
     $('#form-to-submit').submit()
   }
 </script>
-
+-->

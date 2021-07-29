@@ -32,7 +32,7 @@ include('includes/navbar.php');
                     </div></table>
                     <div class="form-group">
                 <label>Description</label>
-                <textarea rows="6" name="desc" class="form-control" placeholder="Entrez une description"></textarea>
+                <textarea name="desc" class="mini_textarea" placeholder="Entrez une description"></textarea>
             </div>
         </div>
         <div class="modal-footer">
@@ -69,7 +69,6 @@ include('includes/navbar.php');
     <tr>
       <th scope="col">#</th>
       <th scope="col">titre</th>
-      <th scope="col" style="display:none;">Description</th>
       <th scope="col">Du</th>
       <th scope="col">à</th>
       <th scope="col">Action</th>
@@ -79,19 +78,18 @@ include('includes/navbar.php');
       <?php $query = "SELECT * FROM agenda";
             $query_run= mysqli_query($connection, $query);
             $i=1;
-            if(mysqli_num_rows($query_run))
-            {
+            if($query_run){
                 while($event= mysqli_fetch_row($query_run)){
                    echo" <tr>";
                    echo "<th scope='row'>".$i++."</th>";
                    echo "<td>".$event[1]."</td>";
-                   echo "<td style='display:none;''>".$event[2]."</td>";
                     echo "<td>".$event[3]."</td>";
                     echo "<td>".$event[4]."</td>";
+                    echo "<td style='display:none;'>".$event[2]."</td>";
                     echo "<td><button class='btn btn-danger delete' data-toggle='modal' data-id='". $event[0] ."' data-target='#deleteevent'>supprimer</button>
                     <button class='btn btn-success update' data-toggle='modal' name='modify_event' data-target='#editevent' data-id='". $event[0] ."'>Modifier</button></td>";
                     echo "</tr>";
-                    };
+                }
             }
       ?>
     
@@ -148,16 +146,16 @@ include('includes/navbar.php');
                     <tr>
                     <div class="form-group">
                     <td><label>Du  </label></td>
-                   <td><input id="date1" type="date" name="date1"></td></tr>
+                   <td><input class="form-control" id="date1" type="date" name="date1"></td></tr>
                     </div>
                     <tr>
             <div class="form-group">
                 <td><label>à  </label></Td>
-                  <td><input id="date2" type="date" name="date2"></td></tr>
+                  <td><input class="form-control" id="date2" type="date" name="date2"></td></tr>
                     </div></table>
                     <div class="form-group">
                 <label>Description</label>
-                <textarea rows="6" id="desc" name="desc" class="form-control" placeholder="Entrez une description"></textarea>
+                <textarea id="desc" name="desc" class="mini_textarea" placeholder="Entrez une description"></textarea>
             </div>
         </div>
         <div class="modal-footer">
@@ -168,16 +166,6 @@ include('includes/navbar.php');
     </div>
   </div>
 </div>
-
-
-<script>
-  $(document).ready(function(){
-    $('.updatebtn').on('click', function(){
-      $('#updateuser').modal('show');
-    });
-
-  });
-</script>
 
 
 <?php
@@ -199,12 +187,12 @@ include('includes/footer.php');
     var data=$tr.children("td").map(function(){
       return $(this).text();
     }).get();
-    console.log(data);
+    console.log(data[3]);
 
     $('#title').val(data[0]);
-    $('#date1').val(data[2]);
-    $('#date2').val(data[3]);
-    $('#desc').val(data[1]);
+    $('#date1').val(data[1]);
+    $('#date2').val(data[2]);
+    tinymce.activeEditor.setContent(data[3]);
   })
 
   function submit_form(e) {

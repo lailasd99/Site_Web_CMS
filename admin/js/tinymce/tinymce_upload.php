@@ -24,10 +24,10 @@
         
         $fileName = "../../../upload/" . $temp['name'];
         move_uploaded_file($temp['tmp_name'], $fileName);
-        
+        $file_path = substr($fileName,8);
         // Return JSON response with the uploaded file path.
         echo json_encode(array(
-            'file_path' => $fileName
+            'file_path' => 'http://localhost/radeema'.$file_path
         ));
     }
     

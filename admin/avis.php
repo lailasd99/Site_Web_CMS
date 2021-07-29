@@ -22,7 +22,7 @@ include("includes/scripts.php");
             </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea name="desc" class="tinymce"></textarea>
+                    <textarea name="desc" class="mini_textarea"></textarea>
                 </div>
         </div>
         <div class="modal-footer">
@@ -134,10 +134,8 @@ include("includes/scripts.php");
             <input id="id-of-avis" name="avis-id" type="hidden" value="">
             <div class="form-group">
                 <label>Description</label>
-                <textarea  name="desc" class="tinymce">
-                    <?php
-                        echo "";
-                    ?>
+                <textarea id="desc" name="desc" class="mini_textarea">
+                    
                 </textarea>
             </div>
         </div>
@@ -149,17 +147,6 @@ include("includes/scripts.php");
     </div>
   </div>
 </div>
-
-
-<script>
-  $(document).ready(function(){
-    $('.updatebtn').on('click', function(){
-      $('#updateuser').modal('show');
-    });
-
-  });
-</script>
-
 
 
 
@@ -180,7 +167,7 @@ include("includes/scripts.php");
     console.log(data);
 
     $('#title').val(data[0]);
-    $('#desc').val(data[1]);
+    tinymce.activeEditor.setContent(data[1]);
   })
 
   function submit_form(e) {

@@ -1,0 +1,60 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-07-27 11:41+0100\n"
+"PO-Revision-Date: 2021-07-27 11:59+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Poedit-SearchPath-0: index.php\n"
+
+#: index.php:157
+msgid "Nos Valeurs"
+msgstr "قيمنا"
+
+#: index.php:219
+msgid "Espace Clients Particuliers"
+msgstr "فضاء الزبناء الكبار و المؤسساتيين"
+
+#: index.php:225
+msgid "Espace Grands Comptes"
+msgstr "فضاء الجماعات الترابية"
+
+#: index.php:231
+msgid "Espace RH"
+msgstr "فضاء الموارد البشرية"
+
+#: index.php:237
+msgid "Espace Fournisseurs"
+msgstr "فضاء المموّنين"
+
+#: index.php:243
+msgid "Développement Durable"
+msgstr "فضاء التنمية المستدامة"
+
+#: index.php:253
+msgid "Agenda"
+msgstr "مذكرة"
+
+#: index.php:278
+msgid "Avis & Alertes"
+msgstr "إشعارات"
+
+#: index.php:303
+msgid "Suivez-nous"
+msgstr "تابعنا"
+
+#: index.php:328
+msgid "Actualités"
+msgstr "الأخبار"
+
+#: index.php:197
+msgid "Connexion"
+msgstr "دخول"

@@ -88,7 +88,8 @@
                 aria-expanded="false"><i class="fas fa-fw fa-image"></i> Media</a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink1">
                         <a class="dropdown-item" href="articles_media.php">Images des articles</a>
-                        <a class="dropdown-item" href="pages_media.php">images des pages</a>
+                        <a class="dropdown-item" href="pages_media.php">Images des pages</a>
+                        <a class="dropdown-item" href="galery_media.php">Images de Galerie</a>
                     </div>
             <!--<a class="collapse-item" href="forgot-password.html">Forgot Password</a>
             <div class="collapse-divider"></div>
@@ -106,18 +107,25 @@
         <span>Agenda</span></a>
 </li>
 
-<!-- Nav Item - Charts -->
+<!-- Nav Item - Avis & Alertes -->
 <li class="nav-item">
     <a class="nav-link" href="avis.php">
         <i class="fa fa-bell"></i>
         <span>Avis & Alertes</span></a>
 </li>
 
-<!-- Nav Item - Tables -->
+<!-- Nav Item - Menu -->
 <li class="nav-item">
     <a class="nav-link" href="menu.php">
         <i class="fas fa-fw fa-table"></i>
         <span>Menu</span></a>
+</li>
+
+<!-- Nav Item - Plugins -->
+<li class="nav-item">
+    <a class="nav-link" href="plugins.php">
+        <i class="fas fa-fw fa-link"></i>
+        <span>Plugins</span></a>
 </li>
 
 <!-- Divider -->
@@ -353,13 +361,13 @@
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="profile.php">
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                Profile
+                Profil
             </a>
             <a class="dropdown-item" href="#">
                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                Settings
+                Paramètres
             </a>
             <a class="dropdown-item" href="#">
                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>

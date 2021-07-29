@@ -2,8 +2,9 @@
 include('security.php');
 if(isset($_POST['add_article']))
 {
+    $art_content = str_replace('../upload',"http://localhost/radeema/upload", $_POST['text_editor_article']);
     $title = mysqli_real_escape_string($connection, $_POST['title']);
-    $content = mysqli_real_escape_string($connection, $_POST['text_editor_article']);
+    $content = mysqli_real_escape_string($connection, $art_content);
     $photo = time().'-'.$_FILES['art_photo']['name'];
     $photo_path = $_FILES["art_photo"];
     $photoTmpName =$_FILES["art_photo"]["tmp_name"];
@@ -70,9 +71,10 @@ if(isset($_POST["delete-article-btn"]))
 
 
 if(isset($_POST["submit-article"])){
+    $art_content = str_replace('../upload',"http://localhost/radeema/upload", $_POST['text_editor_article']);
     $art_title = mysqli_real_escape_string($connection, $_POST['title']);
     $art_id =$_POST['art_id'];
-    $content = mysqli_real_escape_string($connection, $_POST['text_editor_article']);
+    $content = mysqli_real_escape_string($connection, $art_content);
     $photo = time().'-'.$_FILES['art_photo']['name'];
     $photo_path = $_FILES["art_photo"];
     $photoTmpName =$_FILES["art_photo"]["tmp_name"];

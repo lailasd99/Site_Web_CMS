@@ -10,10 +10,34 @@
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 article-sidebar">
                         <div class="sidebar">
                         <div class="container">
-                               
+                        <h2 class="widget-title espace-title">Agenda</h2>
+                        <?php
+
+                                    include("includes/security.php");
+
+                                    // Check connection
+                                    if ($connection -> connect_errno) {
+                                    echo "Failed to connect to MySQL: " . $connection -> connect_error;
+                                    exit();
+                                    }
+                                    $query = "SELECT * from agenda";
+                                    $run_query = mysqli_query($connection, $query);
+                                    echo "<div class='blog-list-widget'>
+                                    <div class='list-group'>";
+                                    while($row = mysqli_fetch_row($run_query)){
+                                        echo '<a href="agendaPage.php?id='.$row[0].'" class="list-widget">
+                                        <div class="w-100 last-item justify-content-between">
+                                            <h5 class="mb-1">'.$row[1].'</h5>
+                                            <small>'.date("m/d/Y", strtotime($row[3])).'</small> - <small>'.date("m/d/Y", strtotime($row[4])).'</small>
+                                        </div><hr>
+                                            </a>';
+                                        
+                                    }
+                                    echo "</div></div>";
+                        ?>
 
                              </div>
-
+                            <hr class="invis" >
                             <div class="widget">
                                 <h2 class="widget-title">Suivez-nous</h2>
 
@@ -50,7 +74,7 @@
                                 <div class="blog-meta big-meta">
                                     <!--<small><a href="tech-single.html" title="">21 July, 2017</a></small>
                                     <small><a href="tech-author.html" title="">by Jessica</a></small>-->
-                                    <small><a href="#" title=""><i class="fa fa-eye"></i> 2344</a></small>
+                                    <!--<small><a href="#" title=""><i class="fa fa-eye"></i> 2344</a></small>-->
                                 </div>
 
                                

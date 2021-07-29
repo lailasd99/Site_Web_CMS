@@ -49,7 +49,7 @@
                                               </div>';
                                         }
                                     }
-                                              else if($row[2] == "categorie"){
+                                            else if($row[2] == "categorie"){
                                                 $query1 = "SELECT * from category where idCat=".$row[1];
                                                 $query_run1 = mysqli_query($connection, $query1);
                                                 if($query_run1){
@@ -57,7 +57,7 @@
                                                     $name = $row1[1];
                                                 }
                                             
-                                                    $query2 = "SELECT * from pages where section=".$row1[0];
+                                                    $query2 = "SELECT * from category_pages where idCat=".$row[1];
                                                     $query_run2 = mysqli_query($connection, $query2);
                                                     if($query_run2){
                                                         //affichage du nom de la categorie
@@ -68,17 +68,23 @@
                                                                 <ul>';
                                                                 //affichage des pages de la categories
                                                             while($row2 = mysqli_fetch_row($query_run2)){
-                                                                            echo '<li><a href="single-page.php?id='.$row2[0].'">'.$row2[1].'</a></li>';
+                                                                $req = "SELECT * from pages where idPage=".$row2[0];
+                                                                $res = mysqli_query($connection, $req);
+                                                                if($res){
+                                                                    $line = mysqli_fetch_row($res);
+                                                                    echo '<li><a href="single-page.php?id='.$line[0].'&catid='.$row[1].'">'.$line[1].'</a></li>';
+                                                                }
                                                             }
+
                                                             echo '</ul>
-                                                                    </div><!-- end link-widget -->';
-                                                                    echo '</div><!-- end widget -->
-                                                     </div><!-- end col -->';
+                                                            </div><!-- end link-widget -->';
+                                                            echo '</div><!-- end widget -->
+                                                       </div><!-- end col -->';
                                                     }
                                                     
                                                      
-                                                     }
-                                                    }
+                                            }
+                                }
                            
                             ?>
 
