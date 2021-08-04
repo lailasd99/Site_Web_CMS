@@ -70,7 +70,7 @@
                     <div class="row">
                     <div class="col-xl-12 col-md-12 mb-12">
                         <?php
-                            $query = "SELECT * from stats order by id DESC LIMIT 6";
+                            $query = "SELECT * from stats order by id DESC LIMIT 12";
                             $result = mysqli_query($connection, $query);
                             $chart_data = "";
                             while($row = mysqli_fetch_array($result)){

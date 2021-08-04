@@ -28,7 +28,7 @@
                                         echo '<a href="single-blog.php?id='.$row[0].'" class="list-widget">
                                         <div class="w-100 last-item justify-content-between">
                                             <img src="images/'.$row[6].'" alt="" class="img-fluid float-left" style="height: 50px; object-fit: cover">
-                                            <h5 class="mb-1" alt="'.$row[1].'">'.$row[8].'...</h5>
+                                            <h5 class="mb-1" alt="'.$row[1].'">'.$row[10].'...</h5>
                                             <small>'.date("m/d/Y", strtotime($row[4])).'</small>
                                         </div><hr>
                                     </a>';

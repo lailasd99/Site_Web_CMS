@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2021 at 06:35 PM
+-- Generation Time: Aug 04, 2021 at 06:25 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -95,24 +95,26 @@ CREATE TABLE `articles` (
   `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   `admittedAt` datetime NOT NULL,
   `media` varchar(100) NOT NULL,
-  `notif_active` int(11) NOT NULL DEFAULT 0
+  `notif_active` int(11) NOT NULL DEFAULT 0,
+  `title_ar` varchar(150) NOT NULL,
+  `content_ar` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `articles`
 --
 
-INSERT INTO `articles` (`idArticle`, `title`, `content`, `accept`, `createdAt`, `admittedAt`, `media`, `notif_active`) VALUES
-(9, 'Politique de sécurité de l\'information', '<p><strong>Politique Acrr&eacute;ditation ISO 27001</strong></p>\r\n<p><strong><img src=\"http://localhost/radeema/upload/article (12).jpg\" alt=\"\" width=\"100\" height=\"141\" />dfdfdfdfgrtgrgergerg<img src=\"http://localhost/radeema/upload/article (4).jpg\" alt=\"\" width=\"100\" height=\"46\" /></strong></p>', 1, '2020-07-21 13:23:28', '2020-07-21 13:23:00', '1626513538-article (2).jpg', 0),
-(10, 'Politique Tahssine', '<p>Politique Tahssine</p>', 1, '2020-07-21 13:23:56', '2020-07-21 13:23:00', '1626513638-article (12).jpg', 0),
-(11, 'Communiqué Coronavirus', '<p><strong>Coronavirus COVID-19:</strong></p>\r\n<p><strong>RADEEMA instaure des mesures pr&eacute;ventives pour assurer la continuit&eacute; des services</strong></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Marrakech, 26 Mars 2020</p>\r\n<p>&nbsp;</p>\r\n<p>Suite&nbsp;aux r&eacute;centes &eacute;volutions du Coronavirus Covid-19, et dans le cadre des mesures de pr&eacute;vention et de protection adopt&eacute;es sur le plan national dans le but de lutter contre la propagation de cette &eacute;pid&eacute;mie, la&nbsp;R&eacute;gie Autonome de Distribution d&rsquo;Eau et d&rsquo;&eacute;lectricit&eacute; de Marrakech (RADEEMA)&nbsp;a mis en place, depuis le 23 mars 2020, un dispositif visant &agrave; assurer la continuit&eacute; des services et &agrave; limiter au strict minimum les d&eacute;placements des clients &agrave; ses agences.</p>\r\n<p>&nbsp;</p>\r\n<p>Ainsi, et durant toute la p&eacute;riode de l&rsquo;&eacute;tat d&rsquo;urgence sanitaire, la RADEEMA a d&eacute;cid&eacute; de surseoir certaines activit&eacute;s &agrave; domicile notamment, le relev&eacute; d&rsquo;index des compteurs, la distribution des factures de consommation et l&rsquo;encaissement &agrave; domicile.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Cependant, elle annonce que les interventions planifi&eacute;es pour entretien des r&eacute;seaux, durant cette p&eacute;riode, seront limit&eacute;es aux travaux de maintenance absolument essentiels et urgents. Des &eacute;quipes d&rsquo;intervention permanentes veilleront &agrave; la continuit&eacute; de l&rsquo;alimentation en &eacute;lectricit&eacute; et en eau potable dans les meilleures conditions de qualit&eacute; de service.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Par ailleurs, soucieuse de la protection de ses clients et ses collaborateurs dans ces circonstances exceptionnelles actuelles, la RADEEMA adopte les mesures barri&egrave;res requises en mati&egrave;re d&rsquo;hygi&egrave;ne de s&eacute;curit&eacute; au niveau de ses agences et points d&rsquo;encaissement notamment, l&rsquo;acc&egrave;s simultan&eacute; &agrave; 5 visiteurs au maximum.</p>\r\n<p>&nbsp;</p>\r\n<p>Cependant, la R&eacute;gie renforce son dispositif &agrave; distance pour la prise en charge de toutes les demandes d&rsquo;intervention ou de r&eacute;clamations de ses clients.&nbsp;Au menu de ces solutions, disponibles 24h/24 et 7j/7&nbsp;: le Centre Relation Client au num&eacute;ro&nbsp;080 2000 123&nbsp;ou&nbsp;05 24 42 43 00,&nbsp;l&rsquo;Agence en ligne sur le Portail&nbsp;www.radeema.ma&nbsp;ainsi que l&rsquo;application&nbsp;RADEEMA&nbsp;Mobile disponible sur Android. Par ailleurs, les clients peuvent &eacute;galement utiliser le e-banking&nbsp;et&nbsp;&nbsp;m-banking&nbsp;sur les portails et les applications mobiles ou dans les&nbsp;guichets automatiques bancaires des banques partenaires.</p>\r\n<p>&nbsp;</p>\r\n<p>Toutes ces mesures repr&eacute;sentent un gage de l&rsquo;implication effective de la&nbsp;RADEEMA&nbsp;au plan d&rsquo;urgence&nbsp;de la sant&eacute; publique, tout en rassurant les citoyens de son engagement &agrave; garantir quotidiennement la continuit&eacute; des prestations, la gestion optimale des r&eacute;seaux et la qualit&eacute; des services&nbsp;rendus aux habitants de la cit&eacute; ocre.</p>', 1, '2020-05-27 13:04:00', '2020-05-27 13:04:00', '1626513652-article (13).jpg', 0),
-(13, 'Participation de la RADEEMA à la rencontre de communication.', '<p>Dans le cadre de la rencontre de communication, organis&eacute;e le 28 janvier 2020, autour du programme national d&rsquo;approvisionnement en eau potable et d&rsquo;irrigation 2020 &ndash; 2027, dont le coup d&rsquo;envoi a &eacute;t&eacute; donn&eacute; par Sa Majest&eacute; le Roi Mohammed VI, pour une enveloppe budg&eacute;taire de 115,4 milliards de DH, Le Directeur de la R&eacute;gie par Int&eacute;rim, Monsieur Salah Eddine MOUNTASSIR a pr&eacute;sent&eacute; un expos&eacute; sur &laquo;&nbsp;le traitement et la r&eacute;utilisation des eaux us&eacute;es et son r&ocirc;le dans la pr&eacute;servation des ressources en eaux &agrave; Marrakech&nbsp;&raquo;.</p>\r\n<p>Cette rencontre tenue en pr&eacute;sence des gouverneurs des provinces relevant de la r&eacute;gion, des &eacute;lus, des responsables des services ext&eacute;rieurs, des repr&eacute;sentants de la soci&eacute;t&eacute; civile ainsi que d&rsquo;autres personnalit&eacute;s, a &eacute;t&eacute; marqu&eacute;e par la pr&eacute;sentation d&rsquo;une s&eacute;rie d&rsquo;autres expos&eacute;s exhaustifs concernant, entre autres, &laquo; le d&eacute;veloppement de l&rsquo;offre hydrique &agrave; travers les barrages &raquo;, &laquo; les programmes national et r&eacute;gional sur l&rsquo;&eacute;conomie et la promotion de l&rsquo;eau dans le domaine agricole &raquo;, et &laquo; le programme d&rsquo;approvisionnement en eau potable en milieu rural &raquo;.</p>', 1, '2020-02-03 14:46:38', '2020-02-03 14:46:38', '1626513783-article (5).jpg', 0),
-(14, 'Célébration de la Journée Mondiale de la Protection des Données', '<p>Dans le cadre de la continuit&eacute; de ses actions en mati&egrave;re de communication interne et &agrave; l&rsquo;occasion de la Journ&eacute;e Mondiale de la Protection des Donn&eacute;es, la RADEEMA a organis&eacute; le 28 janvier 2020 une conf&eacute;rence en faveur de ses collaborateurs sous th&egrave;me : LA PROTECTION DES DONN&Eacute;ES &Agrave; CARACT&Egrave;RE PERSONNEL: Quels enjeux de conformit&eacute; pour la RADEEMA ?</p>\r\n<p>&nbsp;</p>\r\n<p>Avec l&rsquo;essor des nouvelles technologies, de nombreuses informations personnelles sont enregistr&eacute;es chaque jour dans des fichiers, communiqu&eacute;es &agrave; des tiers et rapproch&eacute;es avec d&rsquo;autres donn&eacute;es &agrave; des fins diverses, d&rsquo;o&ugrave; l&rsquo;importance aujourd&rsquo;hui de sensibiliser les collaborateurs sur la protection de leurs donn&eacute;es personnelles et du respect de leur vie.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Intervenants :</strong></p>\r\n<p>- Mr Zouhir ALMAI</p>\r\n<p>Cofounder &amp; IT, Security, data center expert, Ing&eacute;nieur d&rsquo;&eacute;tat, Executive MBA, certifi&eacute; CISSP | CISM | CRISC | DCIE | DCOM | DCTP | DCA | ISO 27001LA &amp; LI</p>\r\n<p>&nbsp;</p>\r\n<p>- Mr Jaouad BENABBOU</p>\r\n<p>Ing&eacute;nieur d&rsquo;&eacute;tat, PHD en s&eacute;curit&eacute; SI/SDN, certifi&eacute; CISSP | CISM | ISO 27001LA &amp; LI, RSSI de la RADEEMA.</p>', 1, '2020-02-03 14:38:46', '2020-02-03 14:38:46', '1626452943-article (6).jpg', 0),
-(15, 'RADEEMA lance la 8ème édition ', '<div>La R&eacute;gie Autonome de Distribution d\'Eau et d\'Electricit&eacute; Marrakech a lanc&eacute;, mardi 24 septembre, la distribution d&rsquo;un pack de 800 de cartables et de fournitures scolaires &agrave; l\'intention de 800 &eacute;coliers &nbsp;dans les quartiers d&eacute;favoris&eacute;s de la cit&eacute; ocre.</div>\r\n<div>&nbsp;</div>\r\n<div>Les &eacute;coles cibl&eacute;es par cette initiative sont : l&rsquo;&eacute;cole Abdel Wahed Marrakchi, l&rsquo;&eacute;cole Mohamed El Bakkal, l&rsquo;&eacute;cole Abdallah Ben Yassin, l&rsquo;&eacute;cole Al Wahda, l&rsquo;&eacute;cole Al Msalla, l&rsquo;&eacute;cole Sidi Youssef Ben Ali,&nbsp;l&rsquo;&eacute;cole&nbsp;Soukaina,&nbsp;l&rsquo;&eacute;cole Chouhadaa,&nbsp;l&rsquo;&eacute;cole Al Inbiath et l\'&eacute;cole Oumnia Bent Wahab.</div>\r\n<div>&nbsp;</div>\r\n<div>Le Directeur G&eacute;n&eacute;ral par Int&eacute;rim, Salaheddine Mountassir, a d&eacute;clar&eacute;, &agrave; travers cette huiti&egrave;me &eacute;dition Cartable pour tous, organis&eacute;e en collaboration avec la Direction Provinciale de l&rsquo;&Eacute;ducation Nationale de Marrakech, que cette initiative s&rsquo;inscrit dans l\'implication dans l\'am&eacute;lioration des conditions de scolarisation.&nbsp;</div>\r\n<div>&nbsp;</div>\r\n<div>Il a affirm&eacute; que la R&eacute;gie effectue &eacute;galement divers autres actions sociales, notamment la campagne de collecte de sang &agrave; laquelle plus de 400 agents ont particip&eacute;, contribuant ainsi &agrave; l\'enrichissement de la R&eacute;serve R&eacute;gionale de cette substance vitale.&nbsp;</div>\r\n<div>&nbsp;</div>\r\n<div>Lien : Pour visualiser les vid&eacute;os cliquez ici.</div>\r\n<div><a href=\"https://www.youtube.com/watch?v=iy-xSLxtuCE\" target=\"_blank\" rel=\"noopener\" data-saferedirecturl=\"https://www.google.com/url?q=https://www.youtube.com/watch?v%3Diy-xSLxtuCE&amp;source=gmail&amp;ust=1572090610818000&amp;usg=AFQjCNH12IG-eeOuuOX4WvU5uVa2r5OFmg\">https://www.youtube.com/watch?<wbr />v=iy-xSLxtuCE</a></div>\r\n<div><a href=\"https://www.youtube.com/watch?v=s_hScOKVMK0\" target=\"_blank\" rel=\"noopener\" data-saferedirecturl=\"https://www.google.com/url?q=https://www.youtube.com/watch?v%3Ds_hScOKVMK0&amp;source=gmail&amp;ust=1572090610818000&amp;usg=AFQjCNELjPya-iOJit4pstUXganQc6VxEQ\">https://www.youtube.com/watch?<wbr />v=s_hScOKVMK0</a></div>', 1, '2019-10-23 14:44:45', '2019-10-23 14:44:45', '1626453003-article (7).jpg', 0),
-(16, 'Journée RADEEMA pour les Donneurs de Sang»', '<div>\r\n<div><strong>Un rendez-vous annuel qui renforce les fondamentaux de l\'esprit de l\'entreprise citoyenne.</strong></div>\r\n<div>&nbsp;</div>\r\n<div>&nbsp;</div>\r\n<div>Dans le cadre de son ouverture continue sur son environnement social, et dans le cadre de son implication dans le succ&egrave;s de toutes les initiatives &agrave; caract&egrave;re humanitaire et social, la R&eacute;gie Autonome de Distribution d\'Eau et d\'Electricit&eacute; Marrakech a ouvert ses portes jeudi 19 juillet 2019 au si&egrave;ge situ&eacute; sur le boulevard Mohammed VI, organisant une journ&eacute;e de Don de Sang et contribuant ainsi largement &agrave; l\'enrichissement de la R&eacute;serve R&eacute;gionale de cette substance vitale.</div>\r\n<div>&nbsp;</div>\r\n<div>La &laquo;Journ&eacute;e des Donneurs de Sang RADEEMA&raquo; portait cette ann&eacute;e le slogan &laquo;Une goutte de votre sang peut sauver une vie&raquo; et a vu la participation de 400 cadres et agents, repr&eacute;sentant toutes les agences commerciales &agrave; Marrakech, ainsi que le corps administratif et technique, apr&egrave;s s\'&ecirc;tre lourdement et spontan&eacute;ment impliqu&eacute;s dans le succ&egrave;s de cet &eacute;v&eacute;nement important. Cette date est devenue un rendez-vous annuel, s\'ajoutant aux initiatives sociales et humanitaires similaires parrain&eacute;es par la R&eacute;gie Autonome de Distribution d\'Eau et d\'Electricit&eacute; Marrakech.</div>\r\n<div>&nbsp;</div>\r\n<div>Pour la &laquo;Journ&eacute;e des Donneurs de Sang RADEEMA&raquo;, cette ann&eacute;e, la R&eacute;gie a allou&eacute; un espace sp&eacute;cial, renforc&eacute; par les &eacute;quipements m&eacute;dicaux n&eacute;cessaires fournis par le Centre R&eacute;gional de la Transfusion Sanguine, parall&egrave;lement &agrave; la supervision effective d&rsquo;une &eacute;quipe m&eacute;dicale int&eacute;gr&eacute;e, qui a permis de cr&eacute;er un mini centre m&eacute;dical respectant les normes &eacute;tablies et permettant aux superviseurs de l\'initiative une organisation bien structur&eacute;e et r&eacute;fl&eacute;chie qui veille &agrave; ce que les donneurs arrivent pendant la journ&eacute;e sans heurts et r&eacute;guli&egrave;rement.</div>\r\n<div>&nbsp;</div>\r\n<div>Il convient de noter que les initiatives &agrave; caract&egrave;re social et humanitaire dont s&rsquo;investit la RADEEMA, s\'inscrivent dans le cadre du programme d\'entreprise citoyenne, qui comprend un ensemble d\'activit&eacute;s et d\'initiatives et de d&eacute;veloppement social.</div>\r\n</div>\r\n<div>&nbsp;</div>\r\n<div>Lien : Pour visualiser la vid&eacute;o cliquez ici.</div>\r\n<div><a href=\"https://www.youtube.com/watch?v=Gmza1Smm2i8\" target=\"_blank\" rel=\"noopener\" data-saferedirecturl=\"https://www.google.com/url?q=https://www.youtube.com/watch?v%3DGmza1Smm2i8&amp;source=gmail&amp;ust=1572003542672000&amp;usg=AFQjCNHR5gNXmxUX780574qMQXQhg-J95Q\">https://www.youtube.com/watch?<wbr />v=Gmza1Smm2i8</a></div>', 1, '2019-10-23 14:44:17', '2019-10-23 14:44:17', '1626453103-article (8).jpg', 0),
-(17, 'RADEEMA - CIMAT', '<p><strong>une nouvelle &eacute;tape dans le processus de traitement et de valorisation des boues d\'&eacute;puration de Marrakech.</strong></p>\r\n<p>&nbsp;</p>\r\n<div>A rappeler que la station de s&eacute;chage solaire des boues d\'&eacute;puration RADEEMA, mise en service en Mai 2018, constitue une pi&egrave;ce ma&icirc;tresse du processus de traitement et de valorisation adopt&eacute;s par le grand projet de traitement et de r&eacute;utilisation des eaux us&eacute;es de Marrakech, d\'ailleurs enregistr&eacute; par les Nations Unies (UNFCCC), en 2010, comme projet MDP.</div>\r\n<div>Premi&egrave;re de son genre en Afrique et la plus grande &agrave; l\'&eacute;chelle plan&eacute;taire, l\'unit&eacute; de s&eacute;chage solaire de Marrakech permet le traitement de plus de 200 tonnes par jour de boues d\'&eacute;puration, sur une superficie de 10 hectares et pour un investissement de 147 Millions de Dirhams.</div>\r\n<div>Une pur concentr&eacute; d\'innovation, cette usine, &agrave; travers ses 40 serres de 1440 m2 chacune, dont 28 serres pour le s&eacute;chage solaire munies d\'&eacute;quipements de haute pr&eacute;cision pour le retournement et l\'a&eacute;ration des boues, permet de porter &agrave; 80% la siccit&eacute; des boues extraites au lieu de 20% enregistr&eacute;e actuellement &agrave; leurs sortie de la STEP et de r&eacute;aliser une &eacute;conomie de 5 MW par jour d\'&eacute;nergie thermique.</div>', 1, '2019-10-23 14:44:17', '2019-10-23 14:44:17', '1626453045-article (9).jpg', 0),
-(18, 'RADEEMA a maintenu pour la 6ème année consécutive sa triple certification', '<p>Triple certifi&eacute;e depuis 2013 par l&rsquo;organisme de certification IMANORpour les activit&eacute;s de distribution d\'&eacute;lectricit&eacute;, d\'eau potable et la gestion d\'assainissement liquide sur l\'ensemble de ses sites, la RADEEMA s&rsquo;est investieau quotidien &agrave; mettre &agrave; l&rsquo;&eacute;preuve son SMI l&rsquo;inscrivant dans une dynamique volontariste de d&eacute;veloppement durable articul&eacute;e autour de la bonne gouvernance, la coh&eacute;sion sociale et l&rsquo;am&eacute;lioration continue des performances. Aujourd&rsquo;hui et apr&egrave;s la migration en 2017 vers les versions 2015 des normes ISO 9001 et 14001 et leur maintien en 2018,&nbsp; la RADEEMA a permis de consolider sa position comme l&rsquo;un des rares &eacute;tablissements publics marocains &agrave; avoir un Syst&egrave;me de Management Int&eacute;gr&eacute; par la Qualit&eacute;, la S&eacute;curit&eacute; et l&rsquo;Environnement r&eacute;pondant aux normes nationales et internationales les plus &eacute;labor&eacute;es.<br />A ce titre et gr&acirc;ce &agrave; ce parcours triomphant de la R&eacute;gie vers l&rsquo;excellence, la RADEEMA s&rsquo;est vue d&eacute;cern&eacute;e trois distinctions internationales successives (International QualitySummitAward) : &agrave; Gen&egrave;ve en Mars 2014, &agrave; New York Juin 2016 et Frankfort en Juin 2017.<br />Dans cette optique, et en confirmation de ses engagements, la RADEEMA continue son d&eacute;veloppement par la programmation d&rsquo;un large programme d&rsquo;investissement, touchant de mani&egrave;re proactive la protection de l&rsquo;environnement et la gestion durable des ressources hydriques. En effet, la R&eacute;gie de Marrakech, pr&eacute;curseur dans son domaine, et &agrave; l&rsquo;instar de son grand projet de traitement et de r&eacute;utilisation des eaux us&eacute;es et de son extension pr&eacute;vue pour 2019, la RADEEMA a mis en place l&rsquo;une des plus grandes usines de s&eacute;chage solaire des boues &agrave; l&rsquo;&eacute;chelle mondiale. Par ailleurs, d&rsquo;autres mutations ont concern&eacute; le renforcement des infrastructures de base et la modernisation des outils de gestion par la d&eacute;mat&eacute;rialisation des d&eacute;marches, optimisant ainsi la relation avec les clients particuliers, investisseurs et l&rsquo;ensemble des parties int&eacute;ress&eacute;es de la R&eacute;gie.<br />Finalement, ces performances et ces certifications t&eacute;moignent, non seulement de la reconnaissance des engagements de la RADEEMA dans son processus de d&eacute;veloppement durable mais constituent&eacute;galement un moteur et un gage pour l&rsquo;am&eacute;lioration et le progr&egrave;s continu des activit&eacute;s de la R&eacute;gie au service de la satisfaction et le confort du citoyen marrakechi.</p>\r\n<p><br />A propos&hellip;</p>\r\n<p>ISO 9001 : 2015&nbsp; certifiant la conformit&eacute; de la RADEEMA selon les exigences normatives relatives &agrave; un syst&egrave;me de management de la qualit&eacute;. Elle prouve l&rsquo;engagement de la R&eacute;gie &agrave; accro&icirc;tre la satisfaction de leurs clients.</p>\r\n<p>ISO 14001 : 2015&nbsp; certifiant la conformit&eacute; de la RADEEMA selon les exigences normatives relatives &agrave; un syst&egrave;me de management environnemental. Elle prouve l&rsquo;engagement de la R&eacute;gie &agrave; am&eacute;liorer sa performance environnementale.</p>\r\n<p>OHSAS 18001 : 2013&nbsp; certifiant la conformit&eacute; de la RADEEMA selon les exigences normatives relatives &agrave; un syst&egrave;me de management de la sant&eacute; et de la s&eacute;curit&eacute; au travail. Elle prouve l&rsquo;engagement de la R&eacute;gie &agrave; optimiser la gestion des risques, diminuer le nombre des accidents du travail et conformer ses pratiques &agrave; la l&eacute;gislation en cours et &agrave; ses &eacute;volutions.</p>', 1, '2018-08-07 14:11:35', '2018-08-07 14:11:35', '1626453161-article (10).jpg', 0),
-(19, 'RADEEMA maintient l’accréditation de son laboratoire d’analyse d’eau potable selon ISO/CEI 17025', '<p>Cinq ans apr&egrave;s l&rsquo;obtention de l\'accr&eacute;ditation ISO 17025:2005, par le Minist&egrave;re de l&rsquo;Industrie, du Commerce, de l&rsquo;investissement et de l&rsquo;Economie Num&eacute;rique, pour les activit&eacute;s de son laboratoire d&rsquo;analyse d&rsquo;eau potable, la RADEEMA r&eacute;affirme encore une fois son engagement en maintenant cette distinction pour un autre cycle d\'accr&eacute;ditation. &nbsp;<br />En effet, le maintien de cetteaccr&eacute;ditation, sur avis favorable de la commission d&rsquo;accr&eacute;ditation des laboratoires d&rsquo;analyse relevant du Minist&egrave;re sus cit&eacute;, constitue une &eacute;tape importante dans le processus d&rsquo;am&eacute;lioration continue de la qualit&eacute; des services rendus par la R&eacute;gie aux citoyens de la cit&eacute; ocre et confirme la comp&eacute;tence de son &eacute;quipe ainsi que la validit&eacute; deses m&eacute;thodes d&rsquo;analyses utilis&eacute;es pour statuer sur la qualit&eacute; de l\'eau distribu&eacute;e.<br />A ce titre, les prestations d&rsquo;analyses audit&eacute;es lors de la cinqui&egrave;me &eacute;valuation de surveillance d&rsquo;accr&eacute;ditation, concerne celles relevant du domaine des analyses physico-chimiques sur les eaux potables. Les r&eacute;sultats de cette &eacute;valuation confirment la pr&eacute;sence de la qualit&eacute; exig&eacute;e dans les activit&eacute;s du laboratoire ainsi que dans les proc&eacute;dures, les processus et la conformit&eacute; des r&eacute;sultats.</p>', 1, '2016-08-09 15:35:37', '2016-08-09 15:35:37', '1626452302-article (11).jpg', 0);
+INSERT INTO `articles` (`idArticle`, `title`, `content`, `accept`, `createdAt`, `admittedAt`, `media`, `notif_active`, `title_ar`, `content_ar`) VALUES
+(9, 'Politique de sécurité de l\'information', '<p>kjhkgvjbkj</p>', 1, '2020-07-21 13:23:28', '2020-07-21 13:23:00', '1626513538-article (2).jpg', 0, 'نمةمينىب منىيبنؤؤر', '<p><strong>الالالن</strong>ات</p>\r\n<p>نمتنالبي</p>\r\n<p>منتالبي.</p>\r\n<p>&nbsp;</p>'),
+(10, 'Politique Tahssine', '<p>Politique Tahssine</p>', 1, '2020-07-21 13:23:56', '2020-07-21 13:23:00', '1626513638-article (12).jpg', 0, 'jghؤؤر', '<p>نمةمينىب منىيبنؤؤرنمةمينىب منىيبنؤؤرنمةمينىب منىيبنؤؤر</p>'),
+(11, 'Communiqué Coronavirus', '<p><strong>Coronavirus COVID-19:</strong></p>\r\n<p><strong>RADEEMA instaure des mesures pr&eacute;ventives pour assurer la continuit&eacute; des services</strong></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Marrakech, 26 Mars 2020</p>\r\n<p>&nbsp;</p>\r\n<p>Suite&nbsp;aux r&eacute;centes &eacute;volutions du Coronavirus Covid-19, et dans le cadre des mesures de pr&eacute;vention et de protection adopt&eacute;es sur le plan national dans le but de lutter contre la propagation de cette &eacute;pid&eacute;mie, la&nbsp;R&eacute;gie Autonome de Distribution d&rsquo;Eau et d&rsquo;&eacute;lectricit&eacute; de Marrakech (RADEEMA)&nbsp;a mis en place, depuis le 23 mars 2020, un dispositif visant &agrave; assurer la continuit&eacute; des services et &agrave; limiter au strict minimum les d&eacute;placements des clients &agrave; ses agences.</p>\r\n<p>&nbsp;</p>\r\n<p>Ainsi, et durant toute la p&eacute;riode de l&rsquo;&eacute;tat d&rsquo;urgence sanitaire, la RADEEMA a d&eacute;cid&eacute; de surseoir certaines activit&eacute;s &agrave; domicile notamment, le relev&eacute; d&rsquo;index des compteurs, la distribution des factures de consommation et l&rsquo;encaissement &agrave; domicile.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Cependant, elle annonce que les interventions planifi&eacute;es pour entretien des r&eacute;seaux, durant cette p&eacute;riode, seront limit&eacute;es aux travaux de maintenance absolument essentiels et urgents. Des &eacute;quipes d&rsquo;intervention permanentes veilleront &agrave; la continuit&eacute; de l&rsquo;alimentation en &eacute;lectricit&eacute; et en eau potable dans les meilleures conditions de qualit&eacute; de service.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Par ailleurs, soucieuse de la protection de ses clients et ses collaborateurs dans ces circonstances exceptionnelles actuelles, la RADEEMA adopte les mesures barri&egrave;res requises en mati&egrave;re d&rsquo;hygi&egrave;ne de s&eacute;curit&eacute; au niveau de ses agences et points d&rsquo;encaissement notamment, l&rsquo;acc&egrave;s simultan&eacute; &agrave; 5 visiteurs au maximum.</p>\r\n<p>&nbsp;</p>\r\n<p>Cependant, la R&eacute;gie renforce son dispositif &agrave; distance pour la prise en charge de toutes les demandes d&rsquo;intervention ou de r&eacute;clamations de ses clients.&nbsp;Au menu de ces solutions, disponibles 24h/24 et 7j/7&nbsp;: le Centre Relation Client au num&eacute;ro&nbsp;080 2000 123&nbsp;ou&nbsp;05 24 42 43 00,&nbsp;l&rsquo;Agence en ligne sur le Portail&nbsp;www.radeema.ma&nbsp;ainsi que l&rsquo;application&nbsp;RADEEMA&nbsp;Mobile disponible sur Android. Par ailleurs, les clients peuvent &eacute;galement utiliser le e-banking&nbsp;et&nbsp;&nbsp;m-banking&nbsp;sur les portails et les applications mobiles ou dans les&nbsp;guichets automatiques bancaires des banques partenaires.</p>\r\n<p>&nbsp;</p>\r\n<p>Toutes ces mesures repr&eacute;sentent un gage de l&rsquo;implication effective de la&nbsp;RADEEMA&nbsp;au plan d&rsquo;urgence&nbsp;de la sant&eacute; publique, tout en rassurant les citoyens de son engagement &agrave; garantir quotidiennement la continuit&eacute; des prestations, la gestion optimale des r&eacute;seaux et la qualit&eacute; des services&nbsp;rendus aux habitants de la cit&eacute; ocre.</p>', 1, '2020-05-27 13:04:00', '2020-05-27 13:04:00', '1626513652-article (13).jpg', 0, '', ''),
+(13, 'Participation de la RADEEMA à la rencontre de communication.', '<p>Dans le cadre de la rencontre de communication, organis&eacute;e le 28 janvier 2020, autour du programme national d&rsquo;approvisionnement en eau potable et d&rsquo;irrigation 2020 &ndash; 2027, dont le coup d&rsquo;envoi a &eacute;t&eacute; donn&eacute; par Sa Majest&eacute; le Roi Mohammed VI, pour une enveloppe budg&eacute;taire de 115,4 milliards de DH, Le Directeur de la R&eacute;gie par Int&eacute;rim, Monsieur Salah Eddine MOUNTASSIR a pr&eacute;sent&eacute; un expos&eacute; sur &laquo;&nbsp;le traitement et la r&eacute;utilisation des eaux us&eacute;es et son r&ocirc;le dans la pr&eacute;servation des ressources en eaux &agrave; Marrakech&nbsp;&raquo;.</p>\r\n<p>Cette rencontre tenue en pr&eacute;sence des gouverneurs des provinces relevant de la r&eacute;gion, des &eacute;lus, des responsables des services ext&eacute;rieurs, des repr&eacute;sentants de la soci&eacute;t&eacute; civile ainsi que d&rsquo;autres personnalit&eacute;s, a &eacute;t&eacute; marqu&eacute;e par la pr&eacute;sentation d&rsquo;une s&eacute;rie d&rsquo;autres expos&eacute;s exhaustifs concernant, entre autres, &laquo; le d&eacute;veloppement de l&rsquo;offre hydrique &agrave; travers les barrages &raquo;, &laquo; les programmes national et r&eacute;gional sur l&rsquo;&eacute;conomie et la promotion de l&rsquo;eau dans le domaine agricole &raquo;, et &laquo; le programme d&rsquo;approvisionnement en eau potable en milieu rural &raquo;.</p>', 1, '2020-02-03 14:46:38', '2020-02-03 14:46:38', '1626513783-article (5).jpg', 0, '', ''),
+(14, 'Célébration de la Journée Mondiale de la Protection des Données', '<p>Dans le cadre de la continuit&eacute; de ses actions en mati&egrave;re de communication interne et &agrave; l&rsquo;occasion de la Journ&eacute;e Mondiale de la Protection des Donn&eacute;es, la RADEEMA a organis&eacute; le 28 janvier 2020 une conf&eacute;rence en faveur de ses collaborateurs sous th&egrave;me : LA PROTECTION DES DONN&Eacute;ES &Agrave; CARACT&Egrave;RE PERSONNEL: Quels enjeux de conformit&eacute; pour la RADEEMA ?</p>\r\n<p>&nbsp;</p>\r\n<p>Avec l&rsquo;essor des nouvelles technologies, de nombreuses informations personnelles sont enregistr&eacute;es chaque jour dans des fichiers, communiqu&eacute;es &agrave; des tiers et rapproch&eacute;es avec d&rsquo;autres donn&eacute;es &agrave; des fins diverses, d&rsquo;o&ugrave; l&rsquo;importance aujourd&rsquo;hui de sensibiliser les collaborateurs sur la protection de leurs donn&eacute;es personnelles et du respect de leur vie.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Intervenants :</strong></p>\r\n<p>- Mr Zouhir ALMAI</p>\r\n<p>Cofounder &amp; IT, Security, data center expert, Ing&eacute;nieur d&rsquo;&eacute;tat, Executive MBA, certifi&eacute; CISSP | CISM | CRISC | DCIE | DCOM | DCTP | DCA | ISO 27001LA &amp; LI</p>\r\n<p>&nbsp;</p>\r\n<p>- Mr Jaouad BENABBOU</p>\r\n<p>Ing&eacute;nieur d&rsquo;&eacute;tat, PHD en s&eacute;curit&eacute; SI/SDN, certifi&eacute; CISSP | CISM | ISO 27001LA &amp; LI, RSSI de la RADEEMA.</p>', 1, '2020-02-03 14:38:46', '2020-02-03 14:38:46', '1626452943-article (6).jpg', 0, '', ''),
+(15, 'RADEEMA lance la 8ème édition ', '<div>La R&eacute;gie Autonome de Distribution d\'Eau et d\'Electricit&eacute; Marrakech a lanc&eacute;, mardi 24 septembre, la distribution d&rsquo;un pack de 800 de cartables et de fournitures scolaires &agrave; l\'intention de 800 &eacute;coliers &nbsp;dans les quartiers d&eacute;favoris&eacute;s de la cit&eacute; ocre.</div>\r\n<div>&nbsp;</div>\r\n<div>Les &eacute;coles cibl&eacute;es par cette initiative sont : l&rsquo;&eacute;cole Abdel Wahed Marrakchi, l&rsquo;&eacute;cole Mohamed El Bakkal, l&rsquo;&eacute;cole Abdallah Ben Yassin, l&rsquo;&eacute;cole Al Wahda, l&rsquo;&eacute;cole Al Msalla, l&rsquo;&eacute;cole Sidi Youssef Ben Ali,&nbsp;l&rsquo;&eacute;cole&nbsp;Soukaina,&nbsp;l&rsquo;&eacute;cole Chouhadaa,&nbsp;l&rsquo;&eacute;cole Al Inbiath et l\'&eacute;cole Oumnia Bent Wahab.</div>\r\n<div>&nbsp;</div>\r\n<div>Le Directeur G&eacute;n&eacute;ral par Int&eacute;rim, Salaheddine Mountassir, a d&eacute;clar&eacute;, &agrave; travers cette huiti&egrave;me &eacute;dition Cartable pour tous, organis&eacute;e en collaboration avec la Direction Provinciale de l&rsquo;&Eacute;ducation Nationale de Marrakech, que cette initiative s&rsquo;inscrit dans l\'implication dans l\'am&eacute;lioration des conditions de scolarisation.&nbsp;</div>\r\n<div>&nbsp;</div>\r\n<div>Il a affirm&eacute; que la R&eacute;gie effectue &eacute;galement divers autres actions sociales, notamment la campagne de collecte de sang &agrave; laquelle plus de 400 agents ont particip&eacute;, contribuant ainsi &agrave; l\'enrichissement de la R&eacute;serve R&eacute;gionale de cette substance vitale.&nbsp;</div>\r\n<div>&nbsp;</div>\r\n<div>Lien : Pour visualiser les vid&eacute;os cliquez ici.</div>\r\n<div><a href=\"https://www.youtube.com/watch?v=iy-xSLxtuCE\" target=\"_blank\" rel=\"noopener\" data-saferedirecturl=\"https://www.google.com/url?q=https://www.youtube.com/watch?v%3Diy-xSLxtuCE&amp;source=gmail&amp;ust=1572090610818000&amp;usg=AFQjCNH12IG-eeOuuOX4WvU5uVa2r5OFmg\">https://www.youtube.com/watch?<wbr />v=iy-xSLxtuCE</a></div>\r\n<div><a href=\"https://www.youtube.com/watch?v=s_hScOKVMK0\" target=\"_blank\" rel=\"noopener\" data-saferedirecturl=\"https://www.google.com/url?q=https://www.youtube.com/watch?v%3Ds_hScOKVMK0&amp;source=gmail&amp;ust=1572090610818000&amp;usg=AFQjCNELjPya-iOJit4pstUXganQc6VxEQ\">https://www.youtube.com/watch?<wbr />v=s_hScOKVMK0</a></div>', 1, '2019-10-23 14:44:45', '2019-10-23 14:44:45', '1626453003-article (7).jpg', 0, '', ''),
+(16, 'Journée RADEEMA pour les Donneurs de Sang»', '<div>\r\n<div><strong>Un rendez-vous annuel qui renforce les fondamentaux de l\'esprit de l\'entreprise citoyenne.</strong></div>\r\n<div>&nbsp;</div>\r\n<div>&nbsp;</div>\r\n<div>Dans le cadre de son ouverture continue sur son environnement social, et dans le cadre de son implication dans le succ&egrave;s de toutes les initiatives &agrave; caract&egrave;re humanitaire et social, la R&eacute;gie Autonome de Distribution d\'Eau et d\'Electricit&eacute; Marrakech a ouvert ses portes jeudi 19 juillet 2019 au si&egrave;ge situ&eacute; sur le boulevard Mohammed VI, organisant une journ&eacute;e de Don de Sang et contribuant ainsi largement &agrave; l\'enrichissement de la R&eacute;serve R&eacute;gionale de cette substance vitale.</div>\r\n<div>&nbsp;</div>\r\n<div>La &laquo;Journ&eacute;e des Donneurs de Sang RADEEMA&raquo; portait cette ann&eacute;e le slogan &laquo;Une goutte de votre sang peut sauver une vie&raquo; et a vu la participation de 400 cadres et agents, repr&eacute;sentant toutes les agences commerciales &agrave; Marrakech, ainsi que le corps administratif et technique, apr&egrave;s s\'&ecirc;tre lourdement et spontan&eacute;ment impliqu&eacute;s dans le succ&egrave;s de cet &eacute;v&eacute;nement important. Cette date est devenue un rendez-vous annuel, s\'ajoutant aux initiatives sociales et humanitaires similaires parrain&eacute;es par la R&eacute;gie Autonome de Distribution d\'Eau et d\'Electricit&eacute; Marrakech.</div>\r\n<div>&nbsp;</div>\r\n<div>Pour la &laquo;Journ&eacute;e des Donneurs de Sang RADEEMA&raquo;, cette ann&eacute;e, la R&eacute;gie a allou&eacute; un espace sp&eacute;cial, renforc&eacute; par les &eacute;quipements m&eacute;dicaux n&eacute;cessaires fournis par le Centre R&eacute;gional de la Transfusion Sanguine, parall&egrave;lement &agrave; la supervision effective d&rsquo;une &eacute;quipe m&eacute;dicale int&eacute;gr&eacute;e, qui a permis de cr&eacute;er un mini centre m&eacute;dical respectant les normes &eacute;tablies et permettant aux superviseurs de l\'initiative une organisation bien structur&eacute;e et r&eacute;fl&eacute;chie qui veille &agrave; ce que les donneurs arrivent pendant la journ&eacute;e sans heurts et r&eacute;guli&egrave;rement.</div>\r\n<div>&nbsp;</div>\r\n<div>Il convient de noter que les initiatives &agrave; caract&egrave;re social et humanitaire dont s&rsquo;investit la RADEEMA, s\'inscrivent dans le cadre du programme d\'entreprise citoyenne, qui comprend un ensemble d\'activit&eacute;s et d\'initiatives et de d&eacute;veloppement social.</div>\r\n</div>\r\n<div>&nbsp;</div>\r\n<div>Lien : Pour visualiser la vid&eacute;o cliquez ici.</div>\r\n<div><a href=\"https://www.youtube.com/watch?v=Gmza1Smm2i8\" target=\"_blank\" rel=\"noopener\" data-saferedirecturl=\"https://www.google.com/url?q=https://www.youtube.com/watch?v%3DGmza1Smm2i8&amp;source=gmail&amp;ust=1572003542672000&amp;usg=AFQjCNHR5gNXmxUX780574qMQXQhg-J95Q\">https://www.youtube.com/watch?<wbr />v=Gmza1Smm2i8</a></div>', 1, '2019-10-23 14:44:17', '2019-10-23 14:44:17', '1626453103-article (8).jpg', 0, '', ''),
+(17, 'RADEEMA - CIMAT', '<p><strong>une nouvelle &eacute;tape dans le processus de traitement et de valorisation des boues d\'&eacute;puration de Marrakech.</strong></p>\r\n<p>&nbsp;</p>\r\n<div>A rappeler que la station de s&eacute;chage solaire des boues d\'&eacute;puration RADEEMA, mise en service en Mai 2018, constitue une pi&egrave;ce ma&icirc;tresse du processus de traitement et de valorisation adopt&eacute;s par le grand projet de traitement et de r&eacute;utilisation des eaux us&eacute;es de Marrakech, d\'ailleurs enregistr&eacute; par les Nations Unies (UNFCCC), en 2010, comme projet MDP.</div>\r\n<div>Premi&egrave;re de son genre en Afrique et la plus grande &agrave; l\'&eacute;chelle plan&eacute;taire, l\'unit&eacute; de s&eacute;chage solaire de Marrakech permet le traitement de plus de 200 tonnes par jour de boues d\'&eacute;puration, sur une superficie de 10 hectares et pour un investissement de 147 Millions de Dirhams.</div>\r\n<div>Une pur concentr&eacute; d\'innovation, cette usine, &agrave; travers ses 40 serres de 1440 m2 chacune, dont 28 serres pour le s&eacute;chage solaire munies d\'&eacute;quipements de haute pr&eacute;cision pour le retournement et l\'a&eacute;ration des boues, permet de porter &agrave; 80% la siccit&eacute; des boues extraites au lieu de 20% enregistr&eacute;e actuellement &agrave; leurs sortie de la STEP et de r&eacute;aliser une &eacute;conomie de 5 MW par jour d\'&eacute;nergie thermique.</div>', 1, '2019-10-23 14:44:17', '2019-10-23 14:44:17', '1626453045-article (9).jpg', 0, '', ''),
+(18, 'RADEEMA a maintenu pour la 6ème année consécutive sa triple certification', '<p>Triple certifi&eacute;e depuis 2013 par l&rsquo;organisme de certification IMANORpour les activit&eacute;s de distribution d\'&eacute;lectricit&eacute;, d\'eau potable et la gestion d\'assainissement liquide sur l\'ensemble de ses sites, la RADEEMA s&rsquo;est investieau quotidien &agrave; mettre &agrave; l&rsquo;&eacute;preuve son SMI l&rsquo;inscrivant dans une dynamique volontariste de d&eacute;veloppement durable articul&eacute;e autour de la bonne gouvernance, la coh&eacute;sion sociale et l&rsquo;am&eacute;lioration continue des performances. Aujourd&rsquo;hui et apr&egrave;s la migration en 2017 vers les versions 2015 des normes ISO 9001 et 14001 et leur maintien en 2018,&nbsp; la RADEEMA a permis de consolider sa position comme l&rsquo;un des rares &eacute;tablissements publics marocains &agrave; avoir un Syst&egrave;me de Management Int&eacute;gr&eacute; par la Qualit&eacute;, la S&eacute;curit&eacute; et l&rsquo;Environnement r&eacute;pondant aux normes nationales et internationales les plus &eacute;labor&eacute;es.<br />A ce titre et gr&acirc;ce &agrave; ce parcours triomphant de la R&eacute;gie vers l&rsquo;excellence, la RADEEMA s&rsquo;est vue d&eacute;cern&eacute;e trois distinctions internationales successives (International QualitySummitAward) : &agrave; Gen&egrave;ve en Mars 2014, &agrave; New York Juin 2016 et Frankfort en Juin 2017.<br />Dans cette optique, et en confirmation de ses engagements, la RADEEMA continue son d&eacute;veloppement par la programmation d&rsquo;un large programme d&rsquo;investissement, touchant de mani&egrave;re proactive la protection de l&rsquo;environnement et la gestion durable des ressources hydriques. En effet, la R&eacute;gie de Marrakech, pr&eacute;curseur dans son domaine, et &agrave; l&rsquo;instar de son grand projet de traitement et de r&eacute;utilisation des eaux us&eacute;es et de son extension pr&eacute;vue pour 2019, la RADEEMA a mis en place l&rsquo;une des plus grandes usines de s&eacute;chage solaire des boues &agrave; l&rsquo;&eacute;chelle mondiale. Par ailleurs, d&rsquo;autres mutations ont concern&eacute; le renforcement des infrastructures de base et la modernisation des outils de gestion par la d&eacute;mat&eacute;rialisation des d&eacute;marches, optimisant ainsi la relation avec les clients particuliers, investisseurs et l&rsquo;ensemble des parties int&eacute;ress&eacute;es de la R&eacute;gie.<br />Finalement, ces performances et ces certifications t&eacute;moignent, non seulement de la reconnaissance des engagements de la RADEEMA dans son processus de d&eacute;veloppement durable mais constituent&eacute;galement un moteur et un gage pour l&rsquo;am&eacute;lioration et le progr&egrave;s continu des activit&eacute;s de la R&eacute;gie au service de la satisfaction et le confort du citoyen marrakechi.</p>\r\n<p><br />A propos&hellip;</p>\r\n<p>ISO 9001 : 2015&nbsp; certifiant la conformit&eacute; de la RADEEMA selon les exigences normatives relatives &agrave; un syst&egrave;me de management de la qualit&eacute;. Elle prouve l&rsquo;engagement de la R&eacute;gie &agrave; accro&icirc;tre la satisfaction de leurs clients.</p>\r\n<p>ISO 14001 : 2015&nbsp; certifiant la conformit&eacute; de la RADEEMA selon les exigences normatives relatives &agrave; un syst&egrave;me de management environnemental. Elle prouve l&rsquo;engagement de la R&eacute;gie &agrave; am&eacute;liorer sa performance environnementale.</p>\r\n<p>OHSAS 18001 : 2013&nbsp; certifiant la conformit&eacute; de la RADEEMA selon les exigences normatives relatives &agrave; un syst&egrave;me de management de la sant&eacute; et de la s&eacute;curit&eacute; au travail. Elle prouve l&rsquo;engagement de la R&eacute;gie &agrave; optimiser la gestion des risques, diminuer le nombre des accidents du travail et conformer ses pratiques &agrave; la l&eacute;gislation en cours et &agrave; ses &eacute;volutions.</p>', 1, '2018-08-07 14:11:35', '2018-08-07 14:11:35', '1626453161-article (10).jpg', 0, '', ''),
+(19, 'RADEEMA maintient l’accréditation de son laboratoire d’analyse d’eau potable selon ISO/CEI 17025', '<p>Cinq ans apr&egrave;s l&rsquo;obtention de l\'accr&eacute;ditation ISO 17025:2005, par le Minist&egrave;re de l&rsquo;Industrie, du Commerce, de l&rsquo;investissement et de l&rsquo;Economie Num&eacute;rique, pour les activit&eacute;s de son laboratoire d&rsquo;analyse d&rsquo;eau potable, la RADEEMA r&eacute;affirme encore une fois son engagement en maintenant cette distinction pour un autre cycle d\'accr&eacute;ditation. &nbsp;<br />En effet, le maintien de cetteaccr&eacute;ditation, sur avis favorable de la commission d&rsquo;accr&eacute;ditation des laboratoires d&rsquo;analyse relevant du Minist&egrave;re sus cit&eacute;, constitue une &eacute;tape importante dans le processus d&rsquo;am&eacute;lioration continue de la qualit&eacute; des services rendus par la R&eacute;gie aux citoyens de la cit&eacute; ocre et confirme la comp&eacute;tence de son &eacute;quipe ainsi que la validit&eacute; deses m&eacute;thodes d&rsquo;analyses utilis&eacute;es pour statuer sur la qualit&eacute; de l\'eau distribu&eacute;e.<br />A ce titre, les prestations d&rsquo;analyses audit&eacute;es lors de la cinqui&egrave;me &eacute;valuation de surveillance d&rsquo;accr&eacute;ditation, concerne celles relevant du domaine des analyses physico-chimiques sur les eaux potables. Les r&eacute;sultats de cette &eacute;valuation confirment la pr&eacute;sence de la qualit&eacute; exig&eacute;e dans les activit&eacute;s du laboratoire ainsi que dans les proc&eacute;dures, les processus et la conformit&eacute; des r&eacute;sultats.</p>', 1, '2016-08-09 15:35:37', '2016-08-09 15:35:37', '1626452302-article (11).jpg', 0, '', 'هنلانتتلانت');
 
 -- --------------------------------------------------------
 
@@ -294,7 +296,6 @@ INSERT INTO `files` (`idFile`, `link`, `createdAt`, `draft`, `title`, `datecom`,
 (19, '1626189321-communiqué ca Juin 2015ppt.pdf', '2021-07-13 16:15:21', 0, 'Communiqué Conseil d\'Administration Juin 2015', '2015-06-01', NULL, NULL),
 (23, '1627045058-Autorisation de prélèvement bancaire-RADEEMA.doc', '2021-07-23 13:57:38', 0, 'Autorisation de prélèvement bancaire-RADEEMA', '0000-00-00', 4, 'FO N°98-2015'),
 (24, '1627046051-Autorisation de prélèvement bancaire-RADEEMA (1).doc', '2021-07-23 14:14:11', 0, 'Autorisation d\'abonnement du propriétaire-RADEEMA', '0000-00-00', 4, 'FO N°99-2015'),
-(27, '1627388783-Rapport de gestion 2019.pdf', '2021-07-27 13:26:23', 0, 'Rapport de Gestion 2019', '0000-00-00', 6, ''),
 (28, '1627389752-Communiqué CA Décembre  2020 VF.pdf', '2021-07-27 13:42:32', 0, 'Communiqué Conseil d\'Administration Décembre 2020', '0000-00-00', 7, ''),
 (31, '1627391571-flashInfo Octobre 2020.pdf', '2021-07-27 14:12:51', 0, 'RADEEMA Flash Info Octobre 2020', NULL, 7, NULL),
 (32, '1627391614-flashInfo Certifications 2020.pdf', '2021-07-27 14:13:34', 0, 'Spécial Numéro : Certification & Accréditation 2020', NULL, 7, NULL);
@@ -546,7 +547,15 @@ INSERT INTO `stats` (`id`, `session`, `visitor`, `day`) VALUES
 (3, 41, 41, '2021-07-12'),
 (4, 75, 60, '2021-07-13'),
 (5, 78, 40, '2021-07-14'),
-(6, 100, 90, '2021-07-15');
+(6, 100, 90, '2021-07-15'),
+(7, 54, 50, '2021-07-16'),
+(8, 30, 30, '2021-07-17'),
+(9, 65, 24, '2021-07-18'),
+(10, 45, 42, '2021-07-19'),
+(11, 50, 21, '2021-07-20'),
+(12, 75, 60, '2021-07-21'),
+(13, 80, 75, '2021-07-22'),
+(14, 98, 98, '2021-07-23');
 
 -- --------------------------------------------------------
 
@@ -562,17 +571,19 @@ CREATE TABLE `users` (
   `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   `reset_pswd_token` varchar(20) DEFAULT NULL,
   `reset_token_sent_at` date DEFAULT NULL,
-  `image` varchar(150) NOT NULL
+  `image` varchar(150) NOT NULL,
+  `tel` varchar(50) DEFAULT NULL,
+  `adress` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`idUser`, `username`, `email`, `password`, `createdAt`, `reset_pswd_token`, `reset_token_sent_at`, `image`) VALUES
-(30, 'laila', 'laila.sadelbouyoud@gmail.com', '$2y$10$NHNNATr1XUfVgSYNgdp5Vu8Wglks78.FsdMcYBtTZtc', '2014-07-21 06:02:02', NULL, NULL, ''),
-(31, 'test1', 'test@gmail.com', '$2y$10$.xVYPFROhGLNC8ZXvxTmzuqLnSHUxoteht6EDlhM2Kj', '2014-07-21 06:04:44', NULL, NULL, ''),
-(33, 'laila', 'laila@gmail.com', '$2y$10$g4LdQm2h/B2sHxvFO5OEOet1iI7BrvyDzFD9lvPmF66nfvqg22nyO', '2014-07-21 06:14:07', NULL, NULL, '');
+INSERT INTO `users` (`idUser`, `username`, `email`, `password`, `createdAt`, `reset_pswd_token`, `reset_token_sent_at`, `image`, `tel`, `adress`) VALUES
+(30, 'laila', 'laila.sadelbouyoud@gmail.com', '$2y$10$NHNNATr1XUfVgSYNgdp5Vu8Wglks78.FsdMcYBtTZtc', '2014-07-21 06:02:02', NULL, NULL, '', NULL, NULL),
+(31, 'test1', 'test@gmail.com', '$2y$10$.xVYPFROhGLNC8ZXvxTmzuqLnSHUxoteht6EDlhM2Kj', '2014-07-21 06:04:44', NULL, NULL, '', NULL, NULL),
+(33, 'laila', 'laila@gmail.com', '$2y$10$hEhfHhdkJVmPvnFr4SiigOx8widFtPXjFNNY9ANiSSSSD/YR4pNGe', '2014-07-21 06:14:07', NULL, NULL, '', '0644215487', 'adresse 1 marrakech 55');
 
 -- --------------------------------------------------------
 
@@ -959,7 +970,144 @@ INSERT INTO `visitors` (`id`, `ip`, `date_entree`) VALUES
 (730, '::1', '2021-07-28'),
 (731, '::1', '2021-07-28'),
 (732, '::1', '2021-07-28'),
-(733, '::1', '2021-07-28');
+(733, '::1', '2021-07-28'),
+(734, '::1', '2021-07-29'),
+(735, '::1', '2021-07-29'),
+(736, '::1', '2021-07-29'),
+(737, '::1', '2021-07-29'),
+(738, '::1', '2021-07-29'),
+(739, '::1', '2021-07-29'),
+(740, '::1', '2021-07-29'),
+(741, '::1', '2021-07-29'),
+(742, '::1', '2021-07-29'),
+(743, '::1', '2021-07-29'),
+(744, '::1', '2021-07-29'),
+(745, '::1', '2021-07-29'),
+(746, '::1', '2021-07-29'),
+(747, '::1', '2021-07-29'),
+(748, '::1', '2021-07-29'),
+(749, '::1', '2021-07-29'),
+(750, '::1', '2021-07-29'),
+(751, '::1', '2021-07-29'),
+(752, '::1', '2021-07-29'),
+(753, '::1', '2021-07-29'),
+(754, '::1', '2021-07-29'),
+(755, '::1', '2021-07-29'),
+(756, '::1', '2021-07-29'),
+(757, '::1', '2021-07-29'),
+(758, '::1', '2021-07-29'),
+(759, '::1', '2021-07-29'),
+(760, '::1', '2021-07-29'),
+(761, '::1', '2021-07-29'),
+(762, '::1', '2021-07-29'),
+(763, '::1', '2021-07-29'),
+(764, '::1', '2021-07-29'),
+(765, '::1', '2021-07-29'),
+(766, '::1', '2021-07-29'),
+(767, '::1', '2021-07-29'),
+(768, '::1', '2021-07-29'),
+(769, '::1', '2021-07-29'),
+(770, '::1', '2021-07-29'),
+(771, '::1', '2021-07-29'),
+(772, '::1', '2021-07-29'),
+(773, '::1', '2021-07-29'),
+(774, '::1', '2021-07-29'),
+(775, '::1', '2021-07-29'),
+(776, '::1', '2021-07-29'),
+(777, '::1', '2021-07-29'),
+(778, '::1', '2021-07-29'),
+(779, '::1', '2021-07-29'),
+(780, '::1', '2021-07-29'),
+(781, '::1', '2021-07-29'),
+(782, '::1', '2021-07-29'),
+(783, '::1', '2021-07-29'),
+(784, '::1', '2021-07-29'),
+(785, '::1', '2021-07-29'),
+(786, '::1', '2021-07-29'),
+(787, '::1', '2021-07-29'),
+(788, '::1', '2021-07-29'),
+(789, '::1', '2021-07-29'),
+(790, '::1', '2021-07-29'),
+(791, '::1', '2021-07-29'),
+(792, '::1', '2021-07-29'),
+(793, '::1', '2021-07-29'),
+(794, '::1', '2021-07-29'),
+(795, '::1', '2021-07-31'),
+(796, '::1', '2021-08-02'),
+(797, '::1', '2021-08-02'),
+(798, '::1', '2021-08-02'),
+(799, '::1', '2021-08-02'),
+(800, '::1', '2021-08-02'),
+(801, '::1', '2021-08-02'),
+(802, '::1', '2021-08-02'),
+(803, '::1', '2021-08-02'),
+(804, '::1', '2021-08-02'),
+(805, '::1', '2021-08-02'),
+(806, '::1', '2021-08-02'),
+(807, '::1', '2021-08-02'),
+(808, '::1', '2021-08-02'),
+(809, '::1', '2021-08-02'),
+(810, '::1', '2021-08-02'),
+(811, '::1', '2021-08-02'),
+(812, '::1', '2021-08-02'),
+(813, '::1', '2021-08-02'),
+(814, '::1', '2021-08-02'),
+(815, '::1', '2021-08-02'),
+(816, '::1', '2021-08-02'),
+(817, '::1', '2021-08-02'),
+(818, '::1', '2021-08-02'),
+(819, '::1', '2021-08-02'),
+(820, '::1', '2021-08-02'),
+(821, '::1', '2021-08-02'),
+(822, '::1', '2021-08-02'),
+(823, '::1', '2021-08-03'),
+(824, '::1', '2021-08-03'),
+(825, '::1', '2021-08-03'),
+(826, '::1', '2021-08-03'),
+(827, '::1', '2021-08-03'),
+(828, '::1', '2021-08-03'),
+(829, '::1', '2021-08-03'),
+(830, '::1', '2021-08-03'),
+(831, '::1', '2021-08-03'),
+(832, '::1', '2021-08-03'),
+(833, '::1', '2021-08-03'),
+(834, '::1', '2021-08-03'),
+(835, '::1', '2021-08-03'),
+(836, '::1', '2021-08-03'),
+(837, '::1', '2021-08-03'),
+(838, '::1', '2021-08-03'),
+(839, '::1', '2021-08-03'),
+(840, '::1', '2021-08-03'),
+(841, '::1', '2021-08-03'),
+(842, '::1', '2021-08-03'),
+(843, '::1', '2021-08-03'),
+(844, '::1', '2021-08-03'),
+(845, '::1', '2021-08-03'),
+(846, '::1', '2021-08-03'),
+(847, '::1', '2021-08-03'),
+(848, '::1', '2021-08-03'),
+(849, '::1', '2021-08-03'),
+(850, '::1', '2021-08-03'),
+(851, '::1', '2021-08-03'),
+(852, '::1', '2021-08-03'),
+(853, '::1', '2021-08-03'),
+(854, '::1', '2021-08-03'),
+(855, '::1', '2021-08-03'),
+(856, '::1', '2021-08-03'),
+(857, '::1', '2021-08-03'),
+(858, '::1', '2021-08-03'),
+(859, '::1', '2021-08-03'),
+(860, '::1', '2021-08-03'),
+(861, '::1', '2021-08-03'),
+(862, '::1', '2021-08-03'),
+(863, '::1', '2021-08-03'),
+(864, '::1', '2021-08-03'),
+(865, '::1', '2021-08-03'),
+(866, '::1', '2021-08-03'),
+(867, '::1', '2021-08-03'),
+(868, '::1', '2021-08-03'),
+(869, '::1', '2021-08-03'),
+(870, '::1', '2021-08-03');
 
 --
 -- Indexes for dumped tables
@@ -1150,7 +1298,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `stats`
 --
 ALTER TABLE `stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -1162,7 +1310,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=734;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=871;
 
 --
 -- Constraints for dumped tables

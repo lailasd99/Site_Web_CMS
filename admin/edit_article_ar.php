@@ -1,24 +1,50 @@
 <?php
 
-    include('security.php');
-    include('includes/header.php');
-    include('includes/navbar.php');
-    include('includes/scripts.php');
+include('security.php');
+
+
+if(isset($_GET['btn-ar']))
+{
+    $article_id=$_GET['id'];
+   
+    $query = "SELECT * from articles where idArticle=$article_id";
+
+    $query_run = mysqli_query($connection, $query);
+    if($query_run)
+    {
+        $article= mysqli_fetch_row($query_run);
+    }
+}else{
+   header("location: articles.php");
+}
+
+
+
+include('includes/header.php');
+include('includes/navbar.php');
+include('includes/scripts.php');
 
 ?>
 
 <div class="container">
 <div class="row">
     <div class="col-8">
-       <h3>Ajouter une article</h3>
+    <form method="GET" action="edit_article.php">
+          <input type="hidden" value="<?=$article[0]?>" name="article_id">
+          <button class="btn btn-success" type="submit" name="modify_article">FR</button>
+       </form>
+       <h3>"<?php echo $article[1]?>" تعديل المقال</h3>
 
 <form action="article_actions.php" method="post" enctype="multipart/form-data" name="submitForm" onsubmit="return handleSubmit()">
-    <input type="text" name="title" class="form-control" value="" style="margin: 25px 0"></input>
-    <textarea name="text_editor_article" class="text_editor_page">
-       
+    <input type="text" name="title" class="form-control" value="<?php echo $article[8]?>" style="margin: 25px 0"></input>
+    <textarea name="text_editor_page" class="text_editor_ar">
+        <?php
+            echo $article[9];
+        ?>
     </textarea>
+    <input type="hidden" name="art_id" value="<?php echo $article[0];?>"></input>
     <input type="file" id="art_photo" name="art_photo" value="" style="display:none"></input>
-    <div class="col-4"><button   type="submit" name ="add_article" class="btn btn-primary">Publier</button></div>
+    <div class="col-4"><button   type="submit" name ="submit-article-ar" class="btn btn-primary">نشر</button></div>
 </form>
 </div>
 
@@ -28,27 +54,27 @@
 <!-----image upload--->
 <div class="col-4">
 <div class="container2">
-<h6>Insérer une image d'article</h6>
+<h6>اختيار صورة للمقال</h6>
          <div class="wrapper2">
             <div class="image2">
-               <img id ="preview" src="" alt="">
+               <img id ="preview" src="<?php echo '../images/'.$article[6];?>" alt="">
             </div>
             <div class="content2">
                <div class="icon2">
                   <i class="fas fa-cloud-upload-alt"></i>
                </div>
                <div class="text2">
-                  Aucun fichier n'est choisi
+               لم يتم اختيار ملف
                </div>
             </div>
             <div id="cancel-btn">
                <i class="fas fa-times"></i>
             </div>
             <div class="file-name">
-               Nom de fichier
+            اسم الملف
             </div>
          </div>
-         <button onclick="defaultBtnActive()" id="custom-btn">Choisir un fichier</button>
+         <button onclick="defaultBtnActive()" id="custom-btn">اختيار ملف</button>
          <input id="default-btn" type="file" hidden>
       </div>
       
@@ -87,15 +113,14 @@
       </script>
     
 
-</div> 
+      </div> 
+   </div>
 </div>
-</div>
-
 
 <script>
 function handleSubmit(e) {
    
-    //document.forms.submitForm.art_photo.files = document.getElementById("default-btn").files;
+    document.forms.submitForm.art_photo.files = document.getElementById("default-btn").files;
     document.getElementById("art_photo").files = document.getElementById("default-btn").files;
     //document.forms.submitForm.submit();
     //console.log(document.forms.submitForm.art_photo)
@@ -104,7 +129,6 @@ function handleSubmit(e) {
 }
 
 </script>
-
 <?php
 include('includes/footer.php');
 ?>

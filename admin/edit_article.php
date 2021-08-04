@@ -38,11 +38,16 @@ include('includes/scripts.php');
 
 <div class="container">
 <div class="row">
-    <div class="col-8"><h3>Modifier l'article "<?php echo $article[1]?>"</h3>
+    <div class="col-8">
+    <form method="GET" action="edit_article_ar.php">
+          <input type="hidden" value="<?=$article[0]?>" name="id">
+          <button class="btn btn-success" type="submit" name="btn-ar">AR</button>
+       </form>
+       <h3>Modifier l'article "<?php echo $article[1]?>"</h3>
 
 <form action="article_actions.php" method="post" enctype="multipart/form-data" name="submitForm" onsubmit="return handleSubmit()">
     <input type="text" name="title" class="form-control" value="<?php echo $article[1]?>" style="margin: 25px 0"></input>
-    <textarea name="text_editor_page" id="text_editor_page">
+    <textarea class="text_editor_page" name="text_editor_page">
         <?php
             echo $article[2];
         ?>

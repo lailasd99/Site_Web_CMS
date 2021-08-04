@@ -1,10 +1,11 @@
 tinymce.init({
-    selector: "textarea#text_editor_page",
+    selector: "textarea.text_editor_page",
     oninit: "setPlainText",
     plugins: "image code textcolor table paste link",
     toolbar: "undo redo | styleselect | fontsizeselect| bold italic | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link code image_upload | image | table | link ",
     menubar: false,
     statusbar: false,
+    language: 'fr_FR',
     fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
     content_style: ".mce-content-body {font-size:15px;font-family:Arial,sans-serif;}",
     height: 400,

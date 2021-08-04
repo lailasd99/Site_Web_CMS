@@ -63,7 +63,7 @@ include('includes/scripts.php');
     }
 
   ?>
-  <textarea class="tinymce" id="text_editor_page">
+  <textarea id="text_editor_page" class="text_editor_page">
       <?php
         echo $row[2];
       ?>

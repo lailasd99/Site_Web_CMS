@@ -207,11 +207,11 @@
 
 
 
-
+       
         <section class="section">
             <div class="container">
                 <div class="row side">
-                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 ">
                         <div class="sidebar">
                             <div class="widget espaces">
                                 <div class="blog-list-widget">
@@ -276,7 +276,8 @@
                                     </div>
                                 </div><!-- end blog-list -->
                             </div><!-- end widget -->
-
+                            
+                         <!-- <div class="sticky"> -->
                             <div class="widget">
                                 <h2 class="widget-title espace-title"><?= _('Avis & Alertes'); ?></h2>
                                 <div class="blog-list-widget">
@@ -321,6 +322,7 @@
                                     </div>
                                 </div>
                             </div><!-- end widget -->
+                            <!-- </div> end sticky -->
                         </div>
                     </div>
 
@@ -349,7 +351,7 @@
 
                                     <div class="blog-meta big-meta col-md-8">
                                         <h4 style="padding-top: 0px; margin-top: 0px"><a href="single-blog.php?id=<?php echo $row[0]?>" title="<?php $row[1]?>"><?php echo $row[1]?></a></h4>
-                                        <p><?php echo strip_tags($row[8])?>...</p>
+                                        <p><?php echo strip_tags($row[10])?>...</p>
                                         <!--<small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Gadgets</a></small>-->
                                         <small><a href="single-blog.php?id=<?php echo $row[0]?>" title=""><?php ?></a></small>
                                         <!--<small><a href="single-blog.php?id=<?php echo $row[0]?>" title="">by Matilda</a></small>
@@ -399,3 +401,38 @@
 <?php
     include('includes/footer.php');
 ?>  
+
+
+<!--
+<script>
+    $(function(){
+        if($('#sticky').length){
+            var el = $('#sticky');
+            var stickyTop = $('#sticky').offset().top;
+            var stickyHeight = $('#sticky').height();
+
+            $(window).scroll(function(){
+                var limit = $('#footer').offset().top - stickyHeight - 20;
+
+                var windowTop = $(window).scrollTop();
+
+                if(stickyTop < windowTop){
+                    el.css({
+                        position: 'fixed';
+                        top: 0;
+                    });
+                }else{
+                    el.css('position', 'static');
+                }
+                if(limit < windowTop){
+                    var diff = limit - windowTop;
+                    el.css({
+                        top: diff
+                    });
+                }
+
+            });
+        }
+    });
+</script>
+-->

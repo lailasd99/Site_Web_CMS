@@ -41,7 +41,7 @@ if(isset($_GET['modify_page']))
 
       <form action="page_actions.php" method="post" enctype="multipart/form-data" name="submitForm" onsubmit="return handleSubmit()">
         <input type="text" name="title" class="form-control" value="<?php echo $page[1]?>" style="margin: 25px 0"></input>
-        <textarea class="tinymce" name="text_editor_page" id="text_editor_page">
+        <textarea class="text_editor_page" name="text_editor_page" id="text_editor_page">
             <?php
                 echo $page[8];
             ?>

@@ -6,11 +6,11 @@ $locale = "ar";
     setlocale(LC_ALL, $locale);
 
     // Spécifie la localisation des tables de traduction
-    bindtextdomain("messages", "../locales");
-    bind_textdomain_codeset("messages", "UTF-8");
+    bindtextdomain("ar", "../locales");
+    bind_textdomain_codeset("ar", "UTF-8");
 
     // Choisit le domaine
-    textdomain("messages");
+    textdomain("ar");
 
 ?>
 
@@ -143,8 +143,10 @@ $locale = "ar";
                         <ul class="navbar-nav mr-2">
                             <li class="nav-item">
                             <div class="search-box">
-                                <button class="btn-search"><i class="fas fa-search"></i></button>
-                                <input type="text" class="input-search" placeholder="Rechercher...">
+                                <!--<form method="GET" action="search_result.php">-->
+                                    <button class="btn-search" onclick="onSearch();"><i class="fas fa-search" id="btn-search"></i></button>
+                                    <input type="text" id="keyword" class="input-search" placeholder="Rechercher...">
+                                <!--</form>-->
                             </div>
                             </li>
                         </ul>
@@ -192,3 +194,19 @@ dd_menu_a.forEach(function(dd_menu_item){
 		})
 })
 </script>
+
+
+<script>
+    function onSearch(){
+        var key = document.getElementById("keyword").value;
+        if(key != ""){
+            sessionStorage.setItem("key", key);
+            window.location.href = "search_result.php";
+        }
+    }
+</script>
+
+<?php
+
+
+?>

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-07-27 11:41+0100\n"
-"PO-Revision-Date: 2021-07-27 11:59+0100\n"
+"POT-Creation-Date: 2021-08-02 11:18+0100\n"
+"PO-Revision-Date: 2021-08-02 11:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -15,46 +15,46 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 "X-Poedit-SearchPath-0: index.php\n"
 
-#: index.php:157
+#: index.php:160
 msgid "Nos Valeurs"
 msgstr "قيمنا"
 
-#: index.php:219
+#: index.php:200
+msgid "Connexion"
+msgstr "دخول"
+
+#: index.php:222
 msgid "Espace Clients Particuliers"
 msgstr "فضاء الزبناء الكبار و المؤسساتيين"
 
-#: index.php:225
+#: index.php:228
 msgid "Espace Grands Comptes"
 msgstr "فضاء الجماعات الترابية"
 
-#: index.php:231
+#: index.php:234
 msgid "Espace RH"
 msgstr "فضاء الموارد البشرية"
 
-#: index.php:237
+#: index.php:240
 msgid "Espace Fournisseurs"
 msgstr "فضاء المموّنين"
 
-#: index.php:243
+#: index.php:246
 msgid "Développement Durable"
 msgstr "فضاء التنمية المستدامة"
 
-#: index.php:253
+#: index.php:256
 msgid "Agenda"
 msgstr "مذكرة"
 
-#: index.php:278
+#: index.php:281
 msgid "Avis & Alertes"
 msgstr "إشعارات"
 
-#: index.php:303
+#: index.php:306
 msgid "Suivez-nous"
-msgstr "تابعنا"
-
-#: index.php:328
-msgid "Actualités"
 msgstr "الأخبار"
 
-#: index.php:197
-msgid "Connexion"
-msgstr "دخول"
+#: index.php:331
+msgid "Actualités"
+msgstr "kdkjvnkj"

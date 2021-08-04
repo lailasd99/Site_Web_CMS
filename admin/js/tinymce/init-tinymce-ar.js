@@ -1,14 +1,15 @@
 tinymce.init({
-    selector: "textarea.mini_textarea",
+    selector: "textarea.text_editor_ar",
     oninit: "setPlainText",
-    plugins: "code textcolor table paste link",
-    toolbar: "undo redo | styleselect | fontsizeselect| bold italic | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link code image_upload | table | link ",
+    plugins: "image code textcolor table paste link",
+    toolbar: "undo redo | styleselect | fontsizeselect| bold italic | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link code image_upload | image | table | link ",
     menubar: false,
     statusbar: false,
+    language: 'ar',
     fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
     content_style: ".mce-content-body {font-size:15px;font-family:Arial,sans-serif;}",
-    height: 100,
-    language: 'fr_FR',
+    height: 400,
+
     images_upload_url : 'js/tinymce/tinymce_upload.php',
     automatic_uploads : false,
 
