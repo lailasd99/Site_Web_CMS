@@ -106,11 +106,11 @@
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+    <span class="sr-only"><?= gettext("précédent");?></span>
   </a>
   <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+    <span class="sr-only"><?= gettext("suivant");?></span>
   </a>
 </div>
 </div>
@@ -126,14 +126,14 @@
         }
     ?>
     <div class="masonry-box post-media">
-    <a href="single-page.php?id=<?php echo $id?>" title="">
+    <a href="single-page.php?id=<?php echo $id?>&catid=3" title="">
         <img src="upload/radeema_histoire.jpg" alt="histoire de la radeema" class="img-fluid">
     </a>
             <div class="shadoweffect">
             <div class="shadow-desc">
                 <div class="blog-meta">
                     <!--<span class="bg-orange"><a href="tech-category-01.html" title="">Gadgets</a></span>-->
-                    <h4><a href="single-page.php?id=<?php echo $id?>" title="">Notre Histoire</a></h4>
+                    <h4><a href="single-page.php?id=<?php echo $id?>&catid=3" title=""><?= _('Notre Histoire'); ?></a></h4>
                     <!--<small><a href="tech-single.html" title="">03 July, 2017</a></small>
                     <small><a href="tech-author.html" title="">by Jessica</a></small>-->
                 </div>
@@ -152,12 +152,12 @@
         }
     ?>
     <div class="masonry-box post-media">
-    <a href="single-page.php?id=<?php echo $id?>"><img src="upload/val.jpg" alt="" class="img-fluid"></a>
+    <a href="single-page.php?id=<?php echo $id?>&catid=3"><img src="upload/val.jpg" alt="" class="img-fluid"></a>
             <div class="shadoweffect">
             <div class="shadow-desc">
                 <div class="blog-meta">
                     <!--<span class="bg-orange"><a href="tech-category-01.html" title="">Gadgets</a></span>-->
-                    <h4><a href="single-page.php?id=<?php echo $id?>" title=""><?= _('Nos Valeurs'); ?></a></h4>
+                    <h4><a href="single-page.php?id=<?php echo $id?>&catid=3" title=""><?= _('Nos Valeurs'); ?></a></h4>
                     <!--<small><a href="tech-single.html" title="">03 July, 2017</a></small>
                     <small><a href="tech-author.html" title="">by Jessica</a></small>-->
                 </div>
@@ -267,11 +267,18 @@
                                         echo '<a href="agendaPage.php?id='.$row[0].'" class="list-group-item list-group-item-action flex-column align-items-start">';?>
                                             <div class="w-100 justify-content-between">
                                                 <!--<img src="upload/tech_blog_08.jpg" alt="" class="img-fluid float-left">-->
-                                                <h5 class="mb-1"><?php echo $row[1];?></h5>
+                                                <?php if($_SESSION['lang']=='Ar'){
+                                                    $name=$row[5];
+                                                }else{
+                                                    $name = $row[1];
+                                                }
+                                                ?>
+                                                <h5 class="mb-1"><?php echo $name;?></h5>
                                                 <p style="font-size: 13px"><?php echo date('d-m-Y', strtotime($row[3]))." >> ".date('d-m-Y', strtotime($row[4]));?></p>
                                             </div>
                                         </a>
-                                        <?php }} ?>
+                                        <?php }
+                                    } ?>
                 
                                     </div>
                                 </div><!-- end blog-list -->
@@ -292,8 +299,14 @@
                                         
                                             echo '<a href="avisPage.php?id='.$row[0].'" class="list-group-item list-group-item-action flex-column align-items-start">';?>
                                                 <div class="w-100 justify-content-between">
+                                                    <?php if($_SESSION['lang']=='Ar'){
+                                                        $name=$row[3];
+                                                    }else{
+                                                        $name = $row[1];
+                                                    }
+                                                    ?>
                                                     <!--<img src="upload/tech_blog_08.jpg" alt="" class="img-fluid float-left">-->
-                                                    <h5 class="mb-1"><?php echo $row[1];?></h5>
+                                                    <h5 class="mb-1"><?php echo $name;?></h5>
                                                 </div>
                                             </a>
                                             <?php }} ?>
@@ -333,34 +346,44 @@
                                 <h4 class="pull-left"><?= _('Actualités'); ?><a href="#"><i class="fa fa-rss"></i></a></h4>
                             </div><!-- end blog-top -->
 
-                            <?php $query = "SELECT *, SUBSTRING(content, 1,450) AS ct FROM articles where accept=1 order by AdmittedAt limit $offset, $limit";
+                            <?php $query = "SELECT *, SUBSTRING(content, 1,450), SUBSTRING(content_ar,1, 450) FROM articles where accept=1 order by AdmittedAt limit $offset, $limit";
                             $run =mysqli_query($connection, $query);
                             if($run){
                                 while($row = mysqli_fetch_row($run)){
+                                    if($_SESSION['lang']=="Ar"){
+                                        $title = $row[8];
+                                        $content = $row[11];
+                                    }else{
+                                        $title = $row[1];
+                                        $content = $row[10];
+                                    }
+                                    if($title<>NULL){
                                     ?>
+                                    
                                     <div class="blog-list clearfix">
-                                <div class="blog-box row">
-                                    <div class="col-md-4">
-                                        <div class="post-media" style="height: 200px">
-                                            <a href="single-blog.php?id=<?php echo $row[0]?>" title="<?php $row[1]?>">
-                                                <img src="<?php echo 'images/'.$row[6];?>" alt="" class="img-fluid" style="object-fit: cover; height: 100%">
-                                                <div class="hovereffect"></div>
-                                            </a>
-                                        </div><!-- end media -->
-                                    </div><!-- end col -->
+                                        <div class="blog-box row">
+                                            <div class="col-md-4">
+                                                <div class="post-media" style="height: 200px">
+                                                    <a href="single-blog.php?id=<?php echo $row[0]?>" title="<?php $title?>">
+                                                        <img src="<?php echo 'images/'.$row[6];?>" alt="" class="img-fluid" style="object-fit: cover; height: 100%">
+                                                        <div class="hovereffect"></div>
+                                                    </a>
+                                                </div><!-- end media -->
+                                            </div><!-- end col -->
 
-                                    <div class="blog-meta big-meta col-md-8">
-                                        <h4 style="padding-top: 0px; margin-top: 0px"><a href="single-blog.php?id=<?php echo $row[0]?>" title="<?php $row[1]?>"><?php echo $row[1]?></a></h4>
-                                        <p><?php echo strip_tags($row[10])?>...</p>
-                                        <!--<small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Gadgets</a></small>-->
-                                        <small><a href="single-blog.php?id=<?php echo $row[0]?>" title=""><?php ?></a></small>
-                                        <!--<small><a href="single-blog.php?id=<?php echo $row[0]?>" title="">by Matilda</a></small>
-                                        <small><a href="single-blog.php?id=<?php echo $row[0]?>" title=""><i class="fa fa-eye"></i> 1114</a></small>--->
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
+                                            <div class="blog-meta big-meta col-md-8">
+                                                <h4 style="padding-top: 0px; margin-top: 0px"><a href="single-blog.php?id=<?php echo $row[0]?>" title="<?php $title?>"><?php echo $title?></a></h4>
+                                                <p><?php echo strip_tags($content)?>...</p>
+                                                <!--<small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Gadgets</a></small>-->
+                                                <small><a href="single-blog.php?id=<?php echo $row[0]?>" title=""><?php ?></a></small>
+                                                <!--<small><a href="single-blog.php?id=<?php echo $row[0]?>" title="">by Matilda</a></small>
+                                                <small><a href="single-blog.php?id=<?php echo $row[0]?>" title=""><i class="fa fa-eye"></i> 1114</a></small>--->
+                                            </div><!-- end meta -->
+                                        </div><!-- end blog-box -->
                             
                                 <hr class="invis">
                                 <?php
+                                    }
                                 }
                             }?>
                             

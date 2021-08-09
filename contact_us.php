@@ -61,7 +61,7 @@
                             </div><!-- end widget -->
 
                             <div class="widget">
-                                <h2 class="widget-title">Suivez-nous</h2>
+                                <h2 class="widget-title"><?= _('Suivez-nous'); ?></h2>
 
                                 <div class="row text-center">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
@@ -91,8 +91,8 @@
                         <div class="page-wrapper">
                             <div class="blog-title-area text-center">
                                 <ol class="breadcrumb hidden-xs-down">
-                                    <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
-                                    <li class="breadcrumb-item active">contact</li>
+                                    <li class="breadcrumb-item"><a href="index.php"><?= _('Accueil'); ?></a></li>
+                                    <li class="breadcrumb-item active"><?= _('contact'); ?></li>
                                 </ol>
 
                                 <!--<span class="color-orange"><a href="tech-category-01.html" title="">Technology</a></span>-->
@@ -116,14 +116,14 @@
                                     }
                                 ?>
                                 <div class="custombox clearfix col-lg-9 col-md-12 col-sm-12 col-xs-12" id="contact-form-a">
-                                    <h4 class="small-title">Envoyer un message</h4>
+                                    <h4 class="small-title"><?= _('Envoyer un message'); ?></h4>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <form class="form-wrapper">
-                                                <input type="email" name="mail" class="form-control" value="<?php echo $email?>" placeholder="email ici">
-                                                <input type="text" name="subject" class="form-control" placeholder="Sujet">
-                                                <textarea rows="16" class="form-control" placeholder="votre message"></textarea>
-                                                <button type="submit" class="btn btn-primary">Envoyer</button>
+                                                <input type="email" name="mail" class="form-control" value="<?php echo $email?>" placeholder="<?= _('email ici'); ?>">
+                                                <input type="text" name="subject" class="form-control" placeholder="<?= _('Sujet'); ?>">
+                                                <textarea rows="16" class="form-control" placeholder="<?= _('Votre message'); ?>"></textarea>
+                                                <button type="submit" class="btn btn-primary"><?= _('Envoyer'); ?></button>
                                             </form>
                                         </div>
                                     </div>

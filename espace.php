@@ -27,24 +27,39 @@
                                             $requete = "SELECT * from pages where parent_id = ".$row[0];
                                             $run = mysqli_query($connection, $requete);
                                             if(mysqli_num_rows($run) > 0){
+                                                if($_SESSION['lang']=="Ar"){
+                                                    $name = $row[13];
+                                                }else{
+                                                    $name = $row[3];
+                                                }
                                                 echo '<a class="list-widget collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                                                 aria-expanded="true" aria-controls="collapsePages">
                                                     <div class="w-100 last-item justify-content-between">
-                                                        <h5 class="mb-1">'.$row[3].'</h5>
+                                                        <h5 class="mb-1">'.$name.'</h5>
                                                     </div><hr>
                                                 </a>';
                                                 echo '<div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                                                     <div class="bg-white py-2 collapse-inner rounded">';
                                                 while($line = mysqli_fetch_row($run)){
-                                                    echo '<a class="collapse-item" href="single_page_espace.php?id='.$line[0].'">'.$line[1].'</a><br>';
+                                                    if($_SESSION['lang']=="Ar"){
+                                                        $name_s = $line[11];
+                                                    }else{
+                                                        $name_s = $line[1];
+                                                    }
+                                                    echo '<a class="collapse-item" href="single_page_espace.php?id='.$line[0].'&idcat='.$id.'">'.$name_s.'</a><br>';
                                                         
                                                 }
                                                 echo    '</div>
                                                         </div>';
                                             }else{
-                                                echo '<a href="single_page_espace.php?id='.$row[0].'" class="list-widget">
+                                                if($_SESSION['lang']=="Ar"){
+                                                    $name = $row[13];
+                                                }else{
+                                                    $name = $row[3];
+                                                }
+                                                echo '<a href="single_page_espace.php?id='.$row[0].'&idcat='.$id.'" class="list-widget">
                                                     <div class="w-100 last-item justify-content-between">
-                                                        <h5 class="mb-1">'.$row[3].'</h5>
+                                                        <h5 class="mb-1">'.$name.'</h5>
                                                     </div><hr>
                                                 </a>';
                                             }
@@ -58,7 +73,7 @@
 
                             <hr class="invis1">
                             <div class="widget">
-                                <h2 class="widget-title">Suivez-nous</h2>
+                                <h2 class="widget-title"><?= _('Suivez-nous'); ?></h2>
 
                                 <div class="row text-center">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
@@ -86,29 +101,36 @@
                         $query_run = mysqli_query($connection, $query);
                         if($query_run){
                             $row = mysqli_fetch_row($query_run);
+                            if($_SESSION['lang']=="Ar"){
+                                $name = $row[3];
+                                $content = $row[4];
+                            }else{
+                                $name = $row[1];
+                                $content = $row[2];
+                            }
                         }
                     ?>
                     <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                         <div class="page-wrapper">
                             <div class="blog-title-area text-center">
                                 <ol class="breadcrumb hidden-xs-down">
-                                    <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
-                                    <li class="breadcrumb-item active"><?php echo $row[1]?></li>
+                                    <li class="breadcrumb-item"><a href="index.php"><?= _('Accueil'); ?></a></li>
+                                    <li class="breadcrumb-item active"><?php echo $name?></li>
                                 </ol>  
                             </div><!-- end title -->
 
                        
 
                             <div class="blog-content"> 
-                                <h1 align="center" style="margin-bottom: 40px"><?php echo $row[1];?></h1>
+                                <h1 align="center" style="margin-bottom: 40px"><?php echo $name;?></h1>
                                 <div class="single-post-media">
-                                <img src="images/<?php echo $row[10]?>" alt="" class="img-fluid">
+                                <!--<img src="images/<?php echo $row[10]?>" alt="" class="img-fluid">-->
                                 </div>
 
                                 <div class="pp">
                                     <p>
                                     <?php
-                                        echo $row[2];
+                                        echo $content;
                                     ?>
                                     </p>
                                 </div>
@@ -136,8 +158,8 @@
                             <div class="blog-title-area">
                                 <div class="post-sharing" align="center">
                                     <ul class="list-inline">
-                                        <li><a href="#" class="fb-button btn btn-primary facebook-btn"><i class="fa fa-facebook"></i> <span class="down-mobile">Partager sur Facebook</span></a></li>
-                                        <li><a href="#" class="tw-button btn btn-primary twitter-btn"><i class="fa fa-twitter"></i> <span class="down-mobile">Partager sur Twitter</span></a></li>
+                                        <li><a href="#" class="fb-button btn btn-primary facebook-btn"><i class="fa fa-facebook"></i> <span class="down-mobile"><?= _('Partager sur Facebook'); ?></span></a></li>
+                                        <li><a href="#" class="tw-button btn btn-primary twitter-btn"><i class="fa fa-twitter"></i> <span class="down-mobile"><?= _('Partager sur Twitter'); ?></span></a></li>
                                         <li><a href="#" class="gp-button btn btn-primary wtsp-btn"><i class="fa fa-whatsapp"></i></a></li>
                                     </ul>
                                 </div><!-- end post-sharing -->

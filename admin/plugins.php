@@ -55,6 +55,13 @@ include('includes/navbar.php');
   </div>
 </div>
 
+<div class="card w-100 border-left-primary" style="margin: 10px">
+  <div class="card-body">
+    <h5 class="card-title">actes administratifs</h5>
+    <a href="modify_plugin.php?id=9" class="btn btn-primary">Modifier</a>
+  </div>
+</div>
+
 
 </div>
 

@@ -1,0 +1,215 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-08-09 15:00+0100\n"
+"PO-Revision-Date: 2021-08-09 15:01+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: agendaPage.php:13 agendaPage.php:74 index.php:256 search_result.php:53
+msgid "Agenda"
+msgstr "مذكرة"
+
+#: agendaPage.php:48 avisPage.php:46 contact_us.php:64 espace.php:76
+#: index.php:320 search_result.php:106 single-blog.php:52 single-page.php:162
+#: single_page_espace.php:180
+msgid "Suivez-nous"
+msgstr "تابعنا"
+
+#: agendaPage.php:73 avisPage.php:71 contact_us.php:94 espace.php:117
+#: includes/header.php:122 single-blog.php:82 single-page.php:190
+#: single_page_espace.php:208
+msgid "Accueil"
+msgstr "إستقبال"
+
+#: agendaPage.php:131 avisPage.php:126 espace.php:161 single-blog.php:147
+#: single-page.php:285 single_page_espace.php:301
+msgid "Partager sur Facebook"
+msgstr "مشاركة على الفيسبوك"
+
+#: agendaPage.php:132 avisPage.php:127 espace.php:162 single-blog.php:148
+#: single-page.php:286 single_page_espace.php:302
+msgid "Partager sur Twitter"
+msgstr "مشاركة على تويتر"
+
+#: agendaPage.php:192 avisPage.php:187
+msgid "Envoyer un commentaire"
+msgstr "كتابة تعليق"
+
+#: agendaPage.php:196 avisPage.php:191
+#, fuzzy
+#| msgid "email ici"
+msgid "Email ici"
+msgstr "البريد الإلكتروني"
+
+#: agendaPage.php:197 avisPage.php:192
+#, fuzzy
+#| msgid "Votre commentaire"
+msgid "Votre commantaire"
+msgstr "تعليقك"
+
+#: agendaPage.php:198 avisPage.php:193 includes/footer.php:21
+#: single-blog.php:233
+msgid "Soumettre"
+msgstr "أرسل"
+
+#: avisPage.php:13 avisPage.php:72 index.php:289 search_result.php:80
+msgid "Avis & Alertes"
+msgstr "إشعارات"
+
+#: contact_form.php:3 contact_us.php:119
+msgid "Envoyer un message"
+msgstr "أرسل رسالة"
+
+#: contact_form.php:7 contact_us.php:123
+msgid "email ici"
+msgstr "البريد الإلكتروني"
+
+#: contact_form.php:8 contact_us.php:124
+msgid "Sujet"
+msgstr "موضوع"
+
+#: contact_form.php:9 contact_us.php:125
+msgid "Votre message"
+msgstr "رسالتك"
+
+#: contact_form.php:10 contact_us.php:126
+msgid "Envoyer"
+msgstr "أرسل"
+
+#: contact_us.php:95
+msgid "contact"
+msgstr ""
+
+#: flash_info.php:2
+msgid "Flash info et Communiqués"
+msgstr "الومضات الإخبارية"
+
+#: includes/footer.php:10
+msgid "Facebook"
+msgstr "الفيسبوك"
+
+#: includes/footer.php:11
+msgid "Youtube"
+msgstr "اليوتوب"
+
+#: includes/footer.php:12
+msgid "Application android"
+msgstr "تطبيق أندرويد"
+
+#: includes/footer.php:18
+msgid "Envoyez nous un message"
+msgstr "أرسل لنا رسالة"
+
+#: includes/footer.php:20
+msgid "Entrez votre adresse email"
+msgstr "أدخل عنوان بريدك الإلكتروني"
+
+#: includes/footer.php:110
+msgid "Tous droits réservés RADEEMA 2021"
+msgstr "جميع الحقوق محفوظة ، راديما 2021"
+
+#: includes/footer.php:116
+msgid "Remonter"
+msgstr "إلى فوق"
+
+#: index.php:109
+msgid "précédent"
+msgstr "السابق"
+
+#: index.php:113
+msgid "suivant"
+msgstr "التالي"
+
+#: index.php:136
+msgid "Notre Histoire"
+msgstr "تاريخنا"
+
+#: index.php:160
+msgid "Nos Valeurs"
+msgstr "قيمنا"
+
+#: index.php:200
+msgid "Connexion"
+msgstr "دخول"
+
+#: index.php:222 search_result.php:21
+msgid "Espace Clients Particuliers"
+msgstr "فضاء الزبناء الكبار و المؤسساتيين"
+
+#: index.php:228 search_result.php:27
+msgid "Espace Grands Comptes"
+msgstr "فضاء الجماعات الترابية"
+
+#: index.php:234 search_result.php:33
+msgid "Espace RH"
+msgstr "فضاء الموارد البشرية"
+
+#: index.php:240 search_result.php:39
+msgid "Espace Fournisseurs"
+msgstr "فضاء المموّنين"
+
+#: index.php:246 search_result.php:45
+msgid "Développement Durable"
+msgstr "فضاء التنمية المستدامة"
+
+#: index.php:346 single-blog.php:83
+msgid "Actualités"
+msgstr "الأخبار"
+
+#: localisation_radeema.php:1
+msgid "Localisation de nos agences"
+msgstr "تحديد مواقع وكالاتنا"
+
+#: login_form.php:3
+msgid "Connectez-vous à votre espace"
+msgstr ""
+
+#: login_form.php:7
+msgid "votre e-mail"
+msgstr "البريد الإلكتروني الخاص بك"
+
+#: login_form.php:9
+msgid "Se connecter"
+msgstr "دخول"
+
+#: rapports.php:2
+msgid "Rapports et Publications"
+msgstr "التقارير"
+
+#: single-blog.php:11
+msgid "Plus d'articles"
+msgstr "المزيد من المقالات"
+
+#: single-blog.php:137
+msgid "Publié le :"
+msgstr "نشرت في :"
+
+#: single-blog.php:183
+msgid "Commentaires"
+msgstr "تعليقات"
+
+#: single-blog.php:225
+msgid "Commenter"
+msgstr "كتابة تعليق"
+
+#: single-blog.php:230
+msgid "Votre nom"
+msgstr "الإسم"
+
+#: single-blog.php:231
+msgid "Adresse Email"
+msgstr "البريد الإلكتروني"
+
+#: single-blog.php:232
+msgid "Votre commentaire"
+msgstr "تعليقك"

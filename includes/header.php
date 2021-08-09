@@ -1,21 +1,57 @@
 <?php
 //phpinfo(); exit();
-$locale = "ar";
+/*
+$locale = "en";
 
     putenv("LC_ALL={$locale}");
     setlocale(LC_ALL, $locale);
 
     // Spécifie la localisation des tables de traduction
-    bindtextdomain("ar", "../locales");
-    bind_textdomain_codeset("ar", "UTF-8");
+    bindtextdomain("en", "../locales");
+    bind_textdomain_codeset("en", "UTF-8");
 
     // Choisit le domaine
-    textdomain("ar");
+    textdomain("ar");*/
+    session_start();
+    if(isset($_GET['locale'])){
+        $locale = $_GET['locale'];
+        $_SESSION['lang'] = $locale;
+    }/*else{
+        $locale = "Fr";
+        $_SESSION['lang'] = $locale;
+    }*/
+
+    $path= "locales";
+    $domain = $_SESSION['lang'];
+    bindtextdomain($domain, $path);
+    textdomain($domain);
+
+    if($_SESSION['lang']=="Ar"){
+        ?>
+        <style>
+            html{
+                direction: rtl;
+            }
+            
+        </style>
+        <?php
+    }else{
+        ?>
+        <style>
+            html{
+                direction: ltr;
+            }
+            
+        </style>
+        <?php 
+    }
 
 ?>
 
+
+
 <!DOCTYPE html>
-<html lang=<?=$locale?>>
+<html lang=<?=$_SESSION['lang']?>>
 
     <!-- Basic -->
     <meta charset="utf-8">
@@ -62,6 +98,7 @@ $locale = "ar";
     <link href="jquery-flipster-master/dist/jquery.flipster.min.css" rel="stylesheet">
 
 
+
     
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -82,7 +119,7 @@ $locale = "ar";
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php"><?= _('Accueil'); ?></a>
+                                <a class="nav-link" href="index.php"><?= gettext('Accueil'); ?></a>
                             </li>
                             <?php
                                 include("security.php");
@@ -94,7 +131,11 @@ $locale = "ar";
                                         $query_run1 = mysqli_query($connection, $query1);
                                         if($query_run1){
                                             $row1 = mysqli_fetch_row($query_run1);
-                                            $name = $row1[1];
+                                            if($_SESSION['lang']=="Ar" && !empty($row1[11])){
+                                                $name = $row1[11];
+                                            }else{
+                                                $name = $row1[1];
+                                            }
                                         }
                                         echo '<li class="nav-item">
                                                 <a class="nav-link" href="single-page.php?id='.$row[1].'">'.$name.'</a>
@@ -104,7 +145,11 @@ $locale = "ar";
                                         $query_run1 = mysqli_query($connection, $query1);
                                         if($query_run1){
                                             $row1 = mysqli_fetch_row($query_run1);
-                                            $name = $row1[1];
+                                            if($_SESSION['lang']=="Ar" && !empty($row1[3])){
+                                                $name = $row1[3];
+                                            }else{
+                                                $name = $row1[1];
+                                            }
                                         }
                                         $query2 = "SELECT * from category_pages where idCat=".$row1[0];
                                         $query_run2 = mysqli_query($connection, $query2);
@@ -122,7 +167,12 @@ $locale = "ar";
                                                         $res = mysqli_query($connection, $req);
                                                         if($res){
                                                             $line = mysqli_fetch_row($res);
-                                                                echo '<a href="single-page.php?id='.$line[0].'&catid='.$row[1].'"><button class="tablinks">'.$line[1].'</button></a>';
+                                                            if($_SESSION['lang']=="Ar" && !empty($line[11])){
+                                                                $nm = $line[11];
+                                                            }else{
+                                                                $nm = $line[1];
+                                                            }
+                                                                echo '<a href="single-page.php?id='.$line[0].'&catid='.$row[1].'"><button class="tablinks">'.$nm.'</button></a>';
                                                         }
                                                                     
                                                     }
@@ -150,7 +200,23 @@ $locale = "ar";
                             </div>
                             </li>
                         </ul>
-                            <ul class="navbar-nav mr-2">
+
+                        <div class="nav-wrapper">
+                        <div class="sl-nav">
+                            <ul>
+                            <li><b><?= $_SESSION['lang']?></b> <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                <div class="triangle"></div>
+                                <ul>
+                                <li ><a onclick="addlang('locale', 'Fr')"><i class="sl-flag flag-fr"><div id="france"></div></i> <span>Fr</span></a></li>
+                                <li ><a onclick="addlang('locale', 'Ar')"><i class="sl-flag flag-ma"><div id="morocco"></div></i> <span>Ar</span></a></li>
+                                </ul>
+                            </li>
+                            </ul>
+                        </div>
+                        </div>
+
+
+                        <ul class="navbar-nav mr-2">
                             <li class="nav-item">
                                 <a class="nav-link" href="https://fr-fr.facebook.com/RADEEMAKECH/"><i class="fa fa-facebook-square"></i></a>
                             </li>
@@ -162,10 +228,11 @@ $locale = "ar";
                             </li>
                         </ul>
                     </div>
+
+
                 </nav>
             </div><!-- end container-fluid -->
         </header><!-- end market-header -->
-
 
 <script>
     var a_parent =  document.querySelectorAll(".a_parent");
@@ -204,9 +271,26 @@ dd_menu_a.forEach(function(dd_menu_item){
             window.location.href = "search_result.php";
         }
     }
+
+
+
+    function addlang(name, value)
+    {
+    var href = window.location.href;
+    var regex = new RegExp("[&\\?]" + name + "=");
+    if(regex.test(href))
+    {
+        regex = new RegExp("([&\\?])" + name + "=\\d+");
+        window.location.href = href.replace(regex, "$1" + name + "=" + value);
+    }
+    else
+    {
+        if(href.indexOf("?") > -1)
+        window.location.href = href + "&" + name + "=" + value;
+        else
+        window.location.href = href + "?" + name + "=" + value;
+    }
+    }
+
 </script>
 
-<?php
-
-
-?>

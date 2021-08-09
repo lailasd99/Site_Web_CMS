@@ -390,4 +390,67 @@ if(isset($_POST['edit_flash'])){
         header('Location: modify_plugin.php?id=7');
     }
 }
+
+
+
+
+
+if(isset($_POST['add_acte'])){
+    $title = mysqli_real_escape_string($connection, $_POST['title']);
+    $content = mysqli_real_escape_string($connection, $_POST['desc']);
+
+
+    $query = "INSERT INTO actes(title, content) values('$title', '$content')";
+    $run = mysqli_query($connection, $query);
+
+    if($run){
+        $_SESSION['success'] = "ajout réussit!";
+        $_SESSION['success_code'] = "success";
+        header('Location: modify_plugin.php?id=9');
+    }else{
+        $_SESSION['status'] = "ajout échoué";
+        $_SESSION['status_code'] = "error";
+        header('Location: modify_plugin.php?id=9');
+    }
+}
+
+
+
+if(isset($_POST['edit_acte'])){
+    $id_acte = $_POST['acte-id'];
+    $title = mysqli_real_escape_string($connection, $_POST['title']);
+    $content = mysqli_real_escape_string($connection, $_POST['content']);
+
+
+    $query = "UPDATE actes set title='$title', content='$content' where idActe=$id_acte";
+    $run = mysqli_query($connection, $query);
+
+    if($run){
+        $_SESSION['success'] = "modification réussite!";
+        $_SESSION['success_code'] = "success";
+        header('Location: modify_plugin.php?id=9');
+    }else{
+        $_SESSION['status'] = "modification échouée";
+        $_SESSION['status_code'] = "error";
+        header('Location: modify_plugin.php?id=9');
+    }
+}
+
+
+if(isset($_POST['delete_acte'])){
+    $id = $_POST['acte-id'];
+
+    $query = "DELETE FROM actes where idActe=$id";
+    $query_run = mysqli_query($connection, $query);
+
+    if($query_run){
+        $_SESSION['success'] = "Section supprimée successivement";
+        $_SESSION['success_code'] = "success";
+        header('Location: modify_plugin.php?id=9'); 
+    }else{
+        $_SESSION['status'] = "Section n'est pas supprimée";
+        $_SESSION['status_code'] = "error";
+        header('Location: modify_plugin.php?id=9'); 
+    }
+}
 ?>

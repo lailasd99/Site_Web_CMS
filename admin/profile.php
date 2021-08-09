@@ -102,14 +102,14 @@ include('includes/scripts.php');
 <script>
 
         const btnchange = document.querySelector("#fileToUpload");
-        var $modal = document.querySelector('#modal-crop');
+        var mdl = $('#modal-crop');
         var crop_image = document.querySelector('#sample_image');
         var cropper;
         btnchange.addEventListener("change", function(event){
             var files = event.target.files;
             var done = function(url){
                 crop_image.src = url;
-                $modal.modal('show');
+                mdl.modal('show');
 
             };
             if(files && files.length > 0){
@@ -121,7 +121,7 @@ include('includes/scripts.php');
             }
         });
 
-        $modal.on('shown.bs.modal', function(){
+        mdl.on('shown.bs.modal', function(){
           cropper = new Cropper(crop_image, {
             aspectRatio: 1,
             viewMode: 3,

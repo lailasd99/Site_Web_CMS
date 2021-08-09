@@ -16,6 +16,7 @@
 <script src="js/tinymce/init-tinymce.js"></script>
 <script src="js/tinymce/init-tinymce2.js"></script>
 <script src="js/tinymce/init-tinymce-ar.js"></script>
+<script src="js/tinymce/init-tinymce_ar2.js"></script>
 </body>
 
 </html>

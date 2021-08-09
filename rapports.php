@@ -1,5 +1,5 @@
 
-<h3>Rapports et Publications</h3>
+<h3><?= _('Rapports et Publications'); ?></h3>
 <table class="table table-striped table-bordered">
 <thead>
   <tr>

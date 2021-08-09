@@ -8,7 +8,7 @@
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 article-sidebar">
                         <div class="sidebar">
                         <div class="container">
-                                <h2 class="widget-title">Plus d'articles</h2>
+                                <h2 class="widget-title"><?= _("Plus d'articles"); ?></h2>
 
                                 <?php
                                     $id=$_GET['id'];
@@ -20,15 +20,20 @@
                                     echo "Failed to connect to MySQL: " . $connection -> connect_error;
                                     exit();
                                     }
-                                    $query = "SELECT *, SUBSTRING(title, 1, 40) as tl from articles where accept=1 and idArticle <>$id";
+                                    $query = "SELECT *, SUBSTRING(title, 1, 40), SUBSTRING(title_ar, 1, 40) from articles where accept=1 and idArticle <>$id";
                                     $run_query = mysqli_query($connection, $query);
                                     echo "<div class='blog-list-widget'>
                                     <div class='list-group'>";
                                     while($row = mysqli_fetch_row($run_query)){
+                                        if($_SESSION['lang']=="Ar"){
+                                            $name = $row[11];
+                                        }else{
+                                            $name = $row[10];
+                                        }
                                         echo '<a href="single-blog.php?id='.$row[0].'" class="list-widget">
                                         <div class="w-100 last-item justify-content-between">
                                             <img src="images/'.$row[6].'" alt="" class="img-fluid float-left" style="height: 50px; object-fit: cover">
-                                            <h5 class="mb-1" alt="'.$row[1].'">'.$row[10].'...</h5>
+                                            <h5 class="mb-1" alt="'.$row[1].'">'.$name.'...</h5>
                                             <small>'.date("m/d/Y", strtotime($row[4])).'</small>
                                         </div><hr>
                                     </a>';
@@ -44,7 +49,7 @@
                        
                             <hr class="invis1">
                             <div class="widget">
-                                <h2 class="widget-title">Suivez-nous</h2>
+                                <h2 class="widget-title"><?= _('Suivez-nous'); ?></h2>
 
                                 <div class="row text-center">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
@@ -74,8 +79,8 @@
                         <div class="page-wrapper">
                             <div class="blog-title-area text-center">
                                 <ol class="breadcrumb hidden-xs-down">
-                                    <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
-                                    <li class="breadcrumb-item active">histoire</li>
+                                    <li class="breadcrumb-item"><a href="index.php"><?= _('Accueil'); ?></a></li>
+                                    <li class="breadcrumb-item active"><?= _('Actualités'); ?></li>
                                 </ol>
 
                                 <!--<span class="color-orange"><a href="tech-category-01.html" title="">Technology</a></span>-->
@@ -104,12 +109,19 @@
                                     $query_run=mysqli_query($connection, $query);
                                     if($query_run){
                                        $row=mysqli_fetch_row($query_run);
-                                        $content=$row[2];
+                                        if($_SESSION['lang']=="Ar"){
+                                            $title=$row[8];
+                                            $content=$row[9];
+                                        }else{
+                                            $title=$row[1];
+                                            $content=$row[2];
+                                        }
+                                        
                                         
                                     }
 
                                 ?> 
-                                <h1 align="center" style="margin-bottom: 40px"><?php echo $row[1];?></h1>
+                                <h1 align="center" style="margin-bottom: 40px"><?php echo $title;?></h1>
                                 <div class="single-post-media">
                                 <img src="images/<?php echo $row[6]?>" alt="" class="img-fluid">
                                 </div>
@@ -122,7 +134,7 @@
                                     </p>
                                 </div>
                                 <div class="pp" style="margin-top: 50px">
-                                    <b>Publié le :</b><?php echo date("m/d/Y , h:i a", strtotime($row[5]))?>
+                                    <b><?= gettext('Publié le :')." "; ?></b><?php echo date("m/d/Y , h:i a", strtotime($row[5]))?>
                                 </div>
                             </div><!-- end content -->
                             <hr style="margin: 50px 0">
@@ -132,8 +144,8 @@
 
                             <div class="post-sharing" align="center">
                                     <ul class="list-inline">
-                                        <li><a href="#" class="fb-button btn btn-primary facebook-btn"><i class="fa fa-facebook"></i> <span class="down-mobile">Partager sur Facebook</span></a></li>
-                                        <li><a href="#" class="tw-button btn btn-primary twitter-btn"><i class="fa fa-twitter"></i> <span class="down-mobile">Partager sur Twitter</span></a></li>
+                                        <li><a href="#" class="fb-button btn btn-primary facebook-btn"><i class="fa fa-facebook"></i> <span class="down-mobile"><?= _('Partager sur Facebook'); ?></span></a></li>
+                                        <li><a href="#" class="tw-button btn btn-primary twitter-btn"><i class="fa fa-twitter"></i> <span class="down-mobile"><?= _('Partager sur Twitter'); ?></span></a></li>
                                         <li><a href="#" class="gp-button btn btn-primary wtsp-btn"><i class="fa fa-whatsapp"></i></a></li>
                                     </ul>
                                 </div><!-- end post-sharing -->
@@ -168,7 +180,7 @@
                                 }
                             ?>
                             <div class="custombox clearfix">
-                                <h4 class="small-title"><?php echo $num." Commentaires"?></h4>
+                                <h4 class="small-title"><?php echo $num." ".gettext('Commentaires')?></h4>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="comments-list">
@@ -210,15 +222,15 @@
                             ?>
 
                             <div class="custombox clearfix">
-                                <h4 class="small-title">Commenter</h4>
+                                <h4 class="small-title"><?= _('Commenter');  ?></h4>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <form class="form-wrapper" action="comments.php" method="POST">
                                             <input type="hidden" name="idArt" value="<?php echo $id?>">
-                                            <input type="text" name="name" class="form-control" placeholder="Votre nom">
-                                            <input type="text"name="email" class="form-control" placeholder="Adresse Email">
-                                            <textarea class="form-control" name="comment" placeholder="Votre commentaire"></textarea>
-                                            <button type="submit" name="submit" class="btn btn-primary">Soumettre</button>
+                                            <input type="text" name="name" class="form-control" placeholder="<?= _('Votre nom'); ?>">
+                                            <input type="text"name="email" class="form-control" placeholder="<?= _('Adresse Email'); ?>">
+                                            <textarea class="form-control" name="comment" placeholder="<?= _('Votre commentaire'); ?>"></textarea>
+                                            <button type="submit" name="submit" class="btn btn-primary"><?= _('Soumettre'); ?></button>
                                         </form>
                                     </div>
                                 </div>

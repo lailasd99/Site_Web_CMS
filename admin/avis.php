@@ -24,6 +24,15 @@ include("includes/scripts.php");
                     <label>Description</label>
                     <textarea name="desc" class="mini_textarea"></textarea>
                 </div>
+                <hr>
+                <div class="form-group">
+                  <label>Titre en arabe</label>
+                  <input dir="rtl" type="text" name="title_ar" class="form-control" placeholder="Entrez un titre">
+                </div>
+                <div class="form-group">
+                    <label>Description en arabe</label>
+                    <textarea name="desc_ar" class="mini_textarea_ar"></textarea>
+                </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -75,6 +84,8 @@ include("includes/scripts.php");
                    echo "<th scope='row'>".$i++."</th>";
                    echo "<td>".$avis[1]."</td>";
                    echo "<td style='display:none;''>".$avis[2]."</td>";
+                   echo "<td style='display:none;''>".$avis[3]."</td>";
+                   echo "<td style='display:none;''>".$avis[4]."</td>";
                     echo "<td><button class='btn btn-danger delete' data-toggle='modal' data-id='". $avis[0] ."' data-target='#deleteavis'>supprimer</button>
                     <button class='btn btn-success update' data-toggle='modal' name='modify_eavis' data-target='#editavis' data-id='". $avis[0] ."'>Modifier</button></td>";
                     echo "</tr>";
@@ -138,6 +149,15 @@ include("includes/scripts.php");
                     
                 </textarea>
             </div>
+            <hr>
+                <div class="form-group">
+                  <label>Titre en arabe</label>
+                  <input dir="rtl" id="ar_title" type="text" name="title_ar" class="form-control" placeholder="Entrez un titre">
+                </div>
+                <div class="form-group">
+                    <label>Description en arabe</label>
+                    <textarea id="ar_desc" name="desc_ar" class="mini_textarea_ar"></textarea>
+                </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -167,7 +187,9 @@ include("includes/scripts.php");
     console.log(data);
 
     $('#title').val(data[0]);
-    tinymce.activeEditor.setContent(data[1]);
+    tinymce.get("desc").setContent(data[1]);
+    $('#ar_title').val(data[2]);
+    tinymce.get("ar_desc").setContent(data[3]);
   })
 
   function submit_form(e) {

@@ -9,11 +9,11 @@ include('includes/navbar.php');
 <div class="card-body">
     <?php
         if(isset($_GET['success']) && $_GET['success']!=''){
-            echo '<div class="alert alert-success" role="alert">categorie a été modifier</div>';
+            echo '<div class="alert alert-success" role="alert">categorie modifiée successivement!</div>';
         }
 
         if(isset($_SESSION['status']) && $_SESSION['status']!=''){
-            echo '<div class="alert alert-danger" role="alert"></div>';
+            echo '<div class="alert alert-danger" role="alert">categorie n\'est pas modifiée!</div>';
         }
     ?>
 
@@ -38,9 +38,7 @@ include('includes/navbar.php');
                     $query_run1= mysqli_query($connection, $query1);
                     if($query_run1){
                         while($line = mysqli_fetch_row($query_run1)){
-                          if($line[4] == NULL){
                             $num++;
-                          }
                         }
                         //$num = mysqli_fetch_row($query_run1);
                     }

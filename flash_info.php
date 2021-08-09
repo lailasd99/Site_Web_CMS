@@ -1,5 +1,5 @@
 
-<h3>Flash info et Communiqués</h3>
+<h3><?=_('Flash info et Communiqués'); ?></h3>
 <table class="table table-striped table-bordered">
 <thead>
   <tr>

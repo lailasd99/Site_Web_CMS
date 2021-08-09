@@ -6,8 +6,9 @@ if(isset($_POST['addbtn']))
     $title = $_POST['title'];
     $date1 = $_POST['date1'];
     $date2 = $_POST['date2'];
-    //$desc = $_POST['desc'];
     $desc= mysqli_real_escape_string($connection, $_POST['desc']);
+    $title_ar = $_POST['title_ar'];
+    $desc_ar= mysqli_real_escape_string($connection, $_POST['desc_ar']);
 
 
     $query = "SELECT * FROM agenda WHERE title='$title'";
@@ -22,7 +23,7 @@ if(isset($_POST['addbtn']))
     {
             
             //insert new page
-            $query = "INSERT INTO agenda (title, description, date1, date2) VALUES ('$title', '$desc', '$date1', '$date2')";
+            $query = "INSERT INTO agenda (title, description, date1, date2, title_ar, description_ar) VALUES ('$title', '$desc', '$date1', '$date2', '$title_ar', '$desc_ar')";
 
             $query_run = mysqli_query($connection, $query);
 
@@ -79,19 +80,21 @@ if(isset($_POST['editbtn']))
     $date1= $_POST['date1'];
     $date2 = $_POST['date2'];
     $desc= mysqli_real_escape_string($connection, $_POST['desc']);
+    $title_ar = $_POST['title_ar'];
+    $desc_ar= mysqli_real_escape_string($connection, $_POST['desc_ar']);
 
     $title_query = "SELECT * FROM agenda WHERE title='$title' AND id!=$id";
     $title_query_run = mysqli_query($connection, $title_query);
     if(mysqli_num_rows($title_query_run) > 0)
     {
-        $_SESSION['status'] = "Titre déja utilisé. Réessayez avec un autre titre.";
+        $_SESSION['status'] = "Titre déja utilisé. Réessayez avec un autre titre";
         $_SESSION['status_code'] = "erreur";
         header('Location: agenda.php');  
     }
     else
     {
     
-            $query = "UPDATE agenda SET title='$title', description='$desc', date1='$date1', date2='$date2' WHERE id=$id";
+            $query = "UPDATE agenda SET title='$title', description='$desc', date1='$date1', date2='$date2', title_ar='$title_ar', description_ar='$desc_ar' WHERE id=$id";
 
             $query_run = mysqli_query($connection, $query);
             
@@ -108,8 +111,9 @@ if(isset($_POST['editbtn']))
                 header('Location: agenda.php');  
             }
 
-        }
     }
+}
+
 
 
 

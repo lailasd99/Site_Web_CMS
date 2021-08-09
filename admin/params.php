@@ -47,8 +47,8 @@ include('includes/scripts.php');
 			</div>
 		</div>
 	</nav>-->
-	<div class="p-4 flex flex-col md:flex-row md:items-start gap-8" x-data="{tab:'account'}">
-		<div class="w-56 text-xs">
+	<div class="p-4 flex flex-col md:flex-row md:items-start gap-12" x-data="{tab:'account'}">
+		<div class="w-56 text-xs side-bar-params">
 			<div class="flex flex-col border rounded overflow-hidden divide-y divide-gray-200">
 				<button type="button" class="text-left px-4 py-2 cursor-pointer focus:outline-none tracking-widest transition duration-200m ease-in-out relative" x-bind:class="{'bg-gray-100': tab!=='account'}" x-on:click="tab='account'">
 					<span x-bind:class="{'absolute right-0 inset-y-0 w-1 bg-green-500': tab==='account'}"></span>

@@ -26,12 +26,22 @@
                                         $req_run = mysqli_query($connection, $req);
                                         if($req_run){
                                             $line = mysqli_fetch_row($req_run);
-                                            $name = $line[1];
+                                            if($_SESSION['lang']=="Ar"){
+                                                $namear = $line[11];
+                                            }else{
+                                                $namear = $line[1];
+                                            }
+                                            
                                             $query = "SELECT * from category where idCat=".$cat_id;
                                             $query_run = mysqli_query($connection, $query);
                                             if($query_run){
                                                 $row = mysqli_fetch_row($query_run);
-                                                echo '<h2 class="widget-title espace-title">'.$row[1].'</h2>';
+                                                if($_SESSION['lang']=="Ar"){
+                                                    $nameC = $row[3];
+                                                }else{
+                                                    $nameC = $row[1];
+                                                }
+                                                echo '<h2 class="widget-title espace-title">'.$nameC.'</h2>';
                                             }
                                         }
 
@@ -45,9 +55,14 @@
                                                 $run_query = mysqli_query($connection, $requete);
                                                 if($run_query){
                                                     while($l = mysqli_fetch_row($run_query)){
+                                                        if($_SESSION['lang']=="Ar"){
+                                                            $name = $l[11];
+                                                        }else{
+                                                            $name = $l[1];
+                                                        }
                                                         echo '<a href="single-page.php?id='.$l[0].'&catid='.$cat_id.'" class="list-widget">
                                                         <div class="w-100 last-item justify-content-between">
-                                                            <h5 class="mb-1">'.$l[1].'</h5>
+                                                            <h5 class="mb-1">'.$name.'</h5>
                                                         </div><hr>
                                                         </a>';
                                                     }
@@ -144,7 +159,7 @@
 <?php */?>
                             <hr class="invis1">
                             <div class="widget">
-                                <h2 class="widget-title">Suivez-nous</h2>
+                                <h2 class="widget-title"><?= _('Suivez-nous'); ?></h2>
 
                                 <div class="row text-center">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
@@ -172,7 +187,7 @@
                         <div class="page-wrapper">
                             <div class="blog-title-area text-center">
                                 <ol class="breadcrumb hidden-xs-down">
-                                    <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
+                                    <li class="breadcrumb-item"><a href="index.php"><?= _('Accueil'); ?></a></li>
                                     <li class="breadcrumb-item active"><?php echo $name?></li>
                                 </ol>
 
@@ -202,15 +217,21 @@
                                     $query_run=mysqli_query($connection, $query);
                                     if($query_run){
                                        $row=mysqli_fetch_row($query_run);
-                                        $content=$row[8];
+                                       if($_SESSION['lang']=="Ar"){
+                                            $title=$row[11];
+                                            $content=$row[12];
+                                       }else{
+                                            $title=$row[1];
+                                            $content=$row[8];
+                                       }    
                                         
                                     }
-
-                                  
                                 ?> 
-                                <h1 align="center" style="margin-bottom: 40px"><?php echo $row[1];?></h1>
+                                <h1 align="center" style="margin-bottom: 40px"><?php echo $title;?></h1>
                                 <div class="single-post-media">
+                                <?php if(!empty($row[10])){?>
                                 <img src="images/<?php echo $row[10]?>" alt="" class="img-fluid">
+                                <?php } ?>
                                 </div>
 
                                 <div class="pp">
@@ -261,8 +282,8 @@
                             <div class="blog-title-area">
                                 <div class="post-sharing" align="center">
                                     <ul class="list-inline">
-                                        <li><a href="#" class="fb-button btn btn-primary facebook-btn"><i class="fa fa-facebook"></i> <span class="down-mobile">Partager sur Facebook</span></a></li>
-                                        <li><a href="#" class="tw-button btn btn-primary twitter-btn"><i class="fa fa-twitter"></i> <span class="down-mobile">Partager sur Twitter</span></a></li>
+                                        <li><a href="#" class="fb-button btn btn-primary facebook-btn"><i class="fa fa-facebook"></i> <span class="down-mobile"><?= _('Partager sur Facebook'); ?></span></a></li>
+                                        <li><a href="#" class="tw-button btn btn-primary twitter-btn"><i class="fa fa-twitter"></i> <span class="down-mobile"><?= _('Partager sur Twitter'); ?></span></a></li>
                                         <li><a href="#" class="gp-button btn btn-primary wtsp-btn"><i class="fa fa-whatsapp"></i></a></li>
                                     </ul>
                                 </div><!-- end post-sharing -->

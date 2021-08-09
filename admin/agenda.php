@@ -30,9 +30,18 @@ include('includes/navbar.php');
                 <td><label>à  </label></Td>
                   <td><input type="date" name="date2" class="form-control"></td></tr>
                     </div></table>
-                    <div class="form-group">
+               <div class="form-group">
                 <label>Description</label>
                 <textarea name="desc" class="mini_textarea" placeholder="Entrez une description"></textarea>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label>Titre en arabe</label>
+                <input dir="rtl" type="text" name="title_ar" class="form-control" placeholder="Entrez un titre">
+            </div>
+            <div class="form-group">
+                <label>Description en arabe</label>
+                <textarea name="desc_ar" class="mini_textarea_ar" placeholder="Entrez une description"></textarea>
             </div>
         </div>
         <div class="modal-footer">
@@ -86,6 +95,8 @@ include('includes/navbar.php');
                     echo "<td>".$event[3]."</td>";
                     echo "<td>".$event[4]."</td>";
                     echo "<td style='display:none;'>".$event[2]."</td>";
+                    echo "<td style='display:none;'>".$event[5]."</td>";
+                    echo "<td style='display:none;'>".$event[6]."</td>";
                     echo "<td><button class='btn btn-danger delete' data-toggle='modal' data-id='". $event[0] ."' data-target='#deleteevent'>supprimer</button>
                     <button class='btn btn-success update' data-toggle='modal' name='modify_event' data-target='#editevent' data-id='". $event[0] ."'>Modifier</button></td>";
                     echo "</tr>";
@@ -157,6 +168,15 @@ include('includes/navbar.php');
                 <label>Description</label>
                 <textarea id="desc" name="desc" class="mini_textarea" placeholder="Entrez une description"></textarea>
             </div>
+            <hr>
+            <div class="form-group">
+                <label>Titre en arabe</label>
+                <input id='ar_title' dir="rtl" type="text" name="title_ar" class="form-control" placeholder="Entrez un titre">
+            </div>
+            <div class="form-group">
+                <label>Description en arabe</label>
+                <textarea id='ar_desc' name="desc_ar" class="mini_textarea_ar" placeholder="Entrez une description"></textarea>
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -187,12 +207,16 @@ include('includes/footer.php');
     var data=$tr.children("td").map(function(){
       return $(this).text();
     }).get();
-    console.log(data[3]);
+    
 
     $('#title').val(data[0]);
     $('#date1').val(data[1]);
     $('#date2').val(data[2]);
-    tinymce.activeEditor.setContent(data[3]);
+    tinymce.get("desc").setContent(data[3]);
+    $('#ar_title').val(data[4]);
+    tinymce.get("ar_desc").setContent(data[5]);
+  
+    //tinymce.activeEditor.setContent(data[3]);
   })
 
   function submit_form(e) {

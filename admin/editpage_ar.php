@@ -1,10 +1,10 @@
 <?php
+
 include('security.php');
 
 
-if(isset($_GET['modify_page']))
-{
-    $page_id=$_GET['page_id'];
+if(isset($_GET['btn-ar'])){
+    $page_id=$_GET['id'];
    
     $query = "SELECT * from pages where idPage=$page_id";
 
@@ -13,42 +13,32 @@ if(isset($_GET['modify_page']))
     {
         $page= mysqli_fetch_row($query_run);
     }
-  }else{
-    header("location: pages.php");
-  }
+}else{
+   header("location: pages.php");
+}
 
 
-  include('includes/header.php');
-  include('includes/navbar.php');
-  include('includes/scripts.php');
+
+include('includes/header.php');
+include('includes/navbar.php');
+include('includes/scripts.php');
+
 ?>
-
-<?php
-        if(isset($_SESSION['success']) && $_SESSION['success']!=''){
-            echo '<div class="alert alert-success" role="alert">'.$_SESSION['success'].'</div>';
-            unset($_SESSION['success']);
-        }
-
-        if(isset($_SESSION['status']) && $_SESSION['status']!=''){
-            echo '<div class="alert alert-danger" role="alert">'.$_SESSION['status'].'<div>';
-            unset($_SESSION['status']);
-        }
-    ?>
 
 <div class="container">
   <div class="row">
     <div class="col-8">
-    <form method="GET" action="editpage_ar.php">
+    <form method="GET" action="editpage.php">
           <input type="hidden" value="<?=$page[0]?>" name="id">
-          <button class="btn btn-success" type="submit" name="btn-ar">AR</button>
+          <button class="btn btn-success" type="submit" name="btn-ar">FR</button>
        </form>
       <h3>Modifier la page "<?php echo $page[1]?>"</h3>
 
       <form action="page_actions.php" method="post" enctype="multipart/form-data" name="submitForm" onsubmit="return handleSubmit()">
-        <input type="text" name="title" class="form-control" value="<?php echo $page[1]?>" style="margin: 25px 0"></input>
-        <textarea class="text_editor_page" name="text_editor_page" id="text_editor_page">
+        <input dir="rtl" type="text" name="title" class="form-control" value="<?php echo $page[11]?>" style="margin: 25px 0"></input>
+        <textarea name="text_editor_page" class="text_editor_ar" id="text_editor_page">
             <?php
-                echo $page[8];
+                echo $page[12];
             ?>
         </textarea>
         <input type="hidden" name="page_id" value="<?php echo $page[0]?>"></input>
@@ -65,7 +55,7 @@ if(isset($_GET['modify_page']))
         <input  type="hidden" id="flash" name="flash" ></input>
         <input  type="hidden" id="galery" name="galery" ></input>
         <input  type="hidden" id="actes" name="actes" ></input>
-        <button type="submit" name ="submit-page" class="btn btn-primary" style="margin-top: 20px">Publier</button>
+        <button type="submit" name ="submit-page-ar" class="btn btn-primary" style="margin-top: 20px">Publier</button>
       </form>
     </div>
 
@@ -131,7 +121,7 @@ if(isset($_GET['modify_page']))
     <h5 align="center" style="margin-top: 50px">Choisir une catégorie</h5>
     <select id="cat_id" class="form-select form-select-sm form-control mul-select" aria-label=".form-select-sm example" style="width: 100%; margin-top: 30px" multiple="true">
       <?php 
-        $page_id=$_GET['page_id'];
+        $page_id=$_GET['id'];
         $req = "SELECT * from category_pages where idPage=".$page_id;
         $res = mysqli_query($connection, $req);
         if($res){
@@ -336,4 +326,3 @@ function handleSubmit(e) {
 <?php 
   include('includes/footer.php');
 ?>
-

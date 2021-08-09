@@ -4,7 +4,9 @@ include('security.php');
 if(isset($_POST['addbtn']))
 {
     $title = $_POST['title'];
-    $desc= mysqli_real_escape_string($connection, $_POST['desc']);
+    $desc = mysqli_real_escape_string($connection, $_POST['desc']);
+    $title_ar = $_POST['title_ar'];
+    $desc_ar = mysqli_real_escape_string($connection, $_POST['desc_ar']);
 
 
     $query = "SELECT * FROM avis WHERE title='$title'";
@@ -21,7 +23,7 @@ if(isset($_POST['addbtn']))
         
             
             //insert new avis
-            $query = "INSERT INTO avis (title, description) VALUES ('$title', '$desc')";
+            $query = "INSERT INTO avis (title, description, title_ar, description_ar) VALUES ('$title', '$desc', '$title_ar', '$desc_ar')";
             $query_run = mysqli_query($connection, $query);
 
             if($query_run)
@@ -75,7 +77,9 @@ if(isset($_POST['editbtn']))
 {
     $id = $_POST['avis-id'];
     $title = $_POST['title'];
-    $desc= mysqli_real_escape_string($connection, $_POST['desc']);
+    $desc = mysqli_real_escape_string($connection, $_POST['desc']);
+    $title_ar = $_POST['title_ar'];
+    $desc_ar = mysqli_real_escape_string($connection, $_POST['desc_ar']);
 
     $title_query = "SELECT * FROM avis WHERE title='$title' AND id!=$id";
     $title_query_run = mysqli_query($connection, $title_query);
@@ -88,7 +92,7 @@ if(isset($_POST['editbtn']))
     else
     {
     
-            $query = "UPDATE avis SET title='$title', description='$desc' WHERE id=$id";
+            $query = "UPDATE avis SET title='$title', description='$desc', title_ar='$title_ar', description_ar='$desc_ar' WHERE id=$id";
 
             $query_run = mysqli_query($connection, $query);
             

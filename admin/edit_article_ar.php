@@ -44,7 +44,7 @@ include('includes/scripts.php');
     </textarea>
     <input type="hidden" name="art_id" value="<?php echo $article[0];?>"></input>
     <input type="file" id="art_photo" name="art_photo" value="" style="display:none"></input>
-    <div class="col-4"><button   type="submit" name ="submit-article-ar" class="btn btn-primary">نشر</button></div>
+    <button   type="submit" name ="submit-article-ar" class="btn btn-primary">نشر</button>
 </form>
 </div>
 

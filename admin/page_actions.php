@@ -23,9 +23,12 @@ if(isset($_POST["submit-page"])){
     $pub=$_POST['publication'];
     $flash=$_POST['flash'];
     $galery=$_POST['galery'];
+    $actes=$_POST['actes'];
 
-    $target_file = "../images/".$photo;
-    move_uploaded_file($_FILES["page_photo"]["tmp_name"], $target_file);
+    
+    if(!empty($_FILES['page_photo']['name'])){
+        $target_file = "../images/".$photo;
+        move_uploaded_file($_FILES["page_photo"]["tmp_name"], $target_file);
 
         if(!empty($parent_id)){
             
@@ -49,6 +52,32 @@ if(isset($_POST["submit-page"])){
                         header("location: pages.php");
                     }
         }
+    }else{
+
+        if(!empty($parent_id)){
+            
+            $query = "UPDATE pages SET title = '$title', parent_id=$parent_id, draft=$draft, content='$content' WHERE idPage=$page_id";
+            $query_run = mysqli_query($connection, $query);
+            
+            if($query_run){
+                $_SESSION["success"]="page modifié successivement";
+                $_SESSION["success-code"]="success";
+                header("location: pages.php");
+            }
+        }else{
+            //parent not identified
+               
+                    $query = "UPDATE pages SET title = '$title', draft=$draft, content='$content'WHERE idPage=$page_id";
+                    $query_run=mysqli_query($connection, $query);
+        
+                    if($query_run){
+                        $_SESSION["success"]="page modifié successivement";
+                        $_SESSION["success-code"]="success";
+                        header("location: pages.php");
+                    }
+        }
+
+    }
 
         $query_delete_plugins = "DELETE FROM plugins where idPage=$page_id;";
 
@@ -75,6 +104,9 @@ if(isset($_POST["submit-page"])){
         }
         if($galery == "true"){
             $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(8, 'Galerie', $page_id); ";
+        }
+        if($actes == "true"){
+            $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(9, 'actes administratifs', $page_id); ";
         }
 
         $query_run=mysqli_multi_query($connection, $query_delete_plugins);
@@ -142,6 +174,7 @@ if(isset($_POST['add-page'])){
     $pub=$_POST['publication'];
     $flash=$_POST['flash'];
     $galery=$_POST['galery'];
+    $actes=$_POST['actes'];
 
 
     $query = "SELECT * FROM pages WHERE title='$title'";
@@ -201,6 +234,9 @@ if(isset($_POST['add-page'])){
         if($galery == "true"){
             $query_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(8, 'Galerie', $page_id); ";
         }
+        if($actes == "true"){
+            $query_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(9, 'actes administratifs', $page_id); ";
+        }
         
 
         $query_cat = "";
@@ -229,6 +265,131 @@ if(isset($_POST['add-page'])){
             header("location: pages.php");
         }
     }
+
+}
+
+
+
+if(isset($_POST["submit-page-ar"])){
+    $page_content = str_replace('../upload',"http://localhost/radeema/upload", $_POST['text_editor_page']);
+    $title =mysqli_real_escape_string($connection, $_POST['title']);
+    $categories = $_POST['id_categorie'];
+    $cat = explode(",", $categories);
+    $draft = $_POST['id_draft'];
+    $page_id =$_POST['page_id'];
+    $parent_id = $_POST['parent_page_id'];
+    $content = mysqli_real_escape_string($connection, $page_content);
+    $photo = time().'-'.$_FILES['page_photo']['name'];
+    $photo_path = $_FILES["page_photo"];
+    $photoTmpName =$_FILES["page_photo"]["tmp_name"];
+
+    $pdf=$_POST['pdf'];
+    $l_form=$_POST['l_form'];
+    $c_form=$_POST['c_form'];
+    $forms=$_POST['forms'];
+    $local=$_POST['local'];
+    $pub=$_POST['publication'];
+    $flash=$_POST['flash'];
+    $galery=$_POST['galery'];
+    $actes=$_POST['actes'];
+
+    
+    if(!empty($_FILES['page_photo']['name'])){
+        $target_file = "../images/".$photo;
+        move_uploaded_file($_FILES["page_photo"]["tmp_name"], $target_file);
+
+        if(!empty($parent_id)){
+            
+            $query = "UPDATE pages SET title_ar = '$title', parent_id=$parent_id, draft=$draft, content_ar='$content',  media='$photo' WHERE idPage=$page_id";
+            $query_run = mysqli_query($connection, $query);
+            
+            if($query_run){
+                $_SESSION["success"]="page modifié successivement";
+                $_SESSION["success-code"]="success";
+                header("location: pages.php");
+            }
+        }else{
+            //parent not identified
+               
+                    $query = "UPDATE pages SET title_ar = '$title', draft=$draft, content_ar='$content', media='$photo' WHERE idPage=$page_id";
+                    $query_run=mysqli_query($connection, $query);
+        
+                    if($query_run){
+                        $_SESSION["success"]="page modifié successivement";
+                        $_SESSION["success-code"]="success";
+                        header("location: pages.php");
+                    }
+        }
+    }else{
+
+        if(!empty($parent_id)){
+            
+            $query = "UPDATE pages SET title_ar = '$title', parent_id=$parent_id, draft=$draft, content_ar='$content' WHERE idPage=$page_id";
+            $query_run = mysqli_query($connection, $query);
+            
+            if($query_run){
+                $_SESSION["success"]="page modifié successivement";
+                $_SESSION["success-code"]="success";
+                header("location: pages.php");
+            }
+        }else{
+            //parent not identified
+               
+                    $query = "UPDATE pages SET title_ar = '$title', draft=$draft, content_ar='$content'WHERE idPage=$page_id";
+                    $query_run=mysqli_query($connection, $query);
+        
+                    if($query_run){
+                        $_SESSION["success"]="page modifié successivement";
+                        $_SESSION["success-code"]="success";
+                        header("location: pages.php");
+                    }
+        }
+
+    }
+
+        $query_delete_plugins = "DELETE FROM plugins where idPage=$page_id;";
+
+        if($pdf == "true"){
+            $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(1, 'Table de PDF téléchargeable', $page_id);";
+        }
+        if($l_form == "true"){
+            $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(3, 'Formulaire d\'authentification', $page_id);";
+        }
+        if($c_form == "true"){
+            $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(2, 'Formulaire de contact', $page_id);";
+        }
+        if($forms == "true"){
+            $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(4, 'les formulaires', $page_id); ";
+        }
+        if($local == "true"){
+            $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(5, 'localisation des agences', $page_id); ";
+        }
+        if($pub == "true"){
+            $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(6, 'Rapports et Publications', $page_id); ";
+        }
+        if($flash == "true"){
+            $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(7, 'Flash info et Communiqués', $page_id); ";
+        }
+        if($galery == "true"){
+            $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(8, 'Galerie', $page_id); ";
+        }
+        if($actes == "true"){
+            $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(9, 'actes administratifs', $page_id); ";
+        }
+
+        $query_run=mysqli_multi_query($connection, $query_delete_plugins);
+
+
+
+        $query_delete_cat = "DELETE FROM category_pages where idPage=$page_id;";
+
+        foreach($cat as $c){
+            $query_delete_cat .="INSERT INTO category_pages(idPage, idCat) values($page_id, $c);"; 
+        }
+        
+
+        $query_run=mysqli_multi_query($connection, $query_delete_cat);
+
 
 }
 

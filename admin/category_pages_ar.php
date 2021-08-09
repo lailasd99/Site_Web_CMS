@@ -1,15 +1,10 @@
 <?php
     include('security.php');
 
-    if(isset($_GET['modify_cat'])){
-        $id = $_GET['cat_id'];
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
 
-        $query_pages = "SELECT * from pages where draft=0 order by title";
-        $query_run_p = mysqli_query($connection, $query_pages);
-    }else if($_GET['cat_id']){
-        $id = $_GET['cat_id'];
-
-        $query_pages = "SELECT * from pages where draft=0 order by title";
+        $query_pages = "SELECT * from pages where parent_id IS NULL and draft=0 order by title";
         $query_run_p = mysqli_query($connection, $query_pages);
     }else{
         header('location: categories.php');
@@ -34,14 +29,14 @@ include('includes/scripts.php');
   <div class="row">
     <div class="left col-7">
       <h3>Les pages de categorie</h3>
-      <ul id="allFacets" class="facet-list" data-id="<?php echo $_GET['cat_id'] ?>">
+      <ul id="allFacets" class="facet-list" data-id="<?php echo $_GET['id'] ?>">
           <?php
             $pages_exist = [];
-            $id = $_GET['cat_id'];
+            $id = $_GET['id'];
             $query = "SELECT * from category_pages where idCat=$id";
             $query_run = mysqli_query($connection, $query);
               while($row = mysqli_fetch_row($query_run)){
-                $req = "SELECT * from pages where idPage = ".$row[0];
+                $req = "SELECT * from pages where idPage = ".$row[0]." and parent_id IS NULL";
                 $res = mysqli_query($connection, $req);
                 while($line = mysqli_fetch_row($res)){
                       array_push($pages_exist, $line[0]);
@@ -69,12 +64,12 @@ include('includes/scripts.php');
 <div class="row" style="padding:15px">
   <div class="left col-7">
   <h5>Vous pouvez ajouter une description de catégorie</h5>
-  <form method="GET" action="category_pages_ar.php">
-    <input type="hidden" value="<?=$id?>" name="id">
-    <button class="btn btn-success" type="submit" name="btn-ar">AR</button>
+  <form method="GET" action="category_pages.php">
+        <input type="hidden" value="<?=$id?>" name="cat_id">
+        <button class="btn btn-success" type="submit" name="btn-ar">FR</button>
   </form>
   <?php
-    $id = $_GET['cat_id'];
+    $id = $_GET['id'];
     $query_section = "SELECT * from category where idCat=$id";
     $result_section = mysqli_query($connection, $query_section);
     if($result_section){
@@ -82,9 +77,9 @@ include('includes/scripts.php');
     }
 
   ?>
-  <textarea id="text_editor_page" class="text_editor_page">
+  <textarea id="text_editor_ar" class="text_editor_ar">
       <?php
-        echo $row[2];
+        echo $row[4];
       ?>
    </textarea>
   </div>
@@ -127,10 +122,10 @@ include('includes/scripts.php');
 
 
 function submit_menu(){
-  tinyMCE.get("text_editor_page").save();
+  tinyMCE.get("text_editor_ar").save();
     var lis = new Array();
     var catId = $("#allFacets").data('id');
-    var content = $("#text_editor_page").val();
+    var content = $("#text_editor_ar").val();
     
     // Iterate through the <li> items
     $("#allFacets").children("li").each(function()
@@ -143,7 +138,7 @@ function submit_menu(){
     $.ajax({
         url: "./category_actions.php",
         type: "POST",
-        data: { items: lis, cat_id: catId, content: content},
+        data: { items: lis, cat_id_ar: catId, content: content},
         success: function(data) {
            console.log(data)
            //alert('ok') 
@@ -151,7 +146,7 @@ function submit_menu(){
              window.location = "./categories.php?success=1";
            }
            else{
-            window.location = "./category_pages.php?status=1";
+            window.location = "./category_pages_ar.php?status=1";
            }
         }
     });

@@ -10,7 +10,7 @@
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 article-sidebar">
                         <div class="sidebar">
                         <div class="container">
-                        <h2 class="widget-title espace-title">Avis & Alertes</h2>
+                        <h2 class="widget-title espace-title"><?= _('Avis & Alertes'); ?></h2>
                         <?php
 
                                     include("includes/security.php");
@@ -25,9 +25,14 @@
                                     echo "<div class='blog-list-widget'>
                                     <div class='list-group'>";
                                     while($row = mysqli_fetch_row($run_query)){
+                                        if($_SESSION['lang']=="Ar"){
+                                            $name= $row[3];
+                                        }else{
+                                            $name= $row[1];
+                                        }
                                         echo '<a href="avisPage.php?id='.$row[0].'" class="list-widget">
                                         <div class="w-100 last-item justify-content-between">
-                                            <h5 class="mb-1">'.$row[1].'</h5>
+                                            <h5 class="mb-1">'.$name.'</h5>
                                         </div><hr>
                                             </a>';
                                         
@@ -38,7 +43,7 @@
                              </div>
                             <hr class="invis" >
                             <div class="widget">
-                                <h2 class="widget-title">Suivez-nous</h2>
+                                <h2 class="widget-title"><?= _('Suivez-nous'); ?></h2>
 
                                 <div class="row text-center">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
@@ -63,8 +68,8 @@
                         <div class="page-wrapper">
                             <div class="blog-title-area text-center">
                                 <ol class="breadcrumb hidden-xs-down">
-                                    <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
-                                    <li class="breadcrumb-item active">Avis & Alertes</li>
+                                    <li class="breadcrumb-item"><a href="index.php"><?= _('Accueil'); ?></a></li>
+                                    <li class="breadcrumb-item active"><?= _('Avis & Alertes'); ?></li>
                                 </ol>
 
                                 <!--<span class="color-orange"><a href="tech-category-01.html" title="">Technology</a></span>-->
@@ -89,8 +94,13 @@
                                     $query_run=mysqli_query($connection, $query);
                                     if($query_run){
                                        $row=mysqli_fetch_row($query_run);
-                                       $title = $row[1];
-                                        $desc = $row[2];
+                                       if($_SESSION['lang']=="Ar"){
+                                            $title = $row[3];
+                                            $desc = $row[4];
+                                        }else{
+                                            $title = $row[1];
+                                            $desc = $row[2];
+                                        }
                                         
                                     }
 
@@ -113,8 +123,8 @@
 
                                 <div class="post-sharing">
                                     <ul class="list-inline">
-                                        <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Partager en Facebook</span></a></li>
-                                        <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Partager en Twitter</span></a></li>
+                                        <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile"><?= _('Partager sur Facebook'); ?></span></a></li>
+                                        <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile"><?= _('Partager sur Twitter'); ?></span></a></li>
                                         <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google"></i></a></li>
                                     </ul>
                                 </div><!-- end post-sharing -->
@@ -174,13 +184,13 @@
                             <hr class="invis1">
 -->
                             <div class="custombox clearfix">
-                                <h4 class="small-title">Envoyez un commentaire</h4>
+                                <h4 class="small-title"><?= _('Envoyer un commentaire'); ?></h4>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <form class="form-wrapper">
-                                            <input type="text" class="form-control" placeholder="Email ici">
-                                            <textarea class="form-control" placeholder="Votre commantaire"></textarea>
-                                            <button type="submit" class="btn btn-primary">Soumettre</button>
+                                            <input type="text" class="form-control" placeholder="<?= _('Email ici'); ?>">
+                                            <textarea class="form-control" placeholder="<?= _('Votre commantaire'); ?>"></textarea>
+                                            <button type="submit" class="btn btn-primary"><?= _('Soumettre'); ?></button>
                                         </form>
                                     </div>
                                 </div>

@@ -4,21 +4,21 @@
                     <div class="col-lg-6">
                         <div class="widget">
                             <div class="footer-text text-left">
-                                <a href="index.php"><img src="images/version/radeema.png" alt="" class="img-fluid"></a>
+                                <a href="index.php"><img src="images/version/radeema_logo_new.png" alt="" class="img-fluid"></a>
                                 <!--<p>Tech Blog is a technology blog, we sharing marketing, news and gadget articles.</p>-->
                                 <div class="social" id="social">
-                                    <a href="https://fr-fr.facebook.com/RADEEMAKECH/" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>              
-                                    <a href="https://www.youtube.com/channel/UCFl5dUovd_Wr1AT0aprFAJA" data-toggle="tooltip" data-placement="bottom" title="Youtube"><i class="fa fa-youtube-play"></i></a>
-                                    <a href="https://play.google.com/store/apps/details?id=ma.radeema.redaelouafi.RadeemaMob" data-toggle="tooltip" data-placement="bottom" title="Application android"><i class="fa fa-android "></i></a>
+                                    <a href="https://fr-fr.facebook.com/RADEEMAKECH/" data-toggle="tooltip" data-placement="bottom" title="<?= _('Facebook'); ?>"><i class="fa fa-facebook"></i></a>              
+                                    <a href="https://www.youtube.com/channel/UCFl5dUovd_Wr1AT0aprFAJA" data-toggle="tooltip" data-placement="bottom" title="<?= _('Youtube'); ?>"><i class="fa fa-youtube-play"></i></a>
+                                    <a href="https://play.google.com/store/apps/details?id=ma.radeema.redaelouafi.RadeemaMob" data-toggle="tooltip" data-placement="bottom" title="<?= _('Application android'); ?>"><i class="fa fa-android "></i></a>
                                 </div>
 
                                 <hr class="invis">
 
                                 <div class="newsletter-widget text-left">
-                                    <h2 class="form-title">Envoyez nous un message</h2>
+                                    <h2 class="form-title"><?= _('Envoyez nous un message'); ?></h2>
                                     <form class="form-inline" action="contact_us.php" method="post">
-                                        <input name="email" type="text" class="form-control" placeholder="Entrez votre adresse email...">
-                                        <button name ="submit" type="submit" class="btn btn-primary send">Soumettre</button>
+                                        <input name="email" type="text" class="form-control" placeholder="<?= _('Entrez votre adresse email');?>...">
+                                        <button name ="submit" type="submit" class="btn btn-primary send"><?= _('Soumettre'); ?></button>
                                     </form>
                                 </div><!-- end newsletter -->
                                
@@ -41,7 +41,11 @@
                                         $query_run1 = mysqli_query($connection, $query1);
                                         if($query_run1){
                                             $row1 = mysqli_fetch_row($query_run1);
-                                            $name = $row1[1];
+                                            if($locale=="Ar" && !empty($row1[11])){
+                                                $name = $row1[11];
+                                            }else{
+                                                $name = $row1[1];
+                                            }
                                             echo '<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                             <div class="widget">
                                                         <a class="nav-link" href="single-page.php?id='.$row1[0].'"><h2 class="widget-title">'.$name.'</h2></a>
@@ -54,7 +58,11 @@
                                                 $query_run1 = mysqli_query($connection, $query1);
                                                 if($query_run1){
                                                     $row1 = mysqli_fetch_row($query_run1);
-                                                    $name = $row1[1];
+                                                    if($_SESSION['lang']=="Ar" && !empty($row1[3])){
+                                                        $name = $row1[3];
+                                                    }else{
+                                                        $name = $row1[1];
+                                                    }
                                                 }
                                             
                                                     $query2 = "SELECT * from category_pages where idCat=".$row[1];
@@ -72,7 +80,12 @@
                                                                 $res = mysqli_query($connection, $req);
                                                                 if($res){
                                                                     $line = mysqli_fetch_row($res);
-                                                                    echo '<li><a href="single-page.php?id='.$line[0].'&catid='.$row[1].'">'.$line[1].'</a></li>';
+                                                                    if($_SESSION['lang']=="Ar" && !empty($line[11])){
+                                                                        $name = $line[11];
+                                                                    }else{
+                                                                        $name = $line[1];
+                                                                    }
+                                                                    echo '<li><a href="single-page.php?id='.$line[0].'&catid='.$row[1].'">'.$name.'</a></li>';
                                                                 }
                                                             }
 
@@ -93,13 +106,13 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <br>
-                        <div class="copyright">&copy; Tous droits réservés RADEEMA 2021</div>
+                        <div class="copyright">&copy; <?= _('Tous droits réservés RADEEMA 2021'); ?></div>
                     </div>
                 </div>
             </div><!-- end container -->
         </footer><!-- end footer -->
 
-        <div class="dmtop">Remonter</div>
+        <div class="dmtop"><?=_('Remonter'); ?></div>
         <!--<a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>-->

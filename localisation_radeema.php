@@ -1,4 +1,4 @@
-
+<h3><?=_('Localisation de nos agences'); ?></h3>
 <table class="table table-striped table-bordered">
 <thead>
   <tr>
