@@ -254,7 +254,7 @@ if(isset($_GET['modify_page']))
         $query_run_p = mysqli_query($connection, $query_p);
       ?>
       <input id="act" name="act" value="oui" type="checkbox" <?php if(mysqli_num_rows($query_run_p) > 0){ echo "checked";}?>/>
-      <label class="form-check-label" for="">actes administratifs</label>
+      <label class="form-check-label" for="">FAQ</label>
     </div>
   </div>
 </div>

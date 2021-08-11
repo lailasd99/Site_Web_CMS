@@ -23,7 +23,7 @@ if(isset($_POST["submit-page"])){
     $pub=$_POST['publication'];
     $flash=$_POST['flash'];
     $galery=$_POST['galery'];
-    $actes=$_POST['actes'];
+    $faq=$_POST['actes'];
 
     
     if(!empty($_FILES['page_photo']['name'])){
@@ -105,8 +105,8 @@ if(isset($_POST["submit-page"])){
         if($galery == "true"){
             $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(8, 'Galerie', $page_id); ";
         }
-        if($actes == "true"){
-            $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(9, 'actes administratifs', $page_id); ";
+        if($faq == "true"){
+            $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(9, 'faq', $page_id); ";
         }
 
         $query_run=mysqli_multi_query($connection, $query_delete_plugins);
@@ -174,7 +174,7 @@ if(isset($_POST['add-page'])){
     $pub=$_POST['publication'];
     $flash=$_POST['flash'];
     $galery=$_POST['galery'];
-    $actes=$_POST['actes'];
+    $faq=$_POST['actes'];
 
 
     $query = "SELECT * FROM pages WHERE title='$title'";
@@ -234,8 +234,8 @@ if(isset($_POST['add-page'])){
         if($galery == "true"){
             $query_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(8, 'Galerie', $page_id); ";
         }
-        if($actes == "true"){
-            $query_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(9, 'actes administratifs', $page_id); ";
+        if($faq == "true"){
+            $query_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(9, 'faq', $page_id); ";
         }
         
 
@@ -291,7 +291,7 @@ if(isset($_POST["submit-page-ar"])){
     $pub=$_POST['publication'];
     $flash=$_POST['flash'];
     $galery=$_POST['galery'];
-    $actes=$_POST['actes'];
+    $faq=$_POST['actes'];
 
     
     if(!empty($_FILES['page_photo']['name'])){
@@ -373,8 +373,8 @@ if(isset($_POST["submit-page-ar"])){
         if($galery == "true"){
             $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(8, 'Galerie', $page_id); ";
         }
-        if($actes == "true"){
-            $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(9, 'actes administratifs', $page_id); ";
+        if($faq == "true"){
+            $query_delete_plugins .="INSERT INTO plugins(idPlugin, name, idPage) values(9, 'faq', $page_id); ";
         }
 
         $query_run=mysqli_multi_query($connection, $query_delete_plugins);

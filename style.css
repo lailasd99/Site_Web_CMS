@@ -1503,7 +1503,7 @@ hr.invis3 {
 
 .newsletter-widget .form-inline .form-control {
     background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid #dbdde0;
+    /*border: 1px solid #dbdde0;*/
     border-radius: 0;
     box-shadow: none;
     display: inline-block;
@@ -2016,109 +2016,186 @@ hr.invis3 {
 
 
 
-/* plugin actes */
+  /* plugin faq */
 
 
-.collapse-area {
-  background: #D7D8DC;
+  .collapse-area {
+    background: #D7D8DC;
+  }
+  .panel {
+    margin-top: 0px !important;
+    border-radius: 0px !important;
+    border: none;
+    border-bottom-color: #D7D8DC;
+    box-shadow: 0 0px 0px 0 transparent !important;
+    -moz-box-shadow: 0 0px 0px 0 transparent !important;
+    -webkit-box-shadow: 0 0px 0px 0 transparent !important;
+    -o-box-shadow: 0 0px 0px 0 transparent !important;
+  }
+  .panel .panel-heading {
+    border-radius: 0px !important;
+    background: #f5f6f8;
+    padding: 0px !important;
+    border-bottom: 0px solid #DDDEE2;
+  }
+  .panel .panel-heading .panel-title a {
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 23px 15px;
+    font-weight: 300;
+    color: #60626d;
+    background-color: #ffffff;
+    line-height: 29px;
+    position: relative;
+  }
+  .panel .panel-heading .panel-title a:hover,
+  .panel .panel-heading .panel-title a:active {
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    color: #9a4a5a;
+  }
+  .panel .panel-heading .panel-title a span {
+    float: left;
+    margin-top: 15px;
+    margin-right: 30px;
+    transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+  }
+  .panel .panel-heading .panel-title a .bar,
+  .panel .panel-heading .panel-title a .bar:after {
+    border-width: 1px;
+    border-style: solid;
+    width: 21px;
+    border-radius: 10px;
+    transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+  }
+  .panel .panel-heading .panel-title a .bar:after {
+    content: "";
+    height: 0;
+    position: absolute;
+    top: 38px;
+    left: 15px;
+  }
+  .panel .panel-heading .panel-title a.collapsed {
+    background-color: #f5f6f8 !important;
+    border-bottom: 1px solid #eeeef3;
+    position: relative;
+    transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+  }
+  .panel .panel-heading .panel-title a.collapsed .bar {
+    border-color: #75767F;
+  }
+  .panel .panel-heading .panel-title a.collapsed .bar:after {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    border-color: #75767F;
+    transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+  }
+  .panel-collapse {
+    background-color: #ffffff;
+  }
+  .panel-collapse .panel-body {
+    background-color: #ffffff;
+    border: 0px solid !important;
+    line-height: 26px;
+    font-weight: 300;
+    margin-left: 50px;
+    padding-bottom: 20px;
+    padding-top: 0px;
+    color: #60626d;
+  }
+
+
+
+
+  /* search box */
+
+  /*Vars */
+:root {
+  --rad: .7rem;
+  --dur: .3s;
+  --color-dark: #2f2f2f;
+  --color-light: #fff;
+  --color-brand: #57bd84;
+  --font-fam: 'Lato', sans-serif;
+  --height: 2.5rem;
+  --btn-width: 3rem;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
 }
-.panel {
-  margin-top: 0px !important;
-  border-radius: 0px !important;
-  border: none;
-  border-bottom-color: #D7D8DC;
-  box-shadow: 0 0px 0px 0 transparent !important;
-  -moz-box-shadow: 0 0px 0px 0 transparent !important;
-  -webkit-box-shadow: 0 0px 0px 0 transparent !important;
-  -o-box-shadow: 0 0px 0px 0 transparent !important;
+
+/* Setup*/
+/*body {background: var(--color-dark); display: flex; align-items: center; justify-content: center; min-height: 100vh }
+html { box-sizing: border-box; height: 100%; font-size: 10px; } *, *::before, *::after { box-sizing: inherit; }*/
+
+/* Main styles*/
+#form-search {
+  position: relative;
+  width: 15rem;
+  background: var(--color-brand);
+  border-radius: var(--rad);
 }
-.panel .panel-heading {
-  border-radius: 0px !important;
-  background: #f5f6f8;
-  padding: 0px !important;
-  border-bottom: 0px solid #DDDEE2;
+#search, #btn-recherche {
+  height: var(--height);
+  font-family: var(--font-fam);
+  border: 0;
+  color: var(--color-dark);
+  font-size: 1rem;
 }
-.panel .panel-heading .panel-title a {
-  text-decoration: none;
-  font-weight: bold;
-  display: block;
-  padding: 23px 15px;
-  font-weight: 300;
-  color: #60626d;
-  background-color: #ffffff;
-  line-height: 29px;
+#search[type="search"] {
+  outline: 0; /* <-- should probably remove this for better accessibility, adding for demo aesthetics for now.*/
+  width: 100%;
+  background: var(--color-light);
+  padding: 0 1.6rem;
+  border-radius: var(--rad);
+  appearance: none; /*for iOS input[type="search"] roundedness issue. border-radius alone doesn't work*/
+  transition: all var(--dur) var(--bez);
+  transition-property: width, border-radius;
+  z-index: 1;
   position: relative;
 }
-.panel .panel-heading .panel-title a:hover,
-.panel .panel-heading .panel-title a:active {
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  color: #9a4a5a;
-}
-.panel .panel-heading .panel-title a span {
-  float: left;
-  margin-top: 15px;
-  margin-right: 30px;
-  transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-}
-.panel .panel-heading .panel-title a .bar,
-.panel .panel-heading .panel-title a .bar:after {
-  border-width: 1px;
-  border-style: solid;
-  width: 21px;
-  border-radius: 10px;
-  transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-}
-.panel .panel-heading .panel-title a .bar:after {
-  content: "";
-  height: 0;
+#btn-recherche {
+  display: none; /* prevent being able to tab to it*/
   position: absolute;
-  top: 38px;
-  left: 15px;
+  top: 0;
+  right: 0;
+  width: var(--btn-width);
+  font-weight: bold;
+  background: var(--color-brand);
+  border-radius: 0 var(--rad) var(--rad) 0;
 }
-.panel .panel-heading .panel-title a.collapsed {
-  background-color: #f5f6f8 !important;
-  border-bottom: 1px solid #eeeef3;
-  position: relative;
-  transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
+#search:not(:placeholder-shown) {
+  border-radius: var(--rad) 0 0 var(--rad);
+  width: calc(100% - var(--btn-width));
 }
-.panel .panel-heading .panel-title a.collapsed .bar {
-  border-color: #75767F;
-}
-.panel .panel-heading .panel-title a.collapsed .bar:after {
-  transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  border-color: #75767F;
-  transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-}
-.panel-collapse {
-  background-color: #ffffff;
-}
-.panel-collapse .panel-body {
-  background-color: #ffffff;
-  border: 0px solid !important;
-  line-height: 26px;
-  font-weight: 300;
-  margin-left: 50px;
-  padding-bottom: 20px;
-  padding-top: 0px;
-  color: #60626d;
+#search:not(:placeholder-shown) + button {
+    display: block;
+  }
+
+
+.label-search {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
 }

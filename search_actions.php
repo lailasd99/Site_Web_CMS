@@ -1,7 +1,7 @@
 
 <?php
 include("includes/security.php");
-var_dump($_GET); exit();
+//var_dump($_GET); exit();
 if(isset($_GET['keyword'])){
     $key = $_GET['keyword'];
     $keyword = metaphone($key);

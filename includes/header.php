@@ -190,16 +190,20 @@ $locale = "en";
                                              ?>
                            
                         </ul>
-                        <ul class="navbar-nav mr-2">
+                        <!--<ul class="navbar-nav mr-2">
                             <li class="nav-item">
                             <div class="search-box">
-                                <!--<form method="GET" action="search_result.php">-->
                                     <button class="btn-search" onclick="onSearch();"><i class="fas fa-search" id="btn-search"></i></button>
                                     <input type="text" id="keyword" class="input-search" placeholder="Rechercher...">
-                                <!--</form>-->
                             </div>
                             </li>
-                        </ul>
+                        </ul>-->
+
+                        <form role="search" id="form-search" action="search_result.php" method="GET">
+                            <label class="label-search" for="search">Rechercher</label>
+                            <input name="keyword" id="search" type="search" placeholder="Rechercher..."/>
+                            <button name="submit-search" id="btn-recherche" type="submit"><i class="fas fa-search"></i></button>    
+                        </form>
 
                         <div class="nav-wrapper">
                         <div class="sl-nav">
@@ -264,13 +268,13 @@ dd_menu_a.forEach(function(dd_menu_item){
 
 
 <script>
-    function onSearch(){
+    /*function onSearch(){
         var key = document.getElementById("keyword").value;
         if(key != ""){
             sessionStorage.setItem("key", key);
             window.location.href = "search_result.php";
         }
-    }
+    }*/
 
 
 

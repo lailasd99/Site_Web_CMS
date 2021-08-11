@@ -182,13 +182,29 @@
                     </div><!-- end col -->
 
 
+                    <?php
+                                    
+                        $query="SELECT * FROM pages where idPage=$id";
+                        $query_run=mysqli_query($connection, $query);
+                        if($query_run){
+                            $row=mysqli_fetch_row($query_run);
+                            if($_SESSION['lang']=="Ar"){
+                                $title=$row[11];
+                                $content=$row[12];
+                            }else{
+                                $title=$row[1];
+                                $content=$row[8];
+                            }    
+                            
+                        }
+                    ?>
 
                     <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                         <div class="page-wrapper">
                             <div class="blog-title-area text-center">
                                 <ol class="breadcrumb hidden-xs-down">
                                     <li class="breadcrumb-item"><a href="index.php"><?= _('Accueil'); ?></a></li>
-                                    <li class="breadcrumb-item active"><?php echo $name?></li>
+                                    <li class="breadcrumb-item active"><?php echo $title?></li>
                                 </ol>
 
                                 <!--<span class="color-orange"><a href="tech-category-01.html" title="">Technology</a></span>-->
@@ -208,25 +224,7 @@
                             </div>--->
 
                             <div class="blog-content"> 
-                                <?php
-                                    
-                                    
-                                    
-
-                                    $query="SELECT * FROM pages where idPage=$id";
-                                    $query_run=mysqli_query($connection, $query);
-                                    if($query_run){
-                                       $row=mysqli_fetch_row($query_run);
-                                       if($_SESSION['lang']=="Ar"){
-                                            $title=$row[11];
-                                            $content=$row[12];
-                                       }else{
-                                            $title=$row[1];
-                                            $content=$row[8];
-                                       }    
-                                        
-                                    }
-                                ?> 
+                 
                                 <h1 align="center" style="margin-bottom: 40px"><?php echo $title;?></h1>
                                 <div class="single-post-media">
                                 <?php if(!empty($row[10])){?>
@@ -242,6 +240,8 @@
                                     </p>
                                 </div>
                             </div><!-- end content -->
+                            <br><hr>
+                            <br><br>
 
                             
                                 <?php 
@@ -266,6 +266,8 @@
                                             include("flash_info.php");
                                         }else if($row_p[0]== 8){
                                             include("galery.php");
+                                        }else if($row_p[0]== 9){
+                                            include("faq.php");
                                         }
                                         echo "<hr style='margin: 50px 0'>";
                                     }

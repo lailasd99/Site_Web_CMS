@@ -6,6 +6,8 @@
 
 <hr style="width:80%; margin-top: 25px">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
 <section class="section">
     <div class="container">
@@ -123,49 +125,94 @@
                         </div><!-- end widget -->
                 </div>
             </div><!--end col -->
-         </div>
-    </div>
+         
+    
 
 
-    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-        <div class="page-wrapper">
-            <!--<input type="text" id="key" value="" hidden>-->
-            <script>
-                var keyword = sessionStorage.getItem("key");
-                /*document.getElementById("key").value = keyword;*/
-                
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                <div class="page-wrapper espaces">
+                    <?php
+                        if(isset($_GET['submit-search'])){
+                            $key = $_GET['keyword'];
 
-                $.ajax({
-                    url: "./search_actions.php",
-                    type: "GET",
-                    data: { keyword: keyword},
-                    success: function(data) {
-                        var json;
-                        /*if (xhr.status != 200) {
-                            failure('HTTP Error: ' + xhr.status);
-                            return;
-                        }*/
+                            $keyword = metaphone($key);
+                            $query_articles = "SELECT * from articles where title like '%$key%' and accept=1 order by AdmittedAt";
+                            $query_run_art = mysqli_query($connection, $query_articles);
+
+                            $query_pages = "SELECT * from pages where title like '%$key%' and draft=0";
+                            $query_run_page = mysqli_query($connection, $query_pages);
+
+                            echo "<h5>"._("Résultat de recherche")." >> ".$key." : </h5>";
+                            if($query_run_art){
+                                    echo "<h6 style='color:gray;'>"._('les articles')." :</h6>";
+                                    if(mysqli_num_rows($query_run_art) > 0){
+                                    while($row = mysqli_fetch_row($query_run_art)){
+                                    
+                                    ?>
+                                    <hr>
+                                    <div class="blog-list clearfix">
+                                        <div class="blog-box row">
+                                            <div class="col-md-2">
+                                                <div class="post-media" style="height: 100px">
+                                                    <a href="single-blog.php?id=<?php echo $row[0]?>" title="<?php $row[1]?>">
+                                                        <img src="<?php echo 'images/'.$row[6];?>" alt="" class="img-fluid" style="object-fit: cover; height: 100%">
+                                                        <div class="hovereffect"></div>
+                                                    </a>
+                                                </div><!-- end media -->
+                                            </div><!-- end col -->
+                            
+                                            <div class="blog-meta big-meta col-md-10">
+                                                <h4 style="padding-top: 0px; margin-top: 0px; font-size: 16px"><a href="single-blog.php?id=<?php echo $row[0]?>" title="<?php $row[1]?>"><?php echo $row[1]?></a></h4>
+                                                <!--<small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Gadgets</a></small>-->
+                                                <small><a href="single-blog.php?id=<?php echo $row[0]?>" title=""><?php ?></a></small>
+                                                <!--<small><a href="single-blog.php?id=<?php echo $row[0]?>" title="">by Matilda</a></small>
+                                                <small><a href="single-blog.php?id=<?php echo $row[0]?>" title=""><i class="fa fa-eye"></i> 1114</a></small>--->
+                                            </div><!-- end meta -->
+                                        </div><!-- end blog-box -->
+                                    </div>
+                                
+                                        <?php
+                                            
+                                    }
+                                    //echo "</div>";
+
+                                    }else{
+                                        echo "<span style='color:black;'>"._('aucune article trouvée').".</span>";
+                                    }
+                            }
+                            echo '<hr class="invis"><br>';
+                            
+
+                            if($query_run_page){
+                                echo "<h6 style='color:gray;'>"._('les pages')." :</h6>";
+                                if(mysqli_num_rows($query_run_page) > 0){
+                                while($row = mysqli_fetch_row($query_run_page)){
+                                
+                                ?>
+                                <hr>
+                                <div class="blog-list clearfix">
+                                    <div class="blog-box row">
+                                        <div class="blog-meta big-meta col-md-10">
+                                            <h4 style="padding-top: 0px; margin-top: 0px; font-size: 16px; text-decoration: underline"><a href="single-page.php?id=<?php echo $row[0]?>"><?php echo $row[1]?></a></h4>
+                                            <small><a href="single-page.php?id=<?php echo $row[0]?>" title=""><?php ?></a></small>
+                                        </div><!-- end meta -->
+                                    </div><!-- end blog-box -->
+                                </div>
                         
-                        json = JSON.parse(xhr.responseText);
-                        console.log(json);
-                        /*if (!json || typeof json.articles != 'string') {
-                            failure('Invalid JSON: ' + xhr.responseText);
-                            return;
-                        }*/
-                        //success(json.articles);
-                        
-                        
-                    //alert('ok') 
-                    /*if (data == 'ok'){
-                        window.location = "./categories.php?success=1";
-                    }
-                    else{
-                        window.location = "./category_pages.php?status=1";
-                    }*/
-                    }
-                });
-            </script>
-            
+                                    <?php
+                                        
+                                }
+                                }else{
+                                    echo "<span>"._('aucune page trouvée').".</span>";
+                                }
+
+                            }
+                        }
+
+                    ?>
+                    
+                </div>
+            </div>
         </div>
     </div>
 </section>

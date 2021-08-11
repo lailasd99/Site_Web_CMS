@@ -12,7 +12,7 @@
     ?>
 
 <div class="btnadd-action" style="margin-bottom: 20px">
-    <label><h1 class="h3 mb-0 text-gray-800">Actes administratifs</h1></label>
+    <label><h1 class="h3 mb-0 text-gray-800">FAQ</h1></label>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addacte" style="margin-left: 20px">
        Ajouter une section 
     </button>
@@ -20,7 +20,7 @@
 
 
 <?php
-    $query= "SELECT * from actes";
+    $query= "SELECT * from faq";
     $run = mysqli_query($connection, $query)
 
 ?>
@@ -38,7 +38,7 @@
             <!-- Start: Tab-1 -->
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#<?=$i;?>" class="">
+                <a data-toggle="collapse" data-parent="#accordion" href="#<?=$i;?>" class="collapsed">
                   <?php echo $row[1]; ?>
                   <input id="title_acte" value="<?php echo $row[1]; ?>" hidden>
                   <span class="bar hidden-xs"></span>
@@ -47,7 +47,7 @@
                 </a>
               </h4>
             </div>
-            <div id="<?=$i;?>" class="panel-collapse collapse in">
+            <div id="<?=$i;?>" class="panel-collapse collapse">
               <div class="panel-body">
                 <?php echo $row[2]; ?>
                 <textarea id="desc_acte" hidden><?= $row[2]; ?></textarea>
@@ -79,11 +79,11 @@
         <div class="modal-body">
 
             <div class="form-group">
-                <label>Titre</label>
-                <input type="text" name="title" class="form-control" placeholder="Entrez un titre">
+                <label>question</label>
+                <input type="text" name="title" class="form-control" placeholder="Entrez une question">
             </div>   
             <div class="form-group">
-                <label>Entrez une description</label>
+                <label>réponse</label>
                 <textarea class="mini_textarea" name="desc">
 
                 </textarea>
@@ -103,7 +103,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajouter une section dans les actes administratifs</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter une question et réponse</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -113,11 +113,11 @@
         <div class="modal-body">
         <input id="id-of-acte" name="acte-id"  value="" hidden>
             <div class="form-group">
-                <label>Titre</label>
-                <input id="title" type="text" name="title" class="form-control" placeholder="Entrez un titre">
+                <label>question</label>
+                <input id="title" type="text" name="title" class="form-control" placeholder="Entrez une question">
             </div>   
             <div class="form-group">
-                <label>Entrez une description</label>
+                <label>réponse</label>
                 <textarea id="content" class="mini_textarea" name="desc">
 
                 </textarea>
@@ -138,7 +138,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Supprimer le fichier</h5>
+        <h5 class="modal-title">Supprimer la question</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -165,7 +165,6 @@
 
     document.getElementById("title").value= document.getElementById("title_acte").value;
     var $con = $('textarea#desc_acte').val();
-    console.log($con);
     tinymce.get("content").setContent($con);
     
 

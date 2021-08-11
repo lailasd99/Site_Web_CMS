@@ -3,10 +3,10 @@
 <thead>
   <tr>
     <th scope="col">#</th>
-    <th scope="col">Date de communiqué</th>
-    <th scope="col">Désignation</th>
-    <th scope="col">Voir</th>
-    <th scope="col">Télécharger</th>
+    <th scope="col"><?= _('Date de communiqué'); ?></th>
+    <th scope="col"><?= _('Désignation'); ?></th>
+    <th scope="col"><?= _('Voir'); ?></th>
+    <th scope="col"><?= _('Télécharger'); ?></th>
   </tr>
 </thead>
 <tbody>

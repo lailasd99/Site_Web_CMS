@@ -3,10 +3,10 @@
 <thead>
   <tr>
     <th scope="col">#</th>
-    <th scope="col">Numero de Formulaire</th>
-    <th scope="col">Désignation</th>
+    <th scope="col"><?= _('Numero de Formulaire'); ?></th>
+    <th scope="col"><?= _('Désignation'); ?></th>
     <!--<th scope="col">Voir</th>-->
-    <th scope="col">Télécharger</th>
+    <th scope="col"><?= _('Télécharger'); ?></th>
   </tr>
 </thead>
 <tbody>

@@ -15,7 +15,7 @@
                                 <hr class="invis">
 
                                 <div class="newsletter-widget text-left">
-                                    <h2 class="form-title"><?= _('Envoyez nous un message'); ?></h2>
+                                    <h2 class="form-title"><?= _('Envoyez-nous un message'); ?></h2>
                                     <form class="form-inline" action="contact_us.php" method="post">
                                         <input name="email" type="text" class="form-control" placeholder="<?= _('Entrez votre adresse email');?>...">
                                         <button name ="submit" type="submit" class="btn btn-primary send"><?= _('Soumettre'); ?></button>

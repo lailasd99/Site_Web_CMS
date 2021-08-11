@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-08-09 15:00+0100\n"
-"PO-Revision-Date: 2021-08-09 15:01+0100\n"
+"POT-Creation-Date: 2021-08-11 17:24+0100\n"
+"PO-Revision-Date: 2021-08-11 17:28+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -15,29 +15,29 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: agendaPage.php:13 agendaPage.php:74 index.php:256 search_result.php:53
+#: agendaPage.php:13 agendaPage.php:74 index.php:256 search_result.php:55
 msgid "Agenda"
 msgstr "مذكرة"
 
 #: agendaPage.php:48 avisPage.php:46 contact_us.php:64 espace.php:76
-#: index.php:320 search_result.php:106 single-blog.php:52 single-page.php:162
+#: index.php:320 search_result.php:108 single-blog.php:52 single-page.php:162
 #: single_page_espace.php:180
 msgid "Suivez-nous"
 msgstr "تابعنا"
 
 #: agendaPage.php:73 avisPage.php:71 contact_us.php:94 espace.php:117
-#: includes/header.php:122 single-blog.php:82 single-page.php:190
+#: includes/header.php:122 single-blog.php:82 single-page.php:206
 #: single_page_espace.php:208
 msgid "Accueil"
 msgstr "إستقبال"
 
 #: agendaPage.php:131 avisPage.php:126 espace.php:161 single-blog.php:147
-#: single-page.php:285 single_page_espace.php:301
+#: single-page.php:287 single_page_espace.php:305
 msgid "Partager sur Facebook"
 msgstr "مشاركة على الفيسبوك"
 
 #: agendaPage.php:132 avisPage.php:127 espace.php:162 single-blog.php:148
-#: single-page.php:286 single_page_espace.php:302
+#: single-page.php:288 single_page_espace.php:306
 msgid "Partager sur Twitter"
 msgstr "مشاركة على تويتر"
 
@@ -62,7 +62,7 @@ msgstr "تعليقك"
 msgid "Soumettre"
 msgstr "أرسل"
 
-#: avisPage.php:13 avisPage.php:72 index.php:289 search_result.php:80
+#: avisPage.php:13 avisPage.php:72 index.php:289 search_result.php:82
 msgid "Avis & Alertes"
 msgstr "إشعارات"
 
@@ -86,13 +86,31 @@ msgstr "رسالتك"
 msgid "Envoyer"
 msgstr "أرسل"
 
+#: contact_us.php:15
+msgid "Espace client"
+msgstr "فضاء الزبناء"
+
 #: contact_us.php:95
 msgid "contact"
-msgstr ""
+msgstr "إتصال"
 
 #: flash_info.php:2
 msgid "Flash info et Communiqués"
 msgstr "الومضات الإخبارية"
+
+#: flash_info.php:7 les_formulaires_pdf.php:7 radeema_presse.php:7
+#: rapports.php:7
+msgid "Désignation"
+msgstr "إسم"
+
+#: flash_info.php:8 radeema_presse.php:8 rapports.php:8
+msgid "Voir"
+msgstr "قراءة"
+
+#: flash_info.php:9 les_formulaires_pdf.php:9 radeema_presse.php:9
+#: rapports.php:9
+msgid "Télécharger"
+msgstr "تحميل"
 
 #: includes/footer.php:10
 msgid "Facebook"
@@ -107,18 +125,19 @@ msgid "Application android"
 msgstr "تطبيق أندرويد"
 
 #: includes/footer.php:18
-msgid "Envoyez nous un message"
+#| msgid "Envoyez nous un message"
+msgid "Envoyez-nous un message"
 msgstr "أرسل لنا رسالة"
 
 #: includes/footer.php:20
 msgid "Entrez votre adresse email"
 msgstr "أدخل عنوان بريدك الإلكتروني"
 
-#: includes/footer.php:110
+#: includes/footer.php:109
 msgid "Tous droits réservés RADEEMA 2021"
 msgstr "جميع الحقوق محفوظة ، راديما 2021"
 
-#: includes/footer.php:116
+#: includes/footer.php:115
 msgid "Remonter"
 msgstr "إلى فوق"
 
@@ -142,23 +161,23 @@ msgstr "قيمنا"
 msgid "Connexion"
 msgstr "دخول"
 
-#: index.php:222 search_result.php:21
+#: index.php:222 search_result.php:23
 msgid "Espace Clients Particuliers"
 msgstr "فضاء الزبناء الكبار و المؤسساتيين"
 
-#: index.php:228 search_result.php:27
+#: index.php:228 search_result.php:29
 msgid "Espace Grands Comptes"
 msgstr "فضاء الجماعات الترابية"
 
-#: index.php:234 search_result.php:33
+#: index.php:234 search_result.php:35
 msgid "Espace RH"
 msgstr "فضاء الموارد البشرية"
 
-#: index.php:240 search_result.php:39
+#: index.php:240 search_result.php:41
 msgid "Espace Fournisseurs"
 msgstr "فضاء المموّنين"
 
-#: index.php:246 search_result.php:45
+#: index.php:246 search_result.php:47
 msgid "Développement Durable"
 msgstr "فضاء التنمية المستدامة"
 
@@ -166,13 +185,33 @@ msgstr "فضاء التنمية المستدامة"
 msgid "Actualités"
 msgstr "الأخبار"
 
+#: les_formulaires_pdf.php:6
+msgid "Numero de Formulaire"
+msgstr "رقم الإستمارة"
+
 #: localisation_radeema.php:1
 msgid "Localisation de nos agences"
 msgstr "تحديد مواقع وكالاتنا"
 
+#: localisation_radeema.php:5
+msgid "Agence"
+msgstr "وكالة"
+
+#: localisation_radeema.php:6
+msgid "Adresse"
+msgstr "العنوان"
+
+#: localisation_radeema.php:7
+msgid "Téléphone"
+msgstr "الهاتف"
+
+#: localisation_radeema.php:8
+msgid "Horaires d'ouverture"
+msgstr "أوقات العمل"
+
 #: login_form.php:3
 msgid "Connectez-vous à votre espace"
-msgstr ""
+msgstr "تسجيل الدخول إلى الفضاء الخاص بك"
 
 #: login_form.php:7
 msgid "votre e-mail"
@@ -182,9 +221,33 @@ msgstr "البريد الإلكتروني الخاص بك"
 msgid "Se connecter"
 msgstr "دخول"
 
+#: radeema_presse.php:6
+msgid "Date de communiqué"
+msgstr "تاريخ المنشور"
+
 #: rapports.php:2
 msgid "Rapports et Publications"
 msgstr "التقارير"
+
+#: search_result.php:145
+msgid "Résultat de recherche"
+msgstr "نتائج البحث"
+
+#: search_result.php:147
+msgid "les articles"
+msgstr "المقالات"
+
+#: search_result.php:180
+msgid "aucune article trouvée"
+msgstr "لا توجد مقالة"
+
+#: search_result.php:187
+msgid "les pages"
+msgstr "الصفحات"
+
+#: search_result.php:206
+msgid "aucune page trouvée"
+msgstr "لا توجد صفحة"
 
 #: single-blog.php:11
 msgid "Plus d'articles"

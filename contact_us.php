@@ -12,7 +12,7 @@
                              </div>
 
                             <div class="widget">
-                                <h2 class="widget-title espace-title">Espace client</h2>
+                                <h2 class="widget-title espace-title"><?= _('Espace client'); ?></h2>
                                 <div class="blog-list-widget">
                                     <div class="list-group">
                                         <?php 

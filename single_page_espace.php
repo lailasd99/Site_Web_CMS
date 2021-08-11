@@ -260,6 +260,8 @@
                                     </p>
                                 </div>
                             </div><!-- end content -->
+                            <br><hr>
+                            <br><br>
 
 
                             <?php 
@@ -283,6 +285,8 @@
                                         include("flash_info.php");
                                     }else if($row_p[0]== 8){
                                         include("galery.php");
+                                    }else if($row_p[0]== 9){
+                                        include("faq.php");
                                     }
                                     echo "<hr style='margin: 50px 0'>";
                                 }

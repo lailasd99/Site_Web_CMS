@@ -400,7 +400,7 @@ if(isset($_POST['add_acte'])){
     $content = mysqli_real_escape_string($connection, $_POST['desc']);
 
 
-    $query = "INSERT INTO actes(title, content) values('$title', '$content')";
+    $query = "INSERT INTO faq(question, answer) values('$title', '$content')";
     $run = mysqli_query($connection, $query);
 
     if($run){
@@ -422,7 +422,7 @@ if(isset($_POST['edit_acte'])){
     $content = mysqli_real_escape_string($connection, $_POST['content']);
 
 
-    $query = "UPDATE actes set title='$title', content='$content' where idActe=$id_acte";
+    $query = "UPDATE faq set question='$title', answer='$content' where idFaq=$id_acte";
     $run = mysqli_query($connection, $query);
 
     if($run){
@@ -440,15 +440,15 @@ if(isset($_POST['edit_acte'])){
 if(isset($_POST['delete_acte'])){
     $id = $_POST['acte-id'];
 
-    $query = "DELETE FROM actes where idActe=$id";
+    $query = "DELETE FROM faq where idFaq=$id";
     $query_run = mysqli_query($connection, $query);
 
     if($query_run){
-        $_SESSION['success'] = "Section supprimée successivement";
+        $_SESSION['success'] = "Question supprimée successivement";
         $_SESSION['success_code'] = "success";
         header('Location: modify_plugin.php?id=9'); 
     }else{
-        $_SESSION['status'] = "Section n'est pas supprimée";
+        $_SESSION['status'] = "Question n'est pas supprimée";
         $_SESSION['status_code'] = "error";
         header('Location: modify_plugin.php?id=9'); 
     }

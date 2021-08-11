@@ -2,10 +2,10 @@
 <table class="table table-striped table-bordered">
 <thead>
   <tr>
-    <th scope="col">Agence</th>
-    <th scope="col">Adresse</th>
-    <th scope="col">Téléphone</th>
-    <th scope="col">Horaires d'ouverture</th>
+    <th scope="col"><?= _('Agence'); ?></th>
+    <th scope="col"><?= _('Adresse'); ?></th>
+    <th scope="col"><?= _('Téléphone'); ?></th>
+    <th scope="col"><?= _("Horaires d'ouverture"); ?></th>
   </tr>
 </thead>
 <tbody>

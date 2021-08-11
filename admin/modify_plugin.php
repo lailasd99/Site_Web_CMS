@@ -24,7 +24,7 @@ if($id_plugin == 1){
 }else if($id_plugin == 7){
   include('edit_flash.php');
 }else if($id_plugin == 9){
-  include('edit_actes.php');
+  include('edit_faq.php');
 }
 
 
