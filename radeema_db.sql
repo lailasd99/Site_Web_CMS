@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2021 at 06:40 PM
+-- Generation Time: Aug 12, 2021 at 06:25 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -195,9 +195,7 @@ INSERT INTO `category_pages` (`idPage`, `idCat`) VALUES
 (18, 1),
 (68, 1),
 (74, 2),
-(76, 2),
 (78, 2),
-(84, 7),
 (87, 7),
 (88, 7),
 (79, 9),
@@ -232,7 +230,9 @@ INSERT INTO `category_pages` (`idPage`, `idCat`) VALUES
 (75, 2),
 (67, 1),
 (77, 2),
-(32, 5);
+(32, 5),
+(76, 2),
+(84, 7);
 
 -- --------------------------------------------------------
 
@@ -419,10 +419,10 @@ CREATE TABLE `pages` (
 
 INSERT INTO `pages` (`idPage`, `title`, `parent_id`, `path`, `show_in_menu`, `draft`, `createdAt`, `updatedAt`, `content`, `section`, `media`, `title_ar`, `content_ar`) VALUES
 (12, 'Régler mes factures', NULL, NULL, 1, 0, '2005-07-21 02:01:15', '2005-07-21 02:01:15', '', 1, '', 'ادفع فواتيري ', ''),
-(13, 'Associer mes contrats', NULL, NULL, 1, 0, '2005-07-21 02:01:32', '2005-07-21 02:01:32', '', 1, '', '0', '0'),
-(14, 'Mon compte client', NULL, NULL, 1, 0, '2005-07-21 02:03:57', '2005-07-21 02:03:57', '', 1, '', '0', '0'),
+(13, 'Associer mes contrats', NULL, NULL, 1, 0, '2005-07-21 02:01:32', '2005-07-21 02:01:32', '', 1, '', 'ربط عقودي', NULL),
+(14, 'Mon compte client', NULL, NULL, 1, 0, '2005-07-21 02:03:57', '2005-07-21 02:03:57', '', 1, '', 'حساب الزبناء الخاص بي', NULL),
 (15, 'Suivi consommation', NULL, NULL, 1, 0, '2005-07-21 02:04:34', '2005-07-21 02:04:34', '', 1, '', 'تتبع استهلاكي', ''),
-(16, 'service d\'envoi des factures', NULL, NULL, 1, 0, '2005-07-21 02:07:16', '2005-07-21 02:07:16', '', 1, '', '0', '0'),
+(16, 'service d\'envoi des factures', NULL, NULL, 1, 0, '2005-07-21 02:07:16', '2005-07-21 02:07:16', '', 1, '', 'خدمة إرسال الفواتير', ''),
 (17, 'Mes réclamations et demandes', NULL, NULL, 1, 0, '2005-07-21 02:07:40', '2005-07-21 02:07:40', '', 1, '', '0', '0'),
 (18, 'Ma relation avec la radeema', NULL, NULL, 1, 0, '2005-07-21 02:08:09', '2005-07-21 02:08:09', '', 1, '', '0', '0'),
 (20, 'Mot du directeur général', NULL, NULL, 1, 0, '2005-07-21 04:53:07', '2005-07-21 04:53:07', '<p>M. Salah Eddine MOUNTASSIR</p>\r\n<p><strong>Directeur g&eacute;n&eacute;ral P.I. de la RADEEMA</strong></p>\r\n<p>Consciente de l&rsquo;importance capitale que rev&ecirc;t la gestion des m&eacute;tiers de la distribution de l&rsquo;Eau Potable, de l&rsquo;Electricit&eacute;, de l&rsquo;Assainissement Liquide et la protection de l&rsquo;environnement dans la vie quotidienne du citoyen et dans le d&eacute;veloppement &eacute;conomique et social des Collectivit&eacute;s Locales, la R&eacute;gie Autonome de Distribution d&rsquo;Electricit&eacute;&nbsp;et d&rsquo;Eau de Marrakech t&eacute;moigne du fort labeur de ses collaborateurs engag&eacute;s pour assurer le meilleur des services pour les habitants de Marrakech et de ses visiteurs, offrant ainsi les conditions favorables pour l&rsquo;&eacute;panouissement socio-&eacute;conomique et le d&eacute;veloppement durable de la ville, de la R&eacute;gion et du Royaume.</p>\r\n<p>Tout au long des ann&eacute;es 2018 et 2019 et &agrave;&nbsp;travers l&rsquo;ach&egrave;vement et le d&eacute;marrage de grands projets mobilisateurs, nous avons orient&eacute;&nbsp;tous nos programmes et actions pour nourrir notre ambition de positionner la RADEEMA parmi les grandes entreprises du Royaume.</p>\r\n<p>Cette vision conditionn&eacute;e pat le strict respect du Code Marocain de Bonnes Pratiques de Gouvernance, nous a permis de satisfaire les exigences de l&rsquo;ensemble de nos parties int&eacute;ress&eacute;es et d&rsquo;assurer une exploitation optimale de notre infrastructure tout en garantissant son renforcement.</p>\r\n<p>Nous avons &oelig;uvr&eacute;&nbsp;au quotidien &agrave;&nbsp;instaurer une nouvelle culture plus coh&eacute;rente, ax&eacute;e sur le respect de nos valeurs, exigeant de nous une citoyennet&eacute;&nbsp;plus exemplaire et une ligne de conduite marqu&eacute;e par l&rsquo;&eacute;quit&eacute;&nbsp;dans nos d&eacute;cisions, l&rsquo;am&eacute;lioration continue, l&rsquo;&eacute;thique et la transparence dans nos relations.</p>\r\n<p>Cette culture constitue aussi un levier majeur dans la concr&eacute;tisation de nos objectifs visant plus particuli&egrave;rement la g&eacute;n&eacute;ralisation de l&rsquo;acc&egrave;s &agrave;&nbsp;nos services de base, enregistrant une am&eacute;lioration des taux de desserte ainsi que l&rsquo;am&eacute;lioration du rendement de nos r&eacute;seaux. Par ailleurs, nous avons continu&eacute;&nbsp;&agrave;&nbsp;concr&eacute;tiser nos programmes de d&eacute;veloppement par le lancement de nouveaux projets toujours plus respectueux de notre environnement notamment le projet de s&eacute;chage solaire des boues et l&rsquo;extension de la capacit&eacute;&nbsp;de traitement de la STEP de Marrakech et de sa ligne de valorisation de biogaz par la m&eacute;thanisation des boues d&rsquo;&eacute;puration.</p>\r\n<p>Nos engagements ont concern&eacute;&nbsp;&eacute;galement la valorisation des boues d&rsquo;&eacute;puration s&eacute;ch&eacute;es comme combustible de substitution dans l&rsquo;industrie de fabrication du ciment par la signature d&rsquo;un protocole d&rsquo;accord faisant ainsi de ce d&eacute;chet une source d&rsquo;&eacute;nergie alternative.</p>', 3, '', 'كلمة المدير العام', ''),
@@ -452,7 +452,7 @@ INSERT INTO `pages` (`idPage`, `title`, `parent_id`, `path`, `show_in_menu`, `dr
 (46, 'Histoire', NULL, NULL, NULL, 0, '2012-07-21 03:02:56', '2012-07-21 03:02:56', '<p><strong>Un peu d\'Histoire</strong></p>\r\n<p>La soci&eacute;t&eacute; d&rsquo;Electricit&eacute; de Marrakech est constitu&eacute;e le 27 juin 1922.</p>\r\n<p>Le 17 juillet 1964, la ville de Marrakech a sign&eacute; un protocole pour le rachat de la concession, laquelle fut confi&eacute;e &agrave; la Soci&eacute;t&eacute; Marocaine de Distribution (SMD) Le 26 D&eacute;cembre 1970 et suite aux d&eacute;lib&eacute;rations du conseil communal de la vile de Marrakech, il a &eacute;t&eacute; d&eacute;cid&eacute; de cr&eacute;er &agrave; partir du premier janvier 1971, la R&eacute;gie Autonome de Distribution d&rsquo;Eau et d&rsquo;Electricit&eacute; de Marrakech, d&eacute;nomm&eacute;e RADEEMA et ce en en vertu du D&eacute;cret n&deg; 2-64-394 du 29 Septembre 1964 relatif aux R&eacute;gies communales. Le premier janvier 1998, la RADEEMA a pris en charge la gestion du service de l&rsquo;assainissement liquide suite aux d&eacute;lib&eacute;rations de la communaut&eacute; urbaine de Marrakech.</p>\r\n<p>Le 09 Juillet 2010, la RADEEMA est pass&eacute;e au contr&ocirc;le d\'accompagnement en substitution du contr&ocirc;le pr&eacute;alable conform&eacute;ment aux dispositions de l\'article 18 de la loi 69.00.</p>', 3, '', 'تاريخنا', '');
 INSERT INTO `pages` (`idPage`, `title`, `parent_id`, `path`, `show_in_menu`, `draft`, `createdAt`, `updatedAt`, `content`, `section`, `media`, `title_ar`, `content_ar`) VALUES
 (67, 'Actes Administratifs', NULL, NULL, NULL, 0, '2021-07-20 12:40:39', '2021-07-20 12:40:39', '<p>Ce type de branchement ou raccordement est destin&eacute; &agrave; l&rsquo;alimentation en eau potable, en &eacute;lectricit&eacute; ou en assainissement d&rsquo;une construction &agrave; l&rsquo;int&eacute;rieur d&rsquo;un lotissement, d&rsquo;une unit&eacute; industrielle, ou l&rsquo;alimentation d&rsquo;un immeuble.</p>\r\n<p>Pour les constructions particuliaire ou dans un lotissement, la demande se fait au niveau de l&rsquo;agence de rattachement du client par contre pour l&rsquo;unit&eacute; industrielle et les grands projets en g&eacute;n&eacute;ral, la demande se fait &agrave; l&rsquo;agence du si&egrave;ge (av. Mohamed VI &ndash; BP 520 &ndash; gu&eacute;liz) ou bien par courrier port&eacute; et d&eacute;pos&eacute; au bureau d&rsquo;ordre de la Direction G&eacute;n&eacute;rale.</p>\r\n<div class=\"t_title\">\r\n<p class=\"label label-info\">Pi&egrave;ces &agrave; fournir.</p>\r\n</div>\r\n<div>\r\n<p class=\"label label-inverse\">Pi&egrave;ces communes :</p>\r\n<p><strong>&diams; Demande de branchement ou pr&eacute; imprim&eacute; sign&eacute; par le client avec les caract&eacute;ristiques techniques du branchement (calibre, puissance..) ;</strong></p>\r\n<p><strong>&diams; Photocopie de la carte d&rsquo;identit&eacute; (CIN) pour les personnes physiques;</strong></p>\r\n<p><strong>&diams; Statut de l&rsquo;entreprise ou registre du commerce et attestation de d&eacute;l&eacute;gation de signature pour les personnes morales;</strong></p>\r\n<p><strong>&diams; Acte de propri&eacute;t&eacute; ou autorisation l&eacute;galis&eacute;e du propri&eacute;taire si le demandeur n&rsquo;est pas le propri&eacute;taire;</strong></p>\r\n<p><strong>&diams; Autorisation de construire ;</strong></p>\r\n<p><strong>&diams; Plan de situation ;</strong></p>\r\n<p><strong>&diams; Jeu de plans approuv&eacute;s par les autorit&eacute;s comp&eacute;tentes.</strong></p>\r\n<p class=\"label\">Pour un branchement Basse Tension :</p>\r\n<p><strong>&diams; Certificat de garantie du disjoncteur diff&eacute;rentiel (mod&egrave;le agr&eacute;&eacute;);</strong></p>\r\n<p class=\"label\">Pour un raccordement Moyenne Tension :</p>\r\n<p><strong>&diams; Demande formul&eacute;e par &eacute;crit avec puissance du ou des transformateurs &agrave; installer;</strong></p>\r\n<p><strong>&diams; Plan de masse avec emplacement exact du poste;</strong></p>\r\n<p><strong>&diams; Jeu de Plans des &eacute;quipements du poste &eacute;tablis par une entreprise agr&eacute;&eacute;e par la RADEEMA.</strong></p>\r\n<p class=\"label\">Pour un branchement eau (gros calibre) :</p>\r\n<p><strong>&diams; Fiche technique des besoins journaliers en eau(m3/j).</strong></p>\r\n<p class=\"label\">Pour un branchement assainissement :</p>\r\n<p><strong>&diams; Plan de la position de la sortie de l&rsquo;&eacute;gout Eaux Us&eacute;es (EU) sur fa&ccedil;ade s&rsquo;il n&rsquo;est pas indiqu&eacute; sur le jeu de plans.</strong></p>\r\n<p class=\"label\">Pour l&rsquo;Unit&eacute; industrielle : pi&egrave;ces &agrave; renseigner sans l&eacute;galisation :</p>\r\n<p><strong>&diams; Pi&egrave;ces justifiant les pouvoirs conf&eacute;r&eacute;s &agrave; la personne (si le signataire n&rsquo;est pas lui m&ecirc;me le g&eacute;rant)</strong></p>\r\n<p><strong>&diams; Fiche de renseignements techniques sur les caract&eacute;ristiques physico-chimiques des eaux rejet&eacute;es dans le r&eacute;seau.</strong></p>\r\n<p><strong>&diams; Dossiers des pr&eacute;traitements pr&eacute;conis&eacute;s en cas de rejets industriels.</strong></p>\r\n<p class=\"label\">Frais &agrave; la charge du client :</p>\r\n<p><strong>&diams; Participation &agrave; l&rsquo;infrastructure;</strong></p>\r\n<p><strong>&diams; Co&ucirc;t de branchement ou de raccordement et frais d&rsquo;extension s&rsquo;il y a lieu;</strong></p>\r\n<p><strong>&diams; Peines et soins sur travaux.</strong></p>\r\n</div>\r\n<p>NB. : En cas d&rsquo;un nouveau branchement dans une zone &eacute;quip&eacute;e, les diff&eacute;rentes participations sont &agrave; r&eacute;gler par le promoteur selon les sp&eacute;cifications du cahier de charges du projet.</p>\r\n<p>En cas de modification apr&egrave;s r&eacute;ception des travaux d\'&eacute;quipement, l&rsquo;&eacute;cart est &agrave; la charge du client.</p>', 1, '', 'عقود', ''),
-(68, 'Localiser nos Agences', NULL, NULL, NULL, 0, '2021-07-20 12:41:14', '2021-07-20 12:41:14', '', 1, '', '0', '0'),
+(68, 'Localiser nos Agences', NULL, NULL, NULL, 0, '2021-07-20 12:41:14', '2021-07-20 12:41:14', '', 1, '', 'تحديد مواقع وكالاتنا', ''),
 (69, 'Contacter note Centre d\'Appel', NULL, NULL, NULL, 0, '2021-07-20 12:41:56', '2021-07-20 12:41:56', '', 1, '', 'الإتصال بمركز الزبناء', ''),
 (70, 'Guide Client', NULL, NULL, NULL, 0, '2021-07-20 12:42:22', '2021-07-20 12:42:22', '', 1, '', 'دليل الزبون', ''),
 (71, 'Demande de Domiciliation Bancaire', 18, NULL, NULL, 0, '2021-07-20 12:48:30', '2021-07-20 12:48:30', '', 1, '', '0', '0'),
@@ -460,7 +460,7 @@ INSERT INTO `pages` (`idPage`, `title`, `parent_id`, `path`, `show_in_menu`, `dr
 (73, 'Les formulaires', 18, NULL, NULL, 0, '2021-07-20 14:35:46', '2021-07-20 14:35:46', '', NULL, '', 'الإستمارات', ''),
 (74, 'Appel d\'offres', NULL, NULL, NULL, 0, '2021-07-20 14:50:30', '2021-07-20 14:50:30', '', NULL, '', '0', '0'),
 (75, 'Résultats A.O.', NULL, NULL, NULL, 0, '2021-07-20 14:51:05', '2021-07-20 14:51:05', '', NULL, '', 'نتائج العروض', ''),
-(76, 'Offres de Service', NULL, NULL, NULL, 0, '2021-07-20 14:51:37', '2021-07-20 14:51:37', '', NULL, '', '0', '0'),
+(76, 'Offres de Service', NULL, NULL, NULL, 0, '2021-07-20 14:51:37', '2021-07-20 14:51:37', '', NULL, '', 'عروض الخدمات', ''),
 (77, 'Programme Prévisionnel', NULL, NULL, NULL, 0, '2021-07-20 14:52:10', '2021-07-20 14:52:10', '', NULL, '', 'البرنامج الإستثماري', ''),
 (78, 'Règlement marchés publics', NULL, NULL, NULL, 0, '2021-07-20 14:52:38', '2021-07-20 14:52:38', '', NULL, '', '0', '0'),
 (79, 'Marrakech cité de renouveau permanent', NULL, NULL, NULL, 0, '2021-07-20 14:54:05', '2021-07-20 14:54:05', '', NULL, '', 'مراكش الحاضرة المتجددة', ''),
@@ -468,7 +468,7 @@ INSERT INTO `pages` (`idPage`, `title`, `parent_id`, `path`, `show_in_menu`, `dr
 (81, 'Programmes sociaux', NULL, NULL, NULL, 0, '2021-07-20 14:55:07', '2021-07-20 14:55:07', '', NULL, '', 'الأعمال الاجتماعية', ''),
 (82, 'Valorisation des eaux épurées', NULL, NULL, NULL, 0, '2021-07-20 14:57:14', '2021-07-20 14:57:14', '', NULL, '', 'تقييم المياه المعالجة', ''),
 (83, 'Elimination de la pollution de l\'air', NULL, NULL, NULL, 0, '2021-07-20 14:57:54', '2021-07-20 14:57:54', '', NULL, '', 'القضاء على تلوث الهواء', ''),
-(84, 'Guide promoteur', NULL, NULL, NULL, 0, '2021-07-20 15:03:11', '2021-07-20 15:03:11', '', NULL, '', '0', '0'),
+(84, 'Guide promoteur', NULL, NULL, NULL, 0, '2021-07-20 15:03:11', '2021-07-20 15:03:11', '', NULL, '', 'دليل المروّج', ''),
 (85, 'Paiement en ligne', NULL, NULL, NULL, 0, '2021-07-20 15:05:11', '2021-07-20 15:05:11', '', NULL, '', 'الدفع عبر الإنترنت', ''),
 (86, 'Vos démarches en ligne', NULL, NULL, NULL, 0, '2021-07-20 15:09:20', '2021-07-20 15:09:20', '', NULL, '', 'خطواتك على الأنترنيت', ''),
 (87, 'Agence grand compte', NULL, NULL, NULL, 0, '2021-07-20 15:20:49', '2021-07-20 15:20:49', '', NULL, '', '0', '0'),
@@ -493,10 +493,8 @@ CREATE TABLE `plugins` (
 INSERT INTO `plugins` (`idPlugin`, `name`, `idPage`) VALUES
 (3, 'Formulaire d\'authentification', 13),
 (3, 'Formulaire d\'authentification', 14),
-(3, 'Formulaire d\'authentification', 16),
 (3, 'Formulaire d\'authentification', 17),
 (3, 'Formulaire d\'authentification', 71),
-(5, 'localisation des agences', 68),
 (8, 'Galerie', 37),
 (2, 'Formulaire de contact', 38),
 (1, 'Table de PDF téléchargeable', 27),
@@ -505,7 +503,9 @@ INSERT INTO `plugins` (`idPlugin`, `name`, `idPage`) VALUES
 (3, 'Formulaire d\'authentification', 15),
 (4, 'les formulaires', 73),
 (9, 'faq', 34),
-(3, 'Formulaire d\'authentification', 33);
+(3, 'Formulaire d\'authentification', 33),
+(3, 'Formulaire d\'authentification', 16),
+(5, 'localisation des agences', 68);
 
 -- --------------------------------------------------------
 
@@ -1566,7 +1566,83 @@ INSERT INTO `visitors` (`id`, `ip`, `date_entree`) VALUES
 (1303, '::1', '2021-08-11'),
 (1304, '::1', '2021-08-11'),
 (1305, '::1', '2021-08-11'),
-(1306, '::1', '2021-08-11');
+(1306, '::1', '2021-08-11'),
+(1307, '::1', '2021-08-11'),
+(1308, '::1', '2021-08-11'),
+(1309, '::1', '2021-08-11'),
+(1310, '::1', '2021-08-11'),
+(1311, '::1', '2021-08-11'),
+(1312, '::1', '2021-08-12'),
+(1313, '::1', '2021-08-12'),
+(1314, '::1', '2021-08-12'),
+(1315, '::1', '2021-08-12'),
+(1316, '::1', '2021-08-12'),
+(1317, '::1', '2021-08-12'),
+(1318, '::1', '2021-08-12'),
+(1319, '::1', '2021-08-12'),
+(1320, '::1', '2021-08-12'),
+(1321, '::1', '2021-08-12'),
+(1322, '::1', '2021-08-12'),
+(1323, '::1', '2021-08-12'),
+(1324, '::1', '2021-08-12'),
+(1325, '::1', '2021-08-12'),
+(1326, '::1', '2021-08-12'),
+(1327, '::1', '2021-08-12'),
+(1328, '::1', '2021-08-12'),
+(1329, '::1', '2021-08-12'),
+(1330, '::1', '2021-08-12'),
+(1331, '::1', '2021-08-12'),
+(1332, '::1', '2021-08-12'),
+(1333, '::1', '2021-08-12'),
+(1334, '::1', '2021-08-12'),
+(1335, '::1', '2021-08-12'),
+(1336, '::1', '2021-08-12'),
+(1337, '::1', '2021-08-12'),
+(1338, '::1', '2021-08-12'),
+(1339, '::1', '2021-08-12'),
+(1340, '::1', '2021-08-12'),
+(1341, '::1', '2021-08-12'),
+(1342, '::1', '2021-08-12'),
+(1343, '::1', '2021-08-12'),
+(1344, '::1', '2021-08-12'),
+(1345, '::1', '2021-08-12'),
+(1346, '::1', '2021-08-12'),
+(1347, '::1', '2021-08-12'),
+(1348, '::1', '2021-08-12'),
+(1349, '::1', '2021-08-12'),
+(1350, '::1', '2021-08-12'),
+(1351, '::1', '2021-08-12'),
+(1352, '::1', '2021-08-12'),
+(1353, '::1', '2021-08-12'),
+(1354, '::1', '2021-08-12'),
+(1355, '::1', '2021-08-12'),
+(1356, '::1', '2021-08-12'),
+(1357, '::1', '2021-08-12'),
+(1358, '::1', '2021-08-12'),
+(1359, '::1', '2021-08-12'),
+(1360, '::1', '2021-08-12'),
+(1361, '::1', '2021-08-12'),
+(1362, '::1', '2021-08-12'),
+(1363, '127.0.0.1', '2021-08-12'),
+(1364, '::1', '2021-08-12'),
+(1365, '::1', '2021-08-12'),
+(1366, '::1', '2021-08-12'),
+(1367, '::1', '2021-08-12'),
+(1368, '::1', '2021-08-12'),
+(1369, '::1', '2021-08-12'),
+(1370, '::1', '2021-08-12'),
+(1371, '::1', '2021-08-12'),
+(1372, '::1', '2021-08-12'),
+(1373, '::1', '2021-08-12'),
+(1374, '::1', '2021-08-12'),
+(1375, '::1', '2021-08-12'),
+(1376, '::1', '2021-08-12'),
+(1377, '::1', '2021-08-12'),
+(1378, '::1', '2021-08-12'),
+(1379, '::1', '2021-08-12'),
+(1380, '::1', '2021-08-12'),
+(1381, '::1', '2021-08-12'),
+(1382, '::1', '2021-08-12');
 
 --
 -- Indexes for dumped tables
@@ -1781,7 +1857,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1307;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1383;
 
 --
 -- Constraints for dumped tables

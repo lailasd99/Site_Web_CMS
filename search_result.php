@@ -66,7 +66,13 @@
                                     echo '<a href="agendaPage.php?id='.$row[0].'" class="list-group-item list-group-item-action flex-column align-items-start">';?>
                                         <div class="w-100 justify-content-between">
                                             <!--<img src="upload/tech_blog_08.jpg" alt="" class="img-fluid float-left">-->
-                                            <h5 class="mb-1"><?php echo $row[1];?></h5>
+                                            <?php if($_SESSION['lang']=='Ar'){
+                                                            $name=$row[5];
+                                                        }else{
+                                                            $name = $row[1];
+                                                        }
+                                                ?>
+                                            <h5 class="mb-1"><?php echo $name;?></h5>
                                             <p style="font-size: 13px"><?php echo date('d-m-Y', strtotime($row[3]))." >> ".date('d-m-Y', strtotime($row[4]));?></p>
                                         </div>
                                     </a>
@@ -93,7 +99,13 @@
                                         echo '<a href="avisPage.php?id='.$row[0].'" class="list-group-item list-group-item-action flex-column align-items-start">';?>
                                             <div class="w-100 justify-content-between">
                                                 <!--<img src="upload/tech_blog_08.jpg" alt="" class="img-fluid float-left">-->
-                                                <h5 class="mb-1"><?php echo $row[1];?></h5>
+                                                <?php if($_SESSION['lang']=='Ar'){
+                                                            $name=$row[3];
+                                                        }else{
+                                                            $name = $row[1];
+                                                        }
+                                                ?>
+                                                <h5 class="mb-1"><?php echo $name;?></h5>
                                             </div>
                                         </a>
                                         <?php }} ?>
@@ -134,19 +146,63 @@
                     <?php
                         if(isset($_GET['submit-search'])){
                             $key = $_GET['keyword'];
+                            
 
-                            $keyword = metaphone($key);
-                            $query_articles = "SELECT * from articles where title like '%$key%' and accept=1 order by AdmittedAt";
-                            $query_run_art = mysqli_query($connection, $query_articles);
+                            //make the keyword as a metaphone word
+                            $search = explode(" ", $key);
+                            $search_string = "";
+                            foreach($search as $word){
+                                $search_string.=metaphone($word)." ";
+                            }
+                            echo $search_string;
 
-                            $query_pages = "SELECT * from pages where title like '%$key%' and draft=0";
-                            $query_run_page = mysqli_query($connection, $query_pages);
+                            //ARTICLES FRANCAIS
+                            if($_SESSION['lang']=="Fr"){
+                                //search the metaphone keyword into the metaphone articles
+                                $query = "SELECT * from articles";
+                                $run = mysqli_query($connection, $query);
+                                $sound = [];
+                                $query_articles = "SELECT * from articles where idArticle IN (";
+                                while($row = mysqli_fetch_row($run)){
+                                    if($row[1] != null){
+                                        $words = explode(" ", $row[1]);
+                                        foreach($words as $word){
+                                            array_push($sound, metaphone($word)." ");
+                                        }
+                                    }
+                                    if(in_array($search_string, $sound)){
+                                        $query_articles.= $row[0].",";
+                                    }
+                                    unset($sound); 
+                                    $sound = [];
+                                }
+                                $query_articles = substr($query_articles, 0, -1);
+                                $query_articles.= ")";
+                                $query_run_art = mysqli_query($connection, $query_articles);
+
+                            //ARTCILES ARABE    
+                            }else if($_SESSION['lang']=="Ar"){
+                                
+                                $query_articles = "SELECT * from articles where title_ar LIKE '%$key%' and accept=1";
+                                $query_run_art = mysqli_query($connection, $query_articles);
+                            }
+                            
+
+                            
+                        
+                            //$query_pages = "SELECT * from pages where title like '%$key%' and draft=0";
+                            //$query_run_page = mysqli_query($connection, $query_pages);
 
                             echo "<h5>"._("Résultat de recherche")." >> ".$key." : </h5>";
-                            if($query_run_art){
-                                    echo "<h6 style='color:gray;'>"._('les articles')." :</h6>";
-                                    if(mysqli_num_rows($query_run_art) > 0){
+                            echo "<h6 style='color:gray;'>"._('les articles')." :</h6>";
+                            if($query_run_art && mysqli_num_rows($query_run_art)>0){
+                                    //if(mysqli_num_rows($query_run_art) > 0){
                                     while($row = mysqli_fetch_row($query_run_art)){
+                                        if($_SESSION['lang']=="Ar"){
+                                            $name = $row[8];
+                                        }else{
+                                            $name = $row[1];
+                                        }
                                     
                                     ?>
                                     <hr>
@@ -154,7 +210,7 @@
                                         <div class="blog-box row">
                                             <div class="col-md-2">
                                                 <div class="post-media" style="height: 100px">
-                                                    <a href="single-blog.php?id=<?php echo $row[0]?>" title="<?php $row[1]?>">
+                                                    <a href="single-blog.php?id=<?php echo $row[0]?>" title="<?php $name?>">
                                                         <img src="<?php echo 'images/'.$row[6];?>" alt="" class="img-fluid" style="object-fit: cover; height: 100%">
                                                         <div class="hovereffect"></div>
                                                     </a>
@@ -162,7 +218,7 @@
                                             </div><!-- end col -->
                             
                                             <div class="blog-meta big-meta col-md-10">
-                                                <h4 style="padding-top: 0px; margin-top: 0px; font-size: 16px"><a href="single-blog.php?id=<?php echo $row[0]?>" title="<?php $row[1]?>"><?php echo $row[1]?></a></h4>
+                                                <h4 style="padding-top: 0px; margin-top: 0px; font-size: 16px"><a href="single-blog.php?id=<?php echo $row[0]?>" title="<?php $name?>"><?php echo $name?></a></h4>
                                                 <!--<small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Gadgets</a></small>-->
                                                 <small><a href="single-blog.php?id=<?php echo $row[0]?>" title=""><?php ?></a></small>
                                                 <!--<small><a href="single-blog.php?id=<?php echo $row[0]?>" title="">by Matilda</a></small>
@@ -176,36 +232,71 @@
                                     }
                                     //echo "</div>";
 
-                                    }else{
-                                        echo "<span style='color:black;'>"._('aucune article trouvée').".</span>";
-                                    }
+                        
+                            }else{
+                                echo "<span>"._('aucune article trouvée').".</span>";
                             }
                             echo '<hr class="invis"><br>';
+
+
+                            //PAGES FRANCAIS
+                            if($_SESSION['lang']=="Fr"){
+                                //search the metaphone keyword into the metaphone pages
+                                $query_p = "SELECT * from pages";
+                                $run_p = mysqli_query($connection, $query_p);
+                                $sound_p = [];
+                                $query_pages = "SELECT * from pages where idPage IN (";
+                                while($row_p = mysqli_fetch_row($run_p)){
+                                    if($row_p[1] != null){
+                                        $words_p = explode(" ", $row_p[1]);
+                                        foreach($words_p as $word_p){
+                                            array_push($sound_p, metaphone($word_p)." ");
+                                        }
+                                    }
+                                    if(in_array($search_string, $sound_p)){
+                                        $query_pages.= $row_p[0].",";
+                                    }
+                                    unset($sound_p); 
+                                    $sound_p = [];
+                                }
+                                $query_pages = substr($query_pages, 0, -1);
+                                $query_pages.= ")";
+                                $query_run_page = mysqli_query($connection, $query_pages);
+
+                            //PAGES ARABE
+                            }else if($_SESSION['lang']=="Ar"){
+                                
+                                $query_pages = "SELECT * from pages where title_ar LIKE '%$key%' and draft=0";
+                                $query_run_page = mysqli_query($connection, $query_pages);
+                            }
                             
 
-                            if($query_run_page){
-                                echo "<h6 style='color:gray;'>"._('les pages')." :</h6>";
-                                if(mysqli_num_rows($query_run_page) > 0){
+                            echo "<h6 style='color:gray;'>"._('les pages')." :</h6>";
+                            if($query_run_page && mysqli_num_rows($query_run_page)>0){
+                                //if(mysqli_num_rows($query_run_page) > 0){
                                 while($row = mysqli_fetch_row($query_run_page)){
+                                    if($_SESSION['lang']=="Ar"){
+                                        $name = $row[11];
+                                    }else{
+                                        $name = $row[1];
+                                    }
                                 
                                 ?>
-                                <hr>
-                                <div class="blog-list clearfix">
-                                    <div class="blog-box row">
-                                        <div class="blog-meta big-meta col-md-10">
-                                            <h4 style="padding-top: 0px; margin-top: 0px; font-size: 16px; text-decoration: underline"><a href="single-page.php?id=<?php echo $row[0]?>"><?php echo $row[1]?></a></h4>
-                                            <small><a href="single-page.php?id=<?php echo $row[0]?>" title=""><?php ?></a></small>
-                                        </div><!-- end meta -->
-                                    </div><!-- end blog-box -->
-                                </div>
+                                    <hr>
+                                    <div class="blog-list clearfix">
+                                        <div class="blog-box row">
+                                            <div class="blog-meta big-meta col-md-10">
+                                                <h4 style="padding-top: 0px; margin-top: 0px; font-size: 16px; text-decoration: underline"><a href="single-page.php?id=<?php echo $row[0]?>"><?php echo $name?></a></h4>
+                                                <small><a href="single-page.php?id=<?php echo $row[0]?>" title=""><?php ?></a></small>
+                                            </div><!-- end meta -->
+                                        </div><!-- end blog-box -->
+                                    </div>
                         
                                     <?php
                                         
                                 }
-                                }else{
-                                    echo "<span>"._('aucune page trouvée').".</span>";
-                                }
-
+                            }else{
+                                echo "<span>"._('aucune page trouvée').".</span>";
                             }
                         }
 

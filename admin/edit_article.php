@@ -54,6 +54,7 @@ include('includes/scripts.php');
     </textarea>
     <input type="hidden" name="art_id" value="<?php echo $article[0];?>"></input>
     <input type="file" id="art_photo" name="art_photo" value="" style="display:none"></input>
+    <input type="hidden" id="id_draft" name="id_draft" value=""></input>
     <div class="col-4"><button   type="submit" name ="submit-article" class="btn btn-primary">Publier</button></div>
 </form>
 </div>
@@ -121,6 +122,26 @@ include('includes/scripts.php');
            }
          });
       </script>
+
+
+  <div class="container">
+          <h5 align="center" style="margin-top: 50px">Article Admis</h5>
+          <select id="archive" class="form-control" style="width: 100%; margin-top: 30px">
+            <?php
+              if($article[3] == 1){
+                $accept = "oui";
+                $other = "non";
+                $other_val = 0;
+              }else{
+                $accept = "non";
+                $other = "oui";
+                $other_val = 1;
+              }
+              ?>
+              <option value="<?php echo $article[3]?>" selected><?php echo $accept?></option>
+              <option value="<?php echo $other_val?>"><?php echo $other?></option>
+          </select>
+  </div>
     
 
       </div> 
@@ -132,8 +153,7 @@ function handleSubmit(e) {
    
     document.forms.submitForm.art_photo.files = document.getElementById("default-btn").files;
     document.getElementById("art_photo").files = document.getElementById("default-btn").files;
-    //document.forms.submitForm.submit();
-    //console.log(document.forms.submitForm.art_photo)
+    document.getElementById("id_draft").value= document.getElementById("archive").value;
     console.log(document.getElementById("art_photo").files)
     //return false
 }

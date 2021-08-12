@@ -26,7 +26,7 @@
 ?>
 <section class="collapse-area">
   <div class="container">
-    <div class="row">
+    <div class="row1">
       <div class="collapse-tab col-xs-12">
         <div class="panel-group" id="accordion">
             <?php

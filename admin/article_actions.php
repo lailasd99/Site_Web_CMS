@@ -74,12 +74,13 @@ if(isset($_POST["submit-article"])){
     $art_content = str_replace('../upload',"http://localhost/radeema/upload", $_POST['text_editor_page']);
     $art_title = mysqli_real_escape_string($connection, $_POST['title']);
     $art_id =$_POST['art_id'];
+    $draft = $_POST['id_draft'];
     $content = mysqli_real_escape_string($connection, $art_content);
     $photo = time().'-'.$_FILES['art_photo']['name'];
     $photo_path = $_FILES["art_photo"];
     $photoTmpName =$_FILES["art_photo"]["tmp_name"];
         if(!empty($_FILES['art_photo']['name'])){
-            $query = "UPDATE articles SET title='$art_title', content='$content', media='$photo' WHERE idArticle=$art_id";
+            $query = "UPDATE articles SET title='$art_title', content='$content', media='$photo, accept=$draft WHERE idArticle=$art_id";
             $query_run=mysqli_query($connection, $query);
         
             if($query_run){
@@ -101,7 +102,7 @@ if(isset($_POST["submit-article"])){
                 header("location: articles.php");
             }
         }else{
-            $query = "UPDATE articles SET title='$art_title', content='$content' WHERE idArticle=$art_id";
+            $query = "UPDATE articles SET title='$art_title', content='$content', accept=$draft WHERE idArticle=$art_id";
             $query_run=mysqli_query($connection, $query);
 
             if($query_run){
@@ -124,12 +125,13 @@ if(isset($_POST["submit-article-ar"])){
     $art_content = str_replace('../upload',"http://localhost/radeema/upload", $_POST['text_editor_page']);
     $art_title = mysqli_real_escape_string($connection, $_POST['title']);
     $art_id =$_POST['art_id'];
+    $draft = $_POST['id_draft'];
     $content = mysqli_real_escape_string($connection, $art_content);
     $photo = time().'-'.$_FILES['art_photo']['name'];
     $photo_path = $_FILES["art_photo"];
     $photoTmpName =$_FILES["art_photo"]["tmp_name"];
         if(!empty($_FILES['art_photo']['name'])){
-            $query = "UPDATE articles SET title_ar='$art_title', content_ar='$content', media='$photo' WHERE idArticle=$art_id";
+            $query = "UPDATE articles SET title_ar='$art_title', content_ar='$content', media='$photo', accept=$draft WHERE idArticle=$art_id";
             $query_run=mysqli_query($connection, $query);
         
             if($query_run){
@@ -151,7 +153,7 @@ if(isset($_POST["submit-article-ar"])){
                 header("location: edit_article_ar.php");
             }
         }else{
-            $query = "UPDATE articles SET title_ar='$art_title', content_ar='$content' WHERE idArticle=$art_id";
+            $query = "UPDATE articles SET title_ar='$art_title', content_ar='$content', accept=$draft WHERE idArticle=$art_id";
             $query_run=mysqli_query($connection, $query);
 
             if($query_run){

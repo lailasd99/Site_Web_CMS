@@ -81,7 +81,6 @@ include('includes/scripts.php');
                 </div>
                 <div class="col-md-4">
                     <div class="preview-p">
-
                     </div>
                 </div>
             </div>
@@ -102,7 +101,7 @@ include('includes/scripts.php');
 <script>
 
         const btnchange = document.querySelector("#fileToUpload");
-        var mdl = $('#modal-crop');
+        const mdl = $('#modal-crop');
         var crop_image = document.querySelector('#sample_image');
         var cropper;
         btnchange.addEventListener("change", function(event){
@@ -121,7 +120,7 @@ include('includes/scripts.php');
             }
         });
 
-        mdl.on('shown.bs.modal', function(){
+        /*mdl.on('shown.bs.modal', function(){
           cropper = new Cropper(crop_image, {
             aspectRatio: 1,
             viewMode: 3,
@@ -130,7 +129,7 @@ include('includes/scripts.php');
         }).on('hidden.bs.modal', function(){
           cropper.destroy();
           cropper= null;
-        })
+        })*/
         
         //document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])
     

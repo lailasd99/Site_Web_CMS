@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-08-11 17:24+0100\n"
-"PO-Revision-Date: 2021-08-11 17:28+0100\n"
+"POT-Creation-Date: 2021-08-12 16:22+0100\n"
+"PO-Revision-Date: 2021-08-12 16:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -26,7 +26,7 @@ msgid "Suivez-nous"
 msgstr "تابعنا"
 
 #: agendaPage.php:73 avisPage.php:71 contact_us.php:94 espace.php:117
-#: includes/header.php:122 single-blog.php:82 single-page.php:206
+#: includes/header.php:123 single-blog.php:82 single-page.php:206
 #: single_page_espace.php:208
 msgid "Accueil"
 msgstr "إستقبال"
@@ -46,14 +46,10 @@ msgid "Envoyer un commentaire"
 msgstr "كتابة تعليق"
 
 #: agendaPage.php:196 avisPage.php:191
-#, fuzzy
-#| msgid "email ici"
 msgid "Email ici"
 msgstr "البريد الإلكتروني"
 
 #: agendaPage.php:197 avisPage.php:192
-#, fuzzy
-#| msgid "Votre commentaire"
 msgid "Votre commantaire"
 msgstr "تعليقك"
 
@@ -125,7 +121,6 @@ msgid "Application android"
 msgstr "تطبيق أندرويد"
 
 #: includes/footer.php:18
-#| msgid "Envoyez nous un message"
 msgid "Envoyez-nous un message"
 msgstr "أرسل لنا رسالة"
 
@@ -140,6 +135,10 @@ msgstr "جميع الحقوق محفوظة ، راديما 2021"
 #: includes/footer.php:115
 msgid "Remonter"
 msgstr "إلى فوق"
+
+#: includes/header.php:204 includes/header.php:205
+msgid "Rechercher"
+msgstr "بحث"
 
 #: index.php:109
 msgid "précédent"
@@ -156,6 +155,14 @@ msgstr "تاريخنا"
 #: index.php:160
 msgid "Nos Valeurs"
 msgstr "قيمنا"
+
+#: index.php:191
+msgid "Entrez votre adresse email..."
+msgstr "أدخل عنوان بريدك الإلكتروني"
+
+#: index.php:195
+msgid "Mot de passe"
+msgstr "كلمة السر"
 
 #: index.php:200
 msgid "Connexion"
@@ -229,23 +236,23 @@ msgstr "تاريخ المنشور"
 msgid "Rapports et Publications"
 msgstr "التقارير"
 
-#: search_result.php:145
+#: search_result.php:176
 msgid "Résultat de recherche"
 msgstr "نتائج البحث"
 
-#: search_result.php:147
+#: search_result.php:177
 msgid "les articles"
 msgstr "المقالات"
 
-#: search_result.php:180
+#: search_result.php:212
 msgid "aucune article trouvée"
 msgstr "لا توجد مقالة"
 
-#: search_result.php:187
+#: search_result.php:240
 msgid "les pages"
 msgstr "الصفحات"
 
-#: search_result.php:206
+#: search_result.php:260
 msgid "aucune page trouvée"
 msgstr "لا توجد صفحة"
 

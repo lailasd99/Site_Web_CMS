@@ -16,10 +16,11 @@ $locale = "en";
     if(isset($_GET['locale'])){
         $locale = $_GET['locale'];
         $_SESSION['lang'] = $locale;
-    }/*else{
+    }
+    if(!isset($_SESSION['lang'])){
         $locale = "Fr";
         $_SESSION['lang'] = $locale;
-    }*/
+    }
 
     $path= "locales";
     $domain = $_SESSION['lang'];
@@ -200,8 +201,8 @@ $locale = "en";
                         </ul>-->
 
                         <form role="search" id="form-search" action="search_result.php" method="GET">
-                            <label class="label-search" for="search">Rechercher</label>
-                            <input name="keyword" id="search" type="search" placeholder="Rechercher..."/>
+                            <label class="label-search" for="search"><?= _('Rechercher'); ?></label>
+                            <input name="keyword" id="search" type="search" placeholder="<?= _('Rechercher'); ?>..."/>
                             <button name="submit-search" id="btn-recherche" type="submit"><i class="fas fa-search"></i></button>    
                         </form>
 
@@ -295,6 +296,12 @@ dd_menu_a.forEach(function(dd_menu_item){
         window.location.href = href + "?" + name + "=" + value;
     }
     }
+
+    /*if(href.indexOf("?locale=Fr") > -1)
+        window.location.href = href.replace("locale=Fr", name + "=" + value);
+        else if(href.indexOf("?locale=Ar") > -1)
+        window.location.href = href.replace("locale=Ar", name + "=" + value);
+        */
 
 </script>
 

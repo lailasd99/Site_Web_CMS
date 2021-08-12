@@ -616,6 +616,19 @@ input:checked[type="checkbox"]::before{
   color: #60626d;
 }
 
+.collapse-tab{
+  margin:  -15px;
+}
+
+
+
+
+/* notifications */
+
+.list-of-notifs{
+  overflow-y: scroll;
+  max-height: 300px;
+}
   
  
 

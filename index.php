@@ -188,11 +188,11 @@
                 <form action="" method="" id="form_ag_enligne">
                     <div class="form-group">
                             <input type="email" class="form-control form-control-user"
-                            name="email" placeholder="Entrez votre adresse email...">
+                            name="email" placeholder="<?= _('Entrez votre adresse email...'); ?>">
                     </div>
                     <div class="form-group">
                             <input type="password" class="form-control form-control-user"
-                            name="password" placeholder="Mot de passe">
+                            name="password" placeholder="<?= _('Mot de passe'); ?>">
                     </div>
                     <div class="form-group">
                                     
@@ -268,10 +268,10 @@
                                             <div class="w-100 justify-content-between">
                                                 <!--<img src="upload/tech_blog_08.jpg" alt="" class="img-fluid float-left">-->
                                                 <?php if($_SESSION['lang']=='Ar'){
-                                                    $name=$row[5];
-                                                }else{
-                                                    $name = $row[1];
-                                                }
+                                                            $name=$row[5];
+                                                        }else{
+                                                            $name = $row[1];
+                                                        }
                                                 ?>
                                                 <h5 class="mb-1"><?php echo $name;?></h5>
                                                 <p style="font-size: 13px"><?php echo date('d-m-Y', strtotime($row[3]))." >> ".date('d-m-Y', strtotime($row[4]));?></p>

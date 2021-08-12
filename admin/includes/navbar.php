@@ -224,26 +224,34 @@
         </div>
     </li>
 
+    <?php
+                
+        $query = "SELECT * from articles where notif_active=0 and accept=0 order by createdAt";
+        $query_run = mysqli_query($connection, $query);
+        if($query_run){
+            $num = mysqli_num_rows($query_run);
+        }
+    ?>
+
     <!-- Nav Item - notifications -->
     <li class="nav-item dropdown no-arrow mx-1">
         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell fa-fw"></i>
             <!-- Counter - notifications -->
-            <span class="badge badge-danger badge-counter" count></span>
+            <?php if($num >0){ ?>
+            <span class="badge badge-danger badge-counter" count><?=$num?></span>
+            <?php } ?>
         </a>
         <!-- Dropdown - notifications -->
         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in drp1"
             aria-labelledby="alertsDropdown">
             <h6 class="dropdown-header">
-                Notifications
+                Articles non admis
             </h6>
+            <div class="list-of-notifs">
             <?php
-                
-                $query = "SELECT * from articles order by createdAt LIMIT 4";
-                $query_run = mysqli_query($connection, $query);
-                if($query_run){
-                    while($row = mysqli_fetch_row($query_run)){
+               while($row = mysqli_fetch_row($query_run)){
             ?>
                         <a class="dropdown-item d-flex align-items-center" href="edit_article.php?id=<?php echo $row[0]?>">
                             <div class="mr-3">
@@ -257,8 +265,11 @@
                             </div>
                         </a>
             <?php   }
-                }
-            ?>              
+                    if($num == 0){
+                        echo "<span style='margin: 0 10%'>vous trouverez les nouvelles articles ici.</span>";
+                    }
+            ?>   
+            </div>          
            
             <a class="dropdown-item text-center small text-gray-500" href="articles.php">Voir tous</a>
         </div>
@@ -276,7 +287,7 @@
         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="messagesDropdown">
             <h6 class="dropdown-header">
-                Message Center
+                Commentaires
             </h6>
             <a class="dropdown-item d-flex align-items-center" href="#">
                 <div class="dropdown-list-image mr-3">
