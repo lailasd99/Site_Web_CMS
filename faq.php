@@ -15,24 +15,33 @@
             $i = 0;
              while($row = mysqli_fetch_row($run)){
                  $i++;
+                 if($_SESSION['lang'] == 'Fr'){
+                      $question = $row[1];
+                      $answer = $row[2];
+                 }else{
+                      $question = $row[3];
+                      $answer = $row[4];
+                 }
+                 if(!empty($question)){
             ?>
           <div class="panel panel-default" id="panel<?=$i?>">
             <!-- Start: Tab-1 -->
             <div class="panel-heading">
               <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#<?=$i;?>" class="collapsed">
-                  <?php echo $row[1]; ?>
+                  <?php echo $question; ?>
                   <span class="bar hidden-xs"></span>
                 </a>
               </h4>
             </div>
             <div id="<?=$i;?>" class="panel-collapse collapse">
               <div class="panel-body">
-                <?php echo $row[2]; ?>
+                <?php echo $answer; ?>
               </div>
             </div>
           </div>
-          <?php } ?>
+          <?php }
+          }?>
         </div>
       </div>
     </div>

@@ -30,6 +30,7 @@
                                         }else{
                                             $name = $row[10];
                                         }
+                                        if(!empty($name)){
                                         echo '<a href="single-blog.php?id='.$row[0].'" class="list-widget">
                                         <div class="w-100 last-item justify-content-between">
                                             <img src="images/'.$row[6].'" alt="" class="img-fluid float-left" style="height: 50px; object-fit: cover">
@@ -37,6 +38,7 @@
                                             <small>'.date("m/d/Y", strtotime($row[4])).'</small>
                                         </div><hr>
                                     </a>';
+                                        }
                                         
                                     }
                                     echo "</div></div>";
@@ -48,20 +50,19 @@
                         
                        
                             <hr class="invis1">
-                            <div class="widget">
-                                <h2 class="widget-title"><?= _('Suivez-nous'); ?></h2>
+                            <div class="widget social-buttons">
+                                <h2 class="widget-title "><?= _('Suivez-nous'); ?></h2>
 
                                 <div class="row text-center">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                        <a href="https://fr-fr.facebook.com/RADEEMAKECH/" class="social-button facebook-button">
+                                        <a href="https://fr-fr.facebook.com/RADEEMAKECH/" class="fb" target="_blank">
                                             <i class="fa fa-facebook"></i>
                                             
                                         </a>
-                                    </div>
-
+                                   </div>
 
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                        <a href="https://www.youtube.com/channel/UCFl5dUovd_Wr1AT0aprFAJA" class="social-button youtube-button">
+                                        <a href="https://www.youtube.com/channel/UCFl5dUovd_Wr1AT0aprFAJA" class="yt" target="_blank">
                                             <i class="fa fa-youtube"></i>
                                           
                                         </a>

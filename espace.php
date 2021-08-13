@@ -32,6 +32,7 @@
                                                 }else{
                                                     $name = $row[3];
                                                 }
+                                                if(!empty($name)){
                                                 echo '<a class="list-widget collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                                                 aria-expanded="true" aria-controls="collapsePages">
                                                     <div class="w-100 last-item justify-content-between">
@@ -46,22 +47,26 @@
                                                     }else{
                                                         $name_s = $line[1];
                                                     }
+                                                    if(!empty($name_s)){
                                                     echo '<a class="collapse-item" href="single_page_espace.php?id='.$line[0].'&idcat='.$id.'">'.$name_s.'</a><br>';
-                                                        
+                                                    }    
                                                 }
                                                 echo    '</div>
                                                         </div>';
+                                                }
                                             }else{
                                                 if($_SESSION['lang']=="Ar"){
                                                     $name = $row[13];
                                                 }else{
                                                     $name = $row[3];
                                                 }
+                                                if(!empty($name)){
                                                 echo '<a href="single_page_espace.php?id='.$row[0].'&idcat='.$id.'" class="list-widget">
                                                     <div class="w-100 last-item justify-content-between">
                                                         <h5 class="mb-1">'.$name.'</h5>
                                                     </div><hr>
                                                 </a>';
+                                                }
                                             }
                                         }
                                     }

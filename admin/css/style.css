@@ -625,7 +625,7 @@ input:checked[type="checkbox"]::before{
 
 /* notifications */
 
-.list-of-notifs{
+.list-of-notifs, .list-of-comments{
   overflow-y: scroll;
   max-height: 300px;
 }

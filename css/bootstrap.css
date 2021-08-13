@@ -7832,9 +7832,9 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   margin-top: auto !important;
 }
 
-.mr-auto {
+/*.mr-auto {
   margin-right: auto !important;
-}
+}*/
 
 .mb-auto {
   margin-bottom: auto !important;

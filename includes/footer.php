@@ -3,7 +3,13 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="widget">
+                            <?php
+                                if($_SESSION['lang']=="Fr"){
+                            ?>
                             <div class="footer-text text-left">
+                                <?php }else{ ?>
+                             <div class="footer-text">
+                                 <?php } ?>
                                 <a href="index.php"><img src="images/version/radeema_logo_new.png" alt="" class="img-fluid"></a>
                                 <!--<p>Tech Blog is a technology blog, we sharing marketing, news and gadget articles.</p>-->
                                 <div class="social" id="social">
@@ -14,7 +20,13 @@
 
                                 <hr class="invis">
 
+                                <?php
+                                    if($_SESSION['lang']=="Fr"){
+                                ?>
                                 <div class="newsletter-widget text-left">
+                                    <?php }else{ ?>
+                                <div class="newsletter-widget">
+                                    <?php } ?>
                                     <h2 class="form-title"><?= _('Envoyez-nous un message'); ?></h2>
                                     <form class="form-inline" action="contact_us.php" method="post">
                                         <input name="email" type="text" class="form-control" placeholder="<?= _('Entrez votre adresse email');?>...">

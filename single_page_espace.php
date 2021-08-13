@@ -55,6 +55,7 @@
                                                 }else{
                                                     $name = $row[3];
                                                 }
+                                                if(!empty($name)){
                                                 echo '<a class="list-widget collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                                                 aria-expanded="true" aria-controls="collapsePages">
                                                     <div class="w-100 last-item justify-content-between">
@@ -69,23 +70,27 @@
                                                     }else{
                                                         $name = $rw[1];
                                                     }
+                                                    if(!empty($name_s)){
                                                     echo '<a class="collapse-item" href="single_page_espace.php?id='.$rw[0].'">'.$name.'</a><br>';
-                                                        
+                                                    }  
                                                 }
                                                 echo    '</div>
                                                         </div>';
                                             }
+                                                    }
                                                 else{
                                                     if($_SESSION['lang']=="Ar"){
                                                         $name = $row[13];
                                                     }else{
                                                         $name = $row[3];
                                                     }
+                                                    if(!empty($name)){
                                                     echo '<a href="single_page_espace.php?id='.$row[0].'" class="list-widget espace_itm">
                                                             <div class="w-100 last-item justify-content-between">
                                                                 <h5 class="mb-1">'.$name.'</h5>
                                                             </div><hr>
                                                          </a>';
+                                                    }
                                                 }
                                         }
                                         echo "</div></div>";
@@ -176,20 +181,19 @@
                             </div><!-- end widget -->
 <?php */?>
                             <hr class="invis1">
-                            <div class="widget">
-                                <h2 class="widget-title"><?= _('Suivez-nous'); ?></h2>
+                            <div class="widget social-buttons">
+                                <h2 class="widget-title "><?= _('Suivez-nous'); ?></h2>
 
                                 <div class="row text-center">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                        <a href="https://fr-fr.facebook.com/RADEEMAKECH/" class="social-button facebook-button">
+                                        <a href="https://fr-fr.facebook.com/RADEEMAKECH/" class="fb" target="_blank">
                                             <i class="fa fa-facebook"></i>
                                             
                                         </a>
-                                    </div>
-
+                                   </div>
 
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                        <a href="https://www.youtube.com/channel/UCFl5dUovd_Wr1AT0aprFAJA" class="social-button youtube-button">
+                                        <a href="https://www.youtube.com/channel/UCFl5dUovd_Wr1AT0aprFAJA" class="yt" target="_blank">
                                             <i class="fa fa-youtube"></i>
                                           
                                         </a>

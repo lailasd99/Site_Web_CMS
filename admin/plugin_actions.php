@@ -398,9 +398,11 @@ if(isset($_POST['edit_flash'])){
 if(isset($_POST['add_acte'])){
     $title = mysqli_real_escape_string($connection, $_POST['title']);
     $content = mysqli_real_escape_string($connection, $_POST['desc']);
+    $title_ar = mysqli_real_escape_string($connection, $_POST['title_ar']);
+    $content_ar = mysqli_real_escape_string($connection, $_POST['desc_ar']);
 
 
-    $query = "INSERT INTO faq(question, answer) values('$title', '$content')";
+    $query = "INSERT INTO faq(question, answer, question_ar, answer_ar) values('$title', '$content', '$title_ar', '$content_ar')";
     $run = mysqli_query($connection, $query);
 
     if($run){
@@ -415,14 +417,16 @@ if(isset($_POST['add_acte'])){
 }
 
 
-
+var_dump($_POST);exit();
 if(isset($_POST['edit_acte'])){
     $id_acte = $_POST['acte-id'];
     $title = mysqli_real_escape_string($connection, $_POST['title']);
-    $content = mysqli_real_escape_string($connection, $_POST['content']);
+    $content = mysqli_real_escape_string($connection, $_POST['desc']);
+    $title_ar = mysqli_real_escape_string($connection, $_POST['title_ar']);
+    $content_ar = mysqli_real_escape_string($connection, $_POST['desc_ar']);
 
 
-    $query = "UPDATE faq set question='$title', answer='$content' where idFaq=$id_acte";
+    $query = "UPDATE faq set question='$title', answer='$content', question_ar='$title_ar', answer_ar='$content_ar' where idFaq=$id_acte";
     $run = mysqli_query($connection, $query);
 
     if($run){

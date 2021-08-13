@@ -316,19 +316,19 @@
                                 </div><!-- end blog-list -->
                             </div><!-- end widget -->
 
-                            <div class="widget">
+                            <div class="widget social-buttons">
                                 <h2 class="widget-title "><?= _('Suivez-nous'); ?></h2>
 
                                 <div class="row text-center">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                        <a href="https://fr-fr.facebook.com/RADEEMAKECH/" class="social-button facebook-button">
+                                        <a href="https://fr-fr.facebook.com/RADEEMAKECH/" class="fb" target="_blank">
                                             <i class="fa fa-facebook"></i>
                                             
                                         </a>
-                                 </div>
+                                   </div>
 
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                        <a href="https://www.youtube.com/channel/UCFl5dUovd_Wr1AT0aprFAJA" class="social-button youtube-button">
+                                        <a href="https://www.youtube.com/channel/UCFl5dUovd_Wr1AT0aprFAJA" class="yt" target="_blank">
                                             <i class="fa fa-youtube"></i>
                                           
                                         </a>
@@ -343,7 +343,13 @@
                     <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                         <div class="page-wrapper">
                             <div class="blog-top clearfix">
-                                <h4 class="pull-left"><?= _('Actualités'); ?><a href="#"><i class="fa fa-rss"></i></a></h4>
+                                <?php if($_SESSION['lang']=="Ar"){
+                                    $pull="pull-right";
+                                }else{
+                                    $pull = "pull-left";
+                                }
+                                ?>
+                                <h4 class="<?=$pull?>"><?= _('Actualités'); ?><a href="#"><i class="fa fa-rss"></i></a></h4>
                             </div><!-- end blog-top -->
 
                             <?php $query = "SELECT *, SUBSTRING(content, 1,450), SUBSTRING(content_ar,1, 450) FROM articles where accept=1 order by AdmittedAt limit $offset, $limit";

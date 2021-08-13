@@ -33,6 +33,15 @@ $locale = "en";
             html{
                 direction: rtl;
             }
+            .smal-title{
+                right: 5%;
+            }
+            .mr-auto {
+            margin-left: auto !important;
+            }
+            .fa-rss{
+                transform: rotateY(180deg);
+            }
             
         </style>
         <?php
@@ -41,6 +50,12 @@ $locale = "en";
         <style>
             html{
                 direction: ltr;
+            }
+            .smal-title{
+                left: 5%;
+            }
+            .mr-auto {
+            margin-right: auto !important;
             }
             
         </style>
@@ -285,8 +300,13 @@ dd_menu_a.forEach(function(dd_menu_item){
     var regex = new RegExp("[&\\?]" + name + "=");
     if(regex.test(href))
     {
-        regex = new RegExp("([&\\?])" + name + "=\\d+");
-        window.location.href = href.replace(regex, "$1" + name + "=" + value);
+        //regex = new RegExp("([&\\?])" + name + "=\\d+");
+        //window.location.href = href.replace(regex, "$1" + name + "=" + value);
+        if(value == "Fr"){
+            window.location = window.location.href.replace('Ar', 'Fr');
+        }else{
+            window.location = window.location.href.replace('Fr', 'Ar');
+        }
     }
     else
     {

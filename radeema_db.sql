@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2021 at 06:25 PM
+-- Generation Time: Aug 13, 2021 at 06:46 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -254,11 +254,11 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`idCom`, `name`, `email`, `comment`, `createdAt`, `idArticle`) VALUES
-(1, 'laila', 'laila@gmail.com', 'test', '2021-07-12 10:29:51', 4),
 (2, 'laila', 'laila@gmail.com', 'test', '2021-07-16 12:33:25', 9),
 (3, 'ilham', 'df@gmail.com', 'jksd vkdf f', '2021-07-16 12:36:05', 9),
 (4, 'edjkjqdqd', 'sdfg@gmail.com', 'lkjhgfds', '2021-07-16 13:35:38', 18),
-(5, 'aasdjhf', 'lkjsdf@sdfg.cvb', 'mlkjhgf', '2021-07-16 15:55:53', 9);
+(5, 'aasdjhf', 'lkjsdf@sdfg.cvb', 'mlkjhgf', '2021-07-16 15:55:53', 9),
+(6, 'lllll', 'llll@gmail.com', 'magnifique', '2021-08-13 09:40:41', 18);
 
 -- --------------------------------------------------------
 
@@ -269,16 +269,18 @@ INSERT INTO `comments` (`idCom`, `name`, `email`, `comment`, `createdAt`, `idArt
 CREATE TABLE `faq` (
   `idFaq` int(11) NOT NULL,
   `question` varchar(200) NOT NULL,
-  `answer` text NOT NULL
+  `answer` text NOT NULL,
+  `question_ar` varchar(200) DEFAULT NULL,
+  `answer_ar` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `faq`
 --
 
-INSERT INTO `faq` (`idFaq`, `question`, `answer`) VALUES
-(4, 'jkjnlms', '<p>,l,cl lnnfxm mndc,lnb lcnl</p>'),
-(5, 'ff', '<p>ff</p>');
+INSERT INTO `faq` (`idFaq`, `question`, `answer`, `question_ar`, `answer_ar`) VALUES
+(4, 'jkjnlms', '', NULL, NULL),
+(5, 'ff', '<p>ff</p>', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -423,8 +425,8 @@ INSERT INTO `pages` (`idPage`, `title`, `parent_id`, `path`, `show_in_menu`, `dr
 (14, 'Mon compte client', NULL, NULL, 1, 0, '2005-07-21 02:03:57', '2005-07-21 02:03:57', '', 1, '', 'حساب الزبناء الخاص بي', NULL),
 (15, 'Suivi consommation', NULL, NULL, 1, 0, '2005-07-21 02:04:34', '2005-07-21 02:04:34', '', 1, '', 'تتبع استهلاكي', ''),
 (16, 'service d\'envoi des factures', NULL, NULL, 1, 0, '2005-07-21 02:07:16', '2005-07-21 02:07:16', '', 1, '', 'خدمة إرسال الفواتير', ''),
-(17, 'Mes réclamations et demandes', NULL, NULL, 1, 0, '2005-07-21 02:07:40', '2005-07-21 02:07:40', '', 1, '', '0', '0'),
-(18, 'Ma relation avec la radeema', NULL, NULL, 1, 0, '2005-07-21 02:08:09', '2005-07-21 02:08:09', '', 1, '', '0', '0'),
+(17, 'Mes réclamations et demandes', NULL, NULL, 1, 0, '2005-07-21 02:07:40', '2005-07-21 02:07:40', '', 1, '', NULL, NULL),
+(18, 'Ma relation avec la radeema', NULL, NULL, 1, 0, '2005-07-21 02:08:09', '2005-07-21 02:08:09', '', 1, '', NULL, NULL),
 (20, 'Mot du directeur général', NULL, NULL, 1, 0, '2005-07-21 04:53:07', '2005-07-21 04:53:07', '<p>M. Salah Eddine MOUNTASSIR</p>\r\n<p><strong>Directeur g&eacute;n&eacute;ral P.I. de la RADEEMA</strong></p>\r\n<p>Consciente de l&rsquo;importance capitale que rev&ecirc;t la gestion des m&eacute;tiers de la distribution de l&rsquo;Eau Potable, de l&rsquo;Electricit&eacute;, de l&rsquo;Assainissement Liquide et la protection de l&rsquo;environnement dans la vie quotidienne du citoyen et dans le d&eacute;veloppement &eacute;conomique et social des Collectivit&eacute;s Locales, la R&eacute;gie Autonome de Distribution d&rsquo;Electricit&eacute;&nbsp;et d&rsquo;Eau de Marrakech t&eacute;moigne du fort labeur de ses collaborateurs engag&eacute;s pour assurer le meilleur des services pour les habitants de Marrakech et de ses visiteurs, offrant ainsi les conditions favorables pour l&rsquo;&eacute;panouissement socio-&eacute;conomique et le d&eacute;veloppement durable de la ville, de la R&eacute;gion et du Royaume.</p>\r\n<p>Tout au long des ann&eacute;es 2018 et 2019 et &agrave;&nbsp;travers l&rsquo;ach&egrave;vement et le d&eacute;marrage de grands projets mobilisateurs, nous avons orient&eacute;&nbsp;tous nos programmes et actions pour nourrir notre ambition de positionner la RADEEMA parmi les grandes entreprises du Royaume.</p>\r\n<p>Cette vision conditionn&eacute;e pat le strict respect du Code Marocain de Bonnes Pratiques de Gouvernance, nous a permis de satisfaire les exigences de l&rsquo;ensemble de nos parties int&eacute;ress&eacute;es et d&rsquo;assurer une exploitation optimale de notre infrastructure tout en garantissant son renforcement.</p>\r\n<p>Nous avons &oelig;uvr&eacute;&nbsp;au quotidien &agrave;&nbsp;instaurer une nouvelle culture plus coh&eacute;rente, ax&eacute;e sur le respect de nos valeurs, exigeant de nous une citoyennet&eacute;&nbsp;plus exemplaire et une ligne de conduite marqu&eacute;e par l&rsquo;&eacute;quit&eacute;&nbsp;dans nos d&eacute;cisions, l&rsquo;am&eacute;lioration continue, l&rsquo;&eacute;thique et la transparence dans nos relations.</p>\r\n<p>Cette culture constitue aussi un levier majeur dans la concr&eacute;tisation de nos objectifs visant plus particuli&egrave;rement la g&eacute;n&eacute;ralisation de l&rsquo;acc&egrave;s &agrave;&nbsp;nos services de base, enregistrant une am&eacute;lioration des taux de desserte ainsi que l&rsquo;am&eacute;lioration du rendement de nos r&eacute;seaux. Par ailleurs, nous avons continu&eacute;&nbsp;&agrave;&nbsp;concr&eacute;tiser nos programmes de d&eacute;veloppement par le lancement de nouveaux projets toujours plus respectueux de notre environnement notamment le projet de s&eacute;chage solaire des boues et l&rsquo;extension de la capacit&eacute;&nbsp;de traitement de la STEP de Marrakech et de sa ligne de valorisation de biogaz par la m&eacute;thanisation des boues d&rsquo;&eacute;puration.</p>\r\n<p>Nos engagements ont concern&eacute;&nbsp;&eacute;galement la valorisation des boues d&rsquo;&eacute;puration s&eacute;ch&eacute;es comme combustible de substitution dans l&rsquo;industrie de fabrication du ciment par la signature d&rsquo;un protocole d&rsquo;accord faisant ainsi de ce d&eacute;chet une source d&rsquo;&eacute;nergie alternative.</p>', 3, '', 'كلمة المدير العام', ''),
 (22, 'Nos valeurs', NULL, NULL, 1, 0, '2005-07-21 05:00:37', '2005-07-21 05:00:37', '<p><strong>RADEEMA en bref ...</strong></p>\r\n<p>Le d&eacute;veloppement r&eacute;alis&eacute; tout au long de ces ann&eacute;es aussi bien au niveau des investissements qu&rsquo;au niveau de performances est le signe de la bonne sant&eacute; de notre entreprise. L&rsquo;essor escompt&eacute; &agrave; travers les r&eacute;alisations futures et la taille projet&eacute;e feront certainement de la RADEEMA l&rsquo;entreprise la plus importante dans son secteur d&rsquo;activit&eacute; et par l&agrave;-m&ecirc;me le mod&egrave;le &agrave; suivre.</p>\r\n<p>Les autres activit&eacute;s de la R&eacute;gie connaissent &eacute;galement des niveaux de performances assez remarquables, chacune dans son domaine, maniant habilement l&rsquo;&eacute;quilibre entre l&rsquo;ambition, la s&eacute;r&eacute;nit&eacute;, la s&eacute;curit&eacute; et surtout l&rsquo;enthousiasme.</p>\r\n<p>Ces &eacute;volutions n&rsquo;ont certes pu se concr&eacute;tiser sans la volont&eacute; in&eacute;branlable du top management qui sait surmonter les difficult&eacute;s tout en conjuguant les comp&eacute;tences individuelles et collectives.</p>\r\n<p>Conscient des d&eacute;fis majeurs &agrave; venir, le management a toujours privil&eacute;gi&eacute; la mise en place et l&rsquo;application des valeurs de bonne gestion&nbsp;: responsabilit&eacute; et r&eacute;alisation de soi&nbsp;; travail d&rsquo;&eacute;quipe et solidarit&eacute;&nbsp;; enthousiasme et satisfaction des clients&nbsp;; profitabilit&eacute; et respect de l&rsquo;environnement.</p>\r\n<p>Autant de valeurs qui ont milit&eacute; pour la r&eacute;ussite de nos projets, autant de valeurs qui renforcent notre R&eacute;gie.</p>\r\n<p><a href=\"https://www.radeema.ma/documents/20181/0/Charte+des+valeurs+2016/042e0e6a-015b-4676-85c7-fc2824e19443\">Charte des valeurs</a></p>\r\n<p>&nbsp;</p>', 3, '', 'قيمنا', ''),
 (23, 'Engagement societal', NULL, NULL, NULL, 0, '2007-07-21 03:58:33', '2007-07-21 03:58:33', '<p><strong>Une responsabilit&eacute; soci&eacute;tale au service du confort des Marrakchis</strong></p>\r\n<p>Dans le but d&rsquo;accompagner l&rsquo;essor de la ville, la RADEEMA a entam&eacute; la r&eacute;alisation d&rsquo;un programme d&rsquo;investissement d&rsquo;envergure d&rsquo;un montant de 1,6 Milliards DH qui s&rsquo;&eacute;tale jusqu&rsquo;&agrave; 2017. Ce programme s&rsquo;inscrivant dans le cadre de la convention, sign&eacute;e le</p>\r\n<p>6 janvier 2014 sous la pr&eacute;sidence effective de Sa Majest&eacute; le Roi Mohamed VI, que Dieu l&rsquo;Assiste, comporte :</p>\r\n<p>Une composante concernant la&nbsp; pr&eacute;servation de l&rsquo;environnement&nbsp; avec une enveloppe de 842&nbsp; Millions DH, incluant&nbsp; essentiellement l&rsquo;extension de la&nbsp; station d&rsquo;&eacute;puration des eaux&nbsp; us&eacute;es, le traitement des boues&nbsp; r&eacute;siduaires, l&rsquo;extension du r&eacute;seau&nbsp; d&rsquo;assainissement, le&nbsp; renouvellement du r&eacute;seau de la&nbsp; m&eacute;dina et la mise en place des&nbsp; collecteurs principaux&nbsp; d&rsquo;assainissement autour de la&nbsp; ville.</p>\r\n<p>Et une deuxi&egrave;me composante&nbsp; relative &agrave; l&rsquo;accompagnement de la&nbsp; mise &agrave; niveau urbaine avec un&nbsp; montant de 758 Millions DH, et ce&nbsp; par notamment de nouveaux&nbsp; r&eacute;servoirs d&rsquo;eau, la mise en place&nbsp; de gros feeders d&rsquo;eau potable&nbsp; autour de la ville, l&rsquo;extension et le&nbsp; renouvellement des r&eacute;seaux d&rsquo;eau&nbsp; et d&rsquo;&eacute;lectricit&eacute;, la construction&nbsp; d&rsquo;un nouveau poste source&nbsp; d&rsquo;&eacute;lectricit&eacute;.</p>', 3, '', 'الإلتزام المجتمعي', ''),
@@ -455,14 +457,14 @@ INSERT INTO `pages` (`idPage`, `title`, `parent_id`, `path`, `show_in_menu`, `dr
 (68, 'Localiser nos Agences', NULL, NULL, NULL, 0, '2021-07-20 12:41:14', '2021-07-20 12:41:14', '', 1, '', 'تحديد مواقع وكالاتنا', ''),
 (69, 'Contacter note Centre d\'Appel', NULL, NULL, NULL, 0, '2021-07-20 12:41:56', '2021-07-20 12:41:56', '', 1, '', 'الإتصال بمركز الزبناء', ''),
 (70, 'Guide Client', NULL, NULL, NULL, 0, '2021-07-20 12:42:22', '2021-07-20 12:42:22', '', 1, '', 'دليل الزبون', ''),
-(71, 'Demande de Domiciliation Bancaire', 18, NULL, NULL, 0, '2021-07-20 12:48:30', '2021-07-20 12:48:30', '', 1, '', '0', '0'),
+(71, 'Demande de Domiciliation Bancaire', 18, NULL, NULL, 0, '2021-07-20 12:48:30', '2021-07-20 12:48:30', '', 1, '', NULL, NULL),
 (72, 'Résiliation', 18, NULL, NULL, 0, '2021-07-20 14:35:14', '2021-07-20 14:35:14', '<h3><span style=\"color: #ff9900;\">Est-il possible de r&eacute;cup&eacute;rer mon d&eacute;p&ocirc;t de garantie?</span></h3>\r\n<div id=\"id_div_82\">\r\n<p>Au moment de la r&eacute;siliation de votre contrat d&rsquo;abonnement, le montant de votre d&eacute;p&ocirc;t de garantie (provision) est automatiquement d&eacute;duit de la facture d&rsquo;arr&ecirc;t de compte. Il n&rsquo;est rembours&eacute; (en totalit&eacute; ou partiellement) que si le solde est cr&eacute;diteur. Dans le cas contraire (solde d&eacute;biteur), le client doit payer la diff&eacute;rence.</p>\r\n<h3><span style=\"color: #ff9900;\">Quels sont les pi&egrave;ces &agrave; fournir pour un nouveau contrat (R&eacute;abonnement ou changement du contractant) ?</span></h3>\r\n<p><span style=\"text-decoration: underline;\"><strong>Cas d&rsquo;une personne physique : (propri&eacute;t&eacute; ou locataire)</strong></span></p>\r\n<div>\r\n<p>&diams; Demande d&rsquo;abonnement sign&eacute;e par le client ;</p>\r\n<p>&diams; Photocopie de la (CIN) ou carte de s&eacute;jour ou passeport (pour les &eacute;trangers) ;</p>\r\n<p>&diams; Acte de propri&eacute;t&eacute; pour les propri&eacute;taires ou une copie du contrat de bail ou bien une autorisation l&eacute;galis&eacute;e du propri&eacute;taire en cas de location ;</p>\r\n<p>&diams; Registre du commerce pour les locaux &agrave; usage commercial ;</p>\r\n<p>&diams; Derni&egrave;re facture de consommation pour les cas de r&eacute;abonnement.</p>\r\n</div>\r\n<p><span style=\"text-decoration: underline;\"><strong>Cas d&rsquo;une personne morale &laquo; Soci&eacute;t&eacute; &raquo;, il faut pr&eacute;voir &eacute;galement les documents suivants :</strong></span></p>\r\n<div>\r\n<p>&diams; Photocopie de la (CIN) ou carte de s&eacute;jour ou passeport (pour les &eacute;trangers) du repr&eacute;sentant l&eacute;gal de la soci&eacute;t&eacute; (g&eacute;rant) ;</p>\r\n<p>&diams; Pi&egrave;ces justifiant les pouvoirs conf&eacute;r&eacute;s &agrave; la personne (si le signature est diff&eacute;rent du g&eacute;rant) ;</p>\r\n<p>&diams; Statut de la soci&eacute;t&eacute;</p>\r\n</div>\r\n<p><span style=\"text-decoration: underline;\"><strong>Cas d&rsquo;une Administration, Collectivit&eacute; locales et Etablissement publics :</strong></span></p>\r\n<div>\r\n<p>&diams; Demande par lettre sign&eacute;e et cachet&eacute;e du repr&eacute;sentant l&eacute;gal de l&rsquo;administration</p>\r\n</div>\r\n<h3><span style=\"color: #ff9900;\"><strong>A quoi correspond le montant qui est pay&eacute; &agrave; la souscription d&rsquo;un abonnement ?</strong></span></h3>\r\n<p>Le montant pay&eacute; &agrave; la souscription d&rsquo;un abonnement correspond au</p>\r\n<div>\r\n<p>&diams; D&eacute;p&ocirc;t de garantie,</p>\r\n<p>&diams; Frais de pose et d&eacute;pose du compteur et v&eacute;rification de l\'installation</p>\r\n<p>&diams; Frais de contrat,</p>\r\n</div>\r\n<p>Les frais de timbre sont vers&eacute;s au tr&eacute;sor de l&rsquo;Etat en conformit&eacute; avec la l&eacute;gislation en vigueur.</p>\r\n<h3><span style=\"color: #ff9900;\"><strong>le d&eacute;p&ocirc;t de garantie d&eacute;pos&eacute; lors de la demande d&rsquo;abonnement est trop cher !</strong></span></h3>\r\n<p>Les montants r&eacute;clam&eacute;s aux clients sont conformes aux dispositions r&eacute;glementaires (cahier des charges). Le montant du d&eacute;p&ocirc;t de garantie (provision) varie selon calibre du compteur et selon votre type d&rsquo;usage : Domestique, industriel, Pr&eacute;f&eacute;rentiel &hellip; etc.</p>\r\n</div>', NULL, '', 'إلغاء عقد', ''),
 (73, 'Les formulaires', 18, NULL, NULL, 0, '2021-07-20 14:35:46', '2021-07-20 14:35:46', '', NULL, '', 'الإستمارات', ''),
-(74, 'Appel d\'offres', NULL, NULL, NULL, 0, '2021-07-20 14:50:30', '2021-07-20 14:50:30', '', NULL, '', '0', '0'),
+(74, 'Appel d\'offres', NULL, NULL, NULL, 0, '2021-07-20 14:50:30', '2021-07-20 14:50:30', '', NULL, '', NULL, NULL),
 (75, 'Résultats A.O.', NULL, NULL, NULL, 0, '2021-07-20 14:51:05', '2021-07-20 14:51:05', '', NULL, '', 'نتائج العروض', ''),
 (76, 'Offres de Service', NULL, NULL, NULL, 0, '2021-07-20 14:51:37', '2021-07-20 14:51:37', '', NULL, '', 'عروض الخدمات', ''),
 (77, 'Programme Prévisionnel', NULL, NULL, NULL, 0, '2021-07-20 14:52:10', '2021-07-20 14:52:10', '', NULL, '', 'البرنامج الإستثماري', ''),
-(78, 'Règlement marchés publics', NULL, NULL, NULL, 0, '2021-07-20 14:52:38', '2021-07-20 14:52:38', '', NULL, '', '0', '0'),
+(78, 'Règlement marchés publics', NULL, NULL, NULL, 0, '2021-07-20 14:52:38', '2021-07-20 14:52:38', '', NULL, '', NULL, NULL),
 (79, 'Marrakech cité de renouveau permanent', NULL, NULL, NULL, 0, '2021-07-20 14:54:05', '2021-07-20 14:54:05', '', NULL, '', 'مراكش الحاضرة المتجددة', ''),
 (80, 'Adhésion au plan Maroc Vert', NULL, NULL, NULL, 0, '2021-07-20 14:54:44', '2021-07-20 14:54:44', '', NULL, '', 'الانضمام إلى خطة المغرب الأخضر', ''),
 (81, 'Programmes sociaux', NULL, NULL, NULL, 0, '2021-07-20 14:55:07', '2021-07-20 14:55:07', '', NULL, '', 'الأعمال الاجتماعية', ''),
@@ -471,8 +473,8 @@ INSERT INTO `pages` (`idPage`, `title`, `parent_id`, `path`, `show_in_menu`, `dr
 (84, 'Guide promoteur', NULL, NULL, NULL, 0, '2021-07-20 15:03:11', '2021-07-20 15:03:11', '', NULL, '', 'دليل المروّج', ''),
 (85, 'Paiement en ligne', NULL, NULL, NULL, 0, '2021-07-20 15:05:11', '2021-07-20 15:05:11', '', NULL, '', 'الدفع عبر الإنترنت', ''),
 (86, 'Vos démarches en ligne', NULL, NULL, NULL, 0, '2021-07-20 15:09:20', '2021-07-20 15:09:20', '', NULL, '', 'خطواتك على الأنترنيت', ''),
-(87, 'Agence grand compte', NULL, NULL, NULL, 0, '2021-07-20 15:20:49', '2021-07-20 15:20:49', '', NULL, '', '0', '0'),
-(88, 'Contacter le CRC', NULL, NULL, NULL, 0, '2021-07-20 15:21:07', '2021-07-20 15:21:07', '', NULL, '', '0', '0');
+(87, 'Agence grand compte', NULL, NULL, NULL, 0, '2021-07-20 15:20:49', '2021-07-20 15:20:49', '', NULL, '', NULL, NULL),
+(88, 'Contacter le CRC', NULL, NULL, NULL, 0, '2021-07-20 15:21:07', '2021-07-20 15:21:07', '', NULL, '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1642,7 +1644,56 @@ INSERT INTO `visitors` (`id`, `ip`, `date_entree`) VALUES
 (1379, '::1', '2021-08-12'),
 (1380, '::1', '2021-08-12'),
 (1381, '::1', '2021-08-12'),
-(1382, '::1', '2021-08-12');
+(1382, '::1', '2021-08-12'),
+(1383, '::1', '2021-08-13'),
+(1384, '::1', '2021-08-13'),
+(1385, '::1', '2021-08-13'),
+(1386, '::1', '2021-08-13'),
+(1387, '::1', '2021-08-13'),
+(1388, '::1', '2021-08-13'),
+(1389, '::1', '2021-08-13'),
+(1390, '::1', '2021-08-13'),
+(1391, '::1', '2021-08-13'),
+(1392, '::1', '2021-08-13'),
+(1393, '::1', '2021-08-13'),
+(1394, '::1', '2021-08-13'),
+(1395, '::1', '2021-08-13'),
+(1396, '::1', '2021-08-13'),
+(1397, '::1', '2021-08-13'),
+(1398, '::1', '2021-08-13'),
+(1399, '::1', '2021-08-13'),
+(1400, '::1', '2021-08-13'),
+(1401, '::1', '2021-08-13'),
+(1402, '::1', '2021-08-13'),
+(1403, '::1', '2021-08-13'),
+(1404, '::1', '2021-08-13'),
+(1405, '::1', '2021-08-13'),
+(1406, '::1', '2021-08-13'),
+(1407, '::1', '2021-08-13'),
+(1408, '::1', '2021-08-13'),
+(1409, '::1', '2021-08-13'),
+(1410, '::1', '2021-08-13'),
+(1411, '::1', '2021-08-13'),
+(1412, '::1', '2021-08-13'),
+(1413, '::1', '2021-08-13'),
+(1414, '::1', '2021-08-13'),
+(1415, '::1', '2021-08-13'),
+(1416, '::1', '2021-08-13'),
+(1417, '::1', '2021-08-13'),
+(1418, '::1', '2021-08-13'),
+(1419, '::1', '2021-08-13'),
+(1420, '::1', '2021-08-13'),
+(1421, '::1', '2021-08-13'),
+(1422, '::1', '2021-08-13'),
+(1423, '::1', '2021-08-13'),
+(1424, '::1', '2021-08-13'),
+(1425, '::1', '2021-08-13'),
+(1426, '::1', '2021-08-13'),
+(1427, '::1', '2021-08-13'),
+(1428, '::1', '2021-08-13'),
+(1429, '::1', '2021-08-13'),
+(1430, '::1', '2021-08-13'),
+(1431, '::1', '2021-08-13');
 
 --
 -- Indexes for dumped tables
@@ -1803,7 +1854,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `faq`
@@ -1857,7 +1908,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1383;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1432;
 
 --
 -- Constraints for dumped tables

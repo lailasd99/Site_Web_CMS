@@ -20,7 +20,7 @@ include('includes/navbar.php');
                 <label>Article</label>
                     <select name="art" class="form-control">
                     <?php 
-                      $query = "SELECT * from articles";
+                      $query = "SELECT * from articles where accept=1";
                       $query_run = mysqli_query($connection, $query);
                       if($query_run){
                         while($row = mysqli_fetch_row($query_run)){

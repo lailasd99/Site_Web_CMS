@@ -50,6 +50,15 @@
         <i class="fa fa-file-alt" aria-hidden="true"></i>
         <span>Articles</span>
     </a>
+</li>
+
+ <!-- Nav Item - Articles  -->
+ <li class="nav-item">
+    <a class="nav-link" href="comments.php">
+        <i class="fa fa-comments" aria-hidden="true"></i>
+        <span>Commentaires</span>
+    </a>
+</li>
 
 <!-- Divider -->
 <hr class="sidebar-divider">
@@ -275,69 +284,56 @@
         </div>
     </li>
 
-    <!-- Nav Item - Messages -->
+    <?php
+        $comments = "SELECT *, DATEDIFF( current_timestamp(), createdAt) from comments order by createdAt DESC";
+        $com_run = mysqli_query($connection, $comments);
+        if($com_run){
+            $num = mysqli_num_rows($com_run);
+        }
+    ?>
+    <!-- Nav Item - comments-->
     <li class="nav-item dropdown no-arrow mx-1">
         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-envelope fa-fw"></i>
-            <!-- Counter - Messages -->
-            <span class="badge badge-danger badge-counter">7</span>
+            <!-- Counter - comments -->
+            <span class="badge badge-danger badge-counter"><?=$num?></span>
         </a>
-        <!-- Dropdown - Messages -->
+        <!-- Dropdown - comments -->
         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="messagesDropdown">
             <h6 class="dropdown-header">
                 Commentaires
             </h6>
-            <a class="dropdown-item d-flex align-items-center" href="#">
+            <div class="list-of-comments">
+            <?php
+               while($row = mysqli_fetch_row($com_run)){
+                   if($row[6] == 0){
+                       $date = "aujourd'hui";
+                   }else if($row[6] == 1){
+                       $date = "il y'a ".$row[6]." jour";
+                   }else{
+                       $date = "il y'a ".$row[6]." jours";
+                   }
+            ?>
+            <a class="dropdown-item d-flex align-items-center" href="../single-blog.php?id=<?=$row[5]?>" target="_blank">
                 <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                    <img class="rounded-circle" src="../images/version/LETTERS/<?=substr($row[1], 0, 1)?>.png"
                         alt="...">
                     <div class="status-indicator bg-success"></div>
                 </div>
                 <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                        problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
+                    <div class="text-truncate"><?=$row[3]?></div>
+                    <div class="small text-gray-500"><?=$row[1]?> · <?=$date?></div>
                 </div>
             </a>
-            <a class="dropdown-item d-flex align-items-center" href="#">
-                <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                        alt="...">
-                    <div class="status-indicator"></div>
-                </div>
-                <div>
-                    <div class="text-truncate">I have the photos that you ordered last month, how
-                        would you like them sent to you?</div>
-                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                </div>
-            </a>
-            <a class="dropdown-item d-flex align-items-center" href="#">
-                <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                        alt="...">
-                    <div class="status-indicator bg-warning"></div>
-                </div>
-                <div>
-                    <div class="text-truncate">Last month's report looks great, I am very happy with
-                        the progress so far, keep up the good work!</div>
-                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                </div>
-            </a>
-            <a class="dropdown-item d-flex align-items-center" href="#">
-                <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                        alt="...">
-                    <div class="status-indicator bg-success"></div>
-                </div>
-                <div>
-                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                        told me that people say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                </div>
-            </a>
-            <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+            <?php   }
+                    if($num == 0){
+                        echo "<span style='margin: 0 10%'>vous trouverez les commentaires ici.</span>";
+                    }
+            ?> 
+            </div>
+            <a class="dropdown-item text-center small text-gray-500" href="comments.php">Lire plus de commentaires.</a>
         </div>
     </li>
 
@@ -372,10 +368,10 @@
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="profile.php">
+            <!--<a class="dropdown-item" href="profile.php">
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                 Profil
-            </a>
+            </a>-->
             <a class="dropdown-item" href="params.php">
                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                 Paramètres

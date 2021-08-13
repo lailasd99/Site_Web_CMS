@@ -41,9 +41,10 @@
                 <a data-toggle="collapse" data-parent="#accordion" href="#<?=$i;?>" class="collapsed">
                   <?php echo $row[1]; ?>
                   <input id="title_acte" value="<?php echo $row[1]; ?>" hidden>
+                  <input id="title_acte_ar" value="<?php echo $row[3]; ?>" hidden>
                   <span class="bar hidden-xs"></span>
-                  <button id="update_acte" style="float: right" data-toggle="modal" data-target="#editacte" data-id="<?= $row[0];?>"><i class=" fas fa-edit"></i></button>
-                  <button id="delete_acte" style="float: right" data-toggle="modal" data-target="#deleteacte" data-id="<?= $row[0];?>"><i class=" fas fa-trash-alt"></i></button>
+                  <button class="update_acte" style="float: right" data-toggle="modal" data-target="#editacte" data-id="<?= $row[0]?>"><i class=" fas fa-edit"></i></button>
+                  <button class="delete_acte" style="float: right" data-toggle="modal" data-target="#deleteacte" data-id="<?= $row[0]?>"><i class=" fas fa-trash-alt"></i></button>
                 </a>
               </h4>
             </div>
@@ -51,6 +52,7 @@
               <div class="panel-body">
                 <?php echo $row[2]; ?>
                 <textarea id="desc_acte" hidden><?= $row[2]; ?></textarea>
+                <textarea id="desc_acte_ar" hidden><?= $row[4]; ?></textarea>
               </div>
             </div>
           </div>
@@ -69,7 +71,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajouter une section dans les actes administratifs</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter une section dans les questions et réponses</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -85,6 +87,16 @@
             <div class="form-group">
                 <label>réponse</label>
                 <textarea class="mini_textarea" name="desc">
+                </textarea>
+            </div> 
+            <hr>
+            <div class="form-group">
+                <label>question en arabe</label>
+                <input type="text" name="title_ar" class="form-control" placeholder="Entrez une question">
+            </div>   
+            <div class="form-group">
+                <label>réponse en arabe</label>
+                <textarea class="mini_textarea_ar" name="desc_ar">
 
                 </textarea>
             </div> 
@@ -103,7 +115,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajouter une question et réponse</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modifier une question et réponse</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -111,7 +123,7 @@
       <form action="plugin_actions.php" method="POST">
 
         <div class="modal-body">
-        <input id="id-of-acte" name="acte-id"  value="" hidden>
+        <input id="id-of-acte" name="acte-id">
             <div class="form-group">
                 <label>question</label>
                 <input id="title" type="text" name="title" class="form-control" placeholder="Entrez une question">
@@ -122,6 +134,17 @@
 
                 </textarea>
             </div> 
+            <hr>
+            <div class="form-group">
+                <label>question en arabe</label>
+                <input id="title_ar" type="text" name="title_ar" class="form-control" placeholder="Entrez une question">
+            </div>   
+            <div class="form-group">
+                <label>réponse en arabe</label>
+                <textarea id="content_ar" class="mini_textarea" name="desc_ar">
+
+                </textarea>
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -145,7 +168,7 @@
       <div class="alert alert-danger" role="alert">
       Voulez vous vraiment supprimer cet section?
       <form id="form-submit" action="plugin_actions.php" method="post">
-            <input id="id-acte" name="acte-id" value="" hidden> 
+            <input id="id-acte" name="acte-id" value=""> 
             
       </form>
      </div>
@@ -160,19 +183,23 @@
 
 
 <script>
-     $('#update_acte').click(function(e){
+     $('.update_acte').click(function(e){
     $('#id-of-acte').val($(this).data('id'));
 
     document.getElementById("title").value= document.getElementById("title_acte").value;
     var $con = $('textarea#desc_acte').val();
     tinymce.get("content").setContent($con);
+
+    document.getElementById("title_ar").value= document.getElementById("title_acte_ar").value;
+    var $con_ar = $('textarea#desc_acte_ar').val();
+    tinymce.get("content"_ar).setContent($con_ar);
     
 
 
    
   })
 
-  $('#delete_acte').click(function(e){
+  $('.delete_acte').click(function(e){
         console.log( $(this).data('id'))
         $('#id-acte').val($(this).data('id'))  
     })
