@@ -8,7 +8,7 @@ if(isset($_POST['addbtn'])){
     $article = $_POST['art'];
 
 
-    $query = "INSERT INTO comments(name, email, comment, idArticle) VALUES('$name', '$email', '$comment', $article)";
+    $query = "INSERT INTO comments(name, email, comment, idArticle, admin) VALUES('$name', '$email', '$comment', $article, 1)";
     $run = mysqli_query($connection, $query);
 
     if($run){

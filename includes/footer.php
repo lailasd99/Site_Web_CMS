@@ -13,9 +13,9 @@
                                 <a href="index.php"><img src="images/version/radeema_logo_new.png" alt="" class="img-fluid"></a>
                                 <!--<p>Tech Blog is a technology blog, we sharing marketing, news and gadget articles.</p>-->
                                 <div class="social" id="social">
-                                    <a href="https://fr-fr.facebook.com/RADEEMAKECH/" data-toggle="tooltip" data-placement="bottom" title="<?= _('Facebook'); ?>"><i class="fa fa-facebook"></i></a>              
-                                    <a href="https://www.youtube.com/channel/UCFl5dUovd_Wr1AT0aprFAJA" data-toggle="tooltip" data-placement="bottom" title="<?= _('Youtube'); ?>"><i class="fa fa-youtube-play"></i></a>
-                                    <a href="https://play.google.com/store/apps/details?id=ma.radeema.redaelouafi.RadeemaMob" data-toggle="tooltip" data-placement="bottom" title="<?= _('Application android'); ?>"><i class="fa fa-android "></i></a>
+                                    <a href="https://fr-fr.facebook.com/RADEEMAKECH/" data-toggle="tooltip" data-placement="bottom" title="<?= _('Facebook'); ?>" target="_blank"><i class="fa fa-facebook"></i></a>              
+                                    <a href="https://www.youtube.com/channel/UCFl5dUovd_Wr1AT0aprFAJA" data-toggle="tooltip" data-placement="bottom" title="<?= _('Youtube'); ?>" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                                    <a href="https://play.google.com/store/apps/details?id=ma.radeema.redaelouafi.RadeemaMob" data-toggle="tooltip" data-placement="bottom" title="<?= _('Application android'); ?>" target="_blank"><i class="fa fa-android "></i></a>
                                 </div>
 
                                 <hr class="invis">

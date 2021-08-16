@@ -119,11 +119,11 @@
                                     <h4 class="small-title"><?= _('Envoyer un message'); ?></h4>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <form class="form-wrapper">
+                                            <form class="form-wrapper" action="send_emails.php" method="POST">
                                                 <input type="email" name="mail" class="form-control" value="<?php echo $email?>" placeholder="<?= _('email ici'); ?>">
                                                 <input type="text" name="subject" class="form-control" placeholder="<?= _('Sujet'); ?>">
-                                                <textarea rows="16" class="form-control" placeholder="<?= _('Votre message'); ?>"></textarea>
-                                                <button type="submit" class="btn btn-primary"><?= _('Envoyer'); ?></button>
+                                                <textarea rows="16" name="message" class="form-control" placeholder="<?= _('Votre message'); ?>"></textarea>
+                                                <button type="submit" name="send" class="btn btn-primary"><?= _('Envoyer'); ?></button>
                                             </form>
                                         </div>
                                     </div>

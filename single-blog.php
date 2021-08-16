@@ -174,7 +174,7 @@
 
                             <hr class="invis1">
                             <?php
-                                $query = "SELECT * from comments where idArticle=$id";
+                                $query = "SELECT * from comments where idArticle=$id order by admin DESC";
                                 $query_run = mysqli_query($connection, $query);
                                 if($query_run){
                                     $num = mysqli_num_rows($query_run);
@@ -191,7 +191,11 @@
 
                                             <div class="media">
                                                 <a class="media-left" href="#">
+                                                    <?php if($row[6] == 0){ ?>
                                                     <img src="images/version/LETTERS/<?php echo substr($row[1], 0, 1)?>.png" alt="" class="rounded-circle">
+                                                    <?php }else{ ?>
+                                                    <img src="images/version/pro-01.png" alt="" class="rounded-circle">
+                                                    <?php } ?>
                                                 </a>
                                                 <div class="media-body">
                                                     <h4 class="media-heading user_name"><?php echo $row[1]?><small><?php echo date("m/d/Y , h:i a", strtotime($row[4]))?></small></h4>

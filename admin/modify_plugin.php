@@ -23,8 +23,6 @@ if($id_plugin == 1){
   include('edit_rapport.php');
 }else if($id_plugin == 7){
   include('edit_flash.php');
-}else if($id_plugin == 9){
-  include('edit_faq.php');
 }
 
 

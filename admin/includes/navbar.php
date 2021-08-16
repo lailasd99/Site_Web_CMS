@@ -192,7 +192,7 @@
     <i class="fa fa-bars"></i>
 </button>
 
-<!-- Topbar Search -->
+<!-- 
 <form
     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
     <div class="input-group">
@@ -205,6 +205,7 @@
         </div>
     </div>
 </form>
+Topbar Search -->
 
 <!-- Topbar Navbar -->
 <ul class="navbar-nav ml-auto">
@@ -287,17 +288,22 @@
     <?php
         $comments = "SELECT *, DATEDIFF( current_timestamp(), createdAt) from comments order by createdAt DESC";
         $com_run = mysqli_query($connection, $comments);
-        if($com_run){
-            $num = mysqli_num_rows($com_run);
+
+        $query_seen ="SELECT * FROM comments WHERE seen=0";
+        $run_seen = mysqli_query($connection, $query_seen);
+        if($run_seen){
+            $num = mysqli_num_rows($run_seen);
         }
     ?>
     <!-- Nav Item - comments-->
     <li class="nav-item dropdown no-arrow mx-1">
         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="seen();">
             <i class="fas fa-envelope fa-fw"></i>
             <!-- Counter - comments -->
-            <span class="badge badge-danger badge-counter"><?=$num?></span>
+            <?php if($num>0){ ?>
+            <span id="num-badge" class="badge badge-danger badge-counter"><?=$num?></span>
+            <?php } ?>
         </a>
         <!-- Dropdown - comments -->
         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -336,6 +342,28 @@
             <a class="dropdown-item text-center small text-gray-500" href="comments.php">Lire plus de commentaires.</a>
         </div>
     </li>
+    <script>
+        function seen(){
+            document.getElementById("num-badge").style.display = "none";
+            var submit = "submit";
+
+            $.ajax({
+                url: "./notif_actions.php",
+                type: "POST",
+                data: { submit : submit},
+                success: function(data) {
+                console.log(data)
+                 
+                if (data == 'ok'){
+                    console.log("success");
+                }
+                else{
+                    console.log("error");
+                }
+                }
+            });
+        }
+    </script>
 
     <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -354,13 +382,8 @@
             $result = mysqli_query($connection, $query);
             if($result){
                 $row = mysqli_fetch_row($result);
-                if($row[7] == NULL){
-                    echo '<img class="img-profile rounded-circle"
-                            src="../images/version/LETTERS/'.substr($row[1], 0, 1).'.png">';
-                }else{
-                    echo '<img class="img-profile rounded-circle"
-                            src="../images/version/LETTERS/'.$row[7].'">';
-                }
+                echo '<img class="img-profile rounded-circle"
+                        src="../images/version/pro-01.png">';
             }
             ?>
             

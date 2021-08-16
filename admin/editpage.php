@@ -64,7 +64,6 @@ if(isset($_GET['modify_page']))
         <input  type="hidden" id="publication" name="publication" ></input>
         <input  type="hidden" id="flash" name="flash" ></input>
         <input  type="hidden" id="galery" name="galery" ></input>
-        <input  type="hidden" id="actes" name="actes" ></input>
         <button type="submit" name ="submit-page" class="btn btn-primary" style="margin-top: 20px">Publier</button>
       </form>
     </div>
@@ -248,14 +247,6 @@ if(isset($_GET['modify_page']))
       <input id="gal" name="gal" value="oui" type="checkbox" <?php if(mysqli_num_rows($query_run_p) > 0){ echo "checked";}?>/>
       <label class="form-check-label" for="">Galerie</label>
     </div>
-    <div class="toggle">
-    <?php 
-        $query_p = "SELECT * from plugins where idPage=$page_id and idPlugin=9";
-        $query_run_p = mysqli_query($connection, $query_p);
-      ?>
-      <input id="act" name="act" value="oui" type="checkbox" <?php if(mysqli_num_rows($query_run_p) > 0){ echo "checked";}?>/>
-      <label class="form-check-label" for="">FAQ</label>
-    </div>
   </div>
 </div>
 </div>
@@ -313,7 +304,6 @@ function handleSubmit(e) {
     document.getElementById("publication").value = document.getElementById("pub").checked;
     document.getElementById("flash").value = document.getElementById("fl").checked;
     document.getElementById("galery").value = document.getElementById("gal").checked;
-    document.getElementById("actes").value = document.getElementById("act").checked;
     
 }
 

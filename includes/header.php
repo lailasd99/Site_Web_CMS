@@ -42,6 +42,10 @@ $locale = "en";
             .fa-rss{
                 transform: rotateY(180deg);
             }
+            .espace-title{
+                padding:5px 20px 5px 0 !important;
+                border-right:5px solid #2196f3;
+            }
             
         </style>
         <?php
@@ -56,6 +60,10 @@ $locale = "en";
             }
             .mr-auto {
             margin-right: auto !important;
+            }
+            .espace-title{
+                padding:5px 0 5px 20px !important;
+                border-left:5px solid #2196f3;
             }
             
         </style>
@@ -238,13 +246,13 @@ $locale = "en";
 
                         <ul class="navbar-nav mr-2">
                             <li class="nav-item">
-                                <a class="nav-link" href="https://fr-fr.facebook.com/RADEEMAKECH/"><i class="fa fa-facebook-square"></i></a>
+                                <a class="nav-link" href="https://fr-fr.facebook.com/RADEEMAKECH/" target="_blank"><i class="fa fa-facebook-square" ></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="https://www.youtube.com/channel/UCFl5dUovd_Wr1AT0aprFAJA"><i class="fa fa-youtube-play "></i></a>
+                                <a class="nav-link" href="https://www.youtube.com/channel/UCFl5dUovd_Wr1AT0aprFAJA" target="_blank"><i class="fa fa-youtube-play "></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="https://play.google.com/store/apps/details?id=ma.radeema.redaelouafi.RadeemaMob"><i class="fa fa-android "></i></a>
+                                <a class="nav-link" href="https://play.google.com/store/apps/details?id=ma.radeema.redaelouafi.RadeemaMob" target="_blank"><i class="fa fa-android "></i></a>
                             </li>
                         </ul>
                     </div>

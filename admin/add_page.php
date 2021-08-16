@@ -36,6 +36,9 @@
         <input  type="hidden" id="login_form" name="l_form" ></input>
         <input  type="hidden" id="id_forms" name="forms" ></input>
         <input  type="hidden" id="local" name="local" ></input>
+        <input  type="hidden" id="publication" name="publication" ></input>
+        <input  type="hidden" id="flash" name="flash" ></input>
+        <input  type="hidden" id="galery" name="galery" ></input>
         <button type="submit" name ="add-page" class="btn btn-primary" style="margin-top: 20px">Publier</button>
       </form>
     </div>
@@ -136,6 +139,18 @@
       <input id="locali" name="locali" value="oui" type="checkbox" />
       <label class="form-check-label" for="">localisation des agences</label>
     </div>
+    <div class="toggle">
+      <input id="pub" name="pub" value="oui" type="checkbox"/>
+      <label class="form-check-label" for="">Rapports et Publications</label>
+    </div>
+    <div class="toggle">
+      <input id="fl" name="fl" value="oui" type="checkbox"/>
+      <label class="form-check-label" for="">Flash info et Communiqués</label>
+    </div>
+    <div class="toggle">
+      <input id="gal" name="gal" value="oui" type="checkbox"/>
+      <label class="form-check-label" for="">Galerie</label>
+    </div>
     
   </div>
 
@@ -192,6 +207,9 @@ function handleSubmit(e) {
     document.getElementById("login_form").value = document.getElementById("login").checked;
     document.getElementById("id_forms").value = document.getElementById("forms").checked;
     document.getElementById("local").value = document.getElementById("locali").checked;
+    document.getElementById("publication").value = document.getElementById("pub").checked;
+    document.getElementById("flash").value = document.getElementById("fl").checked;
+    document.getElementById("galery").value = document.getElementById("gal").checked;
     //document.forms.submitForm.submit();
     //console.log(document.forms.submitForm.art_photo)
     console.log(document.getElementById("parent_page_id").files)
